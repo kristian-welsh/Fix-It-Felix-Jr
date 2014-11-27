@@ -1,0 +1,51 @@
+Fix-It Felix Jr. Mechanics
+
+
+-Title Screen
+
+-Instructions
+
+-Gameplay:
+	-Felix:
+		-Player
+		-Jump on window ledges (arrow keys/joystick)
+		-Fix broken windows (spacebar/button)
+		-Loses life when bricks hit him
+		-Loses life when ducks hit him
+		-Gains life after obtaining pie
+		-After all lives lost, Game Over
+	
+	-Ralph:
+		-AI
+		-Moves across top of windows, at top of screen
+		-Randomly wrecks building, causing bricks to fall
+	
+	-Ducks:
+		-AI
+		-Fly across the screen at random times
+	
+	-Nicelanders:
+		-AI
+		-Appear randomly behind windows
+		-NOTE: this only happens on FIXED windows!!
+		-Leaves pie on window ledge
+
+	-Generally the game will get harder as you go
+		-More ducks
+		-Faster falling bricks
+		-Less pies
+		-More barriers
+
+	-UI:
+		-Indication of life
+		-Score (which is +500 for each window)
+	
+	-Pressing P will pause the game.
+
+	-Clearing a "screen" will mean the building scrolls up to the next section
+	 and Ralph/Felix will climb/hop up to the next bit.
+
+-Game Over banner
+
+(space bar/button takes you back to the title screen)
+		
