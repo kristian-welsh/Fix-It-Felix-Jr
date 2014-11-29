@@ -1,6 +1,7 @@
 package  {
 	import asunit.framework.TestCase;
 	import building.FakeBuilding;
+	import enemies.FakeRalph;
 	import felix.FakeFelix;
 
 	public class GameTest extends TestCase {
@@ -9,7 +10,7 @@ package  {
 		}
 
 		public function it_should_construct_properly():void {
-			new Game(new FakeBuilding(), new FakeFelix())
+			new Game(new FakeBuilding(), new FakeFelix(), new FakeRalph())
 		}
 	}
 }

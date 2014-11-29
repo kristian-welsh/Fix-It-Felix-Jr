@@ -7,7 +7,7 @@
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 
-	public class Ralph {
+	public class Ralph implements IRalph {
 		private var _par:Game = null;
 		private var _building:IBuilding = null;
 		private var _building_segment:BuildingSegment = null;

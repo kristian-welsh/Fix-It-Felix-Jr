@@ -3,6 +3,7 @@
 	import building.BuildingSegment;
 	import building.IBuilding;
 	import enemies.Brick;
+	import enemies.IRalph;
 	import enemies.Ralph;
 	import felix.Felix;
 	import felix.IFelix;
@@ -22,16 +23,16 @@
 
 		public var _building:IBuilding;
 		public var _felix:IFelix;
-		public var _ralph:Ralph;
+		public var _ralph:IRalph;
 		public var _bricks:Array;
 
 		/**
 		 * building_mc, felix_mc, and ralph_mc are movieclips defined on the stage in the flash environment.
 		 */
-		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null):void {
+		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null, passedRaplh:IRalph = null):void {
 			_building = passedBuilding || new Building(building_mc);
 			_felix = passedFelix || new Felix(felix_mc, this);
-			_ralph = new Ralph(ralph_mc, this);
+			_ralph = passedRaplh || new Ralph(ralph_mc, this);
 			_bricks = new Array(3);
 		}
 
