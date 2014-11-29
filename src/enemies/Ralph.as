@@ -9,7 +9,7 @@
 	
 	public class Ralph{
 		
-		private var _par:FixItFelixJr = null;
+		private var _par:Game = null;
 		private var _building:Building = null;
 		private var _building_segment:BuildingSegment = null;
 		private var _cur_window:DoubleWindow = null;
@@ -18,7 +18,7 @@
 		private var _attack_timer:Timer = new Timer(5000);
 		private var _target:MovieClip = null;
 		
-		public function Ralph(target:MovieClip, par:FixItFelixJr):void {
+		public function Ralph(target:MovieClip, par:Game):void {
 			_target = target;
 			_par = par;
 			_building = _par._building;

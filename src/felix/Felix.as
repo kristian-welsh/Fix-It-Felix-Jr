@@ -11,7 +11,7 @@
 		public var _target:MovieClip = null;
 		public var _life_symbol_vector:Vector.<MovieClip> = new Vector.<MovieClip>;
 		private var _building:Building = null;
-		private var _par:FixItFelixJr = null;
+		private var _par:Game = null;
 		private var _building_segment:BuildingSegment = null;
 		public var _XX:uint = 2;
 		private var _YY:uint = 2;
@@ -20,7 +20,7 @@
 		private var _can_fix:Boolean = true;
 		private var _lives:uint;
 		
-		public function Felix(target:MovieClip, caller:FixItFelixJr):void {
+		public function Felix(target:MovieClip, caller:Game):void {
 			_par = caller;
 			_target = target;
 			_building = _par._building;
