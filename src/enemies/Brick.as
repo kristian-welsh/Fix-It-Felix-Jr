@@ -57,7 +57,7 @@
 			}
 		}
 
-		public function destroy() {
+		public function destroy():void {
 			_target.x = -500;
 			_target.y = -500;
 			if(_fall_timer!=null){

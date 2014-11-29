@@ -1,58 +1,71 @@
 ﻿package {
-	import flash.display.Sprite;
-	import flash.display.MovieClip;
-	import felix.Felix;
-	import enemies.Ralph;
-	import enemies.Brick;
 	import building.Building;
 	import building.BuildingSegment;
+	import building.IBuilding;
+	import enemies.Brick;
+	import enemies.Ralph;
+	import felix.Felix;
+	import flash.display.MovieClip;
+	import flash.display.Sprite;
 
 	public class Game extends Sprite {
+		public var building_mc:MovieClip
+		public var felix_mc:MovieClip
+		public var ralph_mc:MovieClip
+
+		public var life_mc_0:MovieClip
+		public var life_mc_1:MovieClip
+		public var life_mc_2:MovieClip
+		public var life_mc_3:MovieClip
+		public var life_mc_4:MovieClip
 
 		public var _felix:Felix;
 		public var _ralph:Ralph;
-		public var _building:Building;
+		public var _building:IBuilding;
 		public var _bricks:Array;
 
-		public function Game():void {
-			_building = new Building(building_mc);
+		/**
+		 * building_mc, felix_mc, and ralph_mc are movieclips defined on the stage in the flash environment.
+		 */
+		public function Game(passedBuilding:IBuilding = null):void {
+			_building = passedBuilding || new Building(building_mc);
 			_felix = new Felix(felix_mc, this);
-			_ralph = new Ralph(ralph_mc,this);
+			_ralph = new Ralph(ralph_mc, this);
 			_bricks = new Array(3);
 		}
 
-		public function spawnBricks(XX:uint){
-			for ( var i:int = -1 ; i < 2 ; ++ i ) {
-				_bricks[i+1] = new Brick(getChildByName("brick_mc_"+(i+1)),randomBrickStartTime(), XX+i, this);
+		public function spawnBricks(XX:uint):void {
+			for (var i:int = -1; i < 2; ++i) {
+				_bricks[i + 1] = new Brick(getChildByName("brick_mc_" + (i + 1)), randomBrickStartTime(), XX + i, this);
 			}
 		}
 
 		private function randomBrickStartTime():uint {
-			switch(uint(Math.random()*3)){
+			switch (uint(Math.random() * 3)) {
 				case 0:
 					return 0;
-				break;
+					break;
 				case 1:
 					return 200;
-				break;
+					break;
 				case 2:
 					return 600;
-				break;
+					break;
 			}
 			return 1;
 		}
 
 		public function checkWindows():void {
-			if(_building._segments[0].checkSegmentCleared()){
+			if (_building.segments[0].checkSegmentCleared()) {
 				resetSegment();
-				var seg:BuildingSegment = _building._segments[0];
+				var seg:BuildingSegment = _building.segments[0];
 				seg = new BuildingSegment(seg._target, 8);
 				_felix.resetFelix();
 			}
 		}
 
 		public function resetSegment():void {
-			for ( var i:uint = 0 ; i < _bricks.length ; ++ i ) {
+			for (var i:uint = 0; i < _bricks.length; ++i) {
 				_bricks[i].destroy();
 			}
 			_bricks = new Array(3);
