@@ -1,20 +1,18 @@
 ﻿package enemies {
-	import building.IBuilding;
-	import flash.display.MovieClip;
-	import flash.utils.Timer;
-	import flash.events.TimerEvent;
-	import building.Building;
 	import building.BuildingSegment;
 	import building.DoubleWindow;
-	import felix.Felix;
+	import building.IBuilding;
+	import felix.IFelix;
+	import flash.display.MovieClip;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 
-	public class Ralph{
-
+	public class Ralph {
 		private var _par:Game = null;
 		private var _building:IBuilding = null;
 		private var _building_segment:BuildingSegment = null;
 		private var _cur_window:DoubleWindow = null;
-		private var _felix:Felix = null;
+		private var _felix:IFelix = null;
 		private var _XX:uint = 2;
 		private var _attack_timer:Timer = new Timer(5000);
 		private var _target:MovieClip = null;
@@ -25,7 +23,7 @@
 			_building = _par._building;
 			_felix = _par._felix;
 			_target.y = 115;
-			if(_building.isBuilt){
+			if (_building.isBuilt) {
 				initialize();
 			}
 			_attack_timer.addEventListener(TimerEvent.TIMER, onAttackTimer);
@@ -33,10 +31,10 @@
 		}
 
 		private function onAttackTimer(te:TimerEvent):void {
-			if(_XX<_felix._XX){
+			if (_XX < _felix.XX) {
 				moveRight()
 			}
-			if(_felix._XX<_XX){
+			if (_felix.XX < _XX) {
 				moveLeft()
 			}
 			_par.spawnBricks(_XX);
@@ -49,7 +47,7 @@
 
 		private function moveToWindow():void {
 			setCurWindow();
-			_target.x = _building.target.x+_building_segment.target.x+_cur_window.target.x+35;
+			_target.x = _building.target.x + _building_segment.target.x + _cur_window.target.x + 35;
 		}
 
 		private function setCurWindow():void {
@@ -57,21 +55,21 @@
 		}
 
 		private function moveLeft():void {
-			if(_XX>1){
+			if (_XX > 1) {
 				_XX--;
 				moveToWindow();
 			}
 		}
 
 		private function moveRight():void {
-			if(_XX<3){
+			if (_XX < 3) {
 				_XX++;
 				moveToWindow();
 			}
 		}
 
 		public function resetObject():void {
-			_XX=2;
+			_XX = 2;
 			moveToWindow();
 			_attack_timer.stop();
 			_attack_timer.removeEventListener(TimerEvent.TIMER, onAttackTimer);

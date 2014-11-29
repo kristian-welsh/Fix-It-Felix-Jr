@@ -20,7 +20,7 @@
 			_target = target;
 			_XX = XX;
 			_cur_window = _par._building.segments[0].getWindowAt(_XX);
-			_felix_target = _par._felix._target;
+			_felix_target = _par._felix.target;
 
 			_delayed = new Timer(delay,1);
 			_delayed.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayComplete);

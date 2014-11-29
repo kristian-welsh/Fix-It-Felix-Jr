@@ -1,6 +1,7 @@
 package  {
 	import asunit.framework.TestCase;
 	import building.FakeBuilding;
+	import felix.FakeFelix;
 
 	public class GameTest extends TestCase {
 		public function GameTest(testMethod:String = null):void {
@@ -8,7 +9,7 @@ package  {
 		}
 
 		public function it_should_construct_properly():void {
-			new Game(new FakeBuilding())
+			new Game(new FakeBuilding(), new FakeFelix())
 		}
 	}
 }

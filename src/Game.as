@@ -5,6 +5,7 @@
 	import enemies.Brick;
 	import enemies.Ralph;
 	import felix.Felix;
+	import felix.IFelix;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 
@@ -19,17 +20,17 @@
 		public var life_mc_3:MovieClip
 		public var life_mc_4:MovieClip
 
-		public var _felix:Felix;
-		public var _ralph:Ralph;
 		public var _building:IBuilding;
+		public var _felix:IFelix;
+		public var _ralph:Ralph;
 		public var _bricks:Array;
 
 		/**
 		 * building_mc, felix_mc, and ralph_mc are movieclips defined on the stage in the flash environment.
 		 */
-		public function Game(passedBuilding:IBuilding = null):void {
+		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null):void {
 			_building = passedBuilding || new Building(building_mc);
-			_felix = new Felix(felix_mc, this);
+			_felix = passedFelix || new Felix(felix_mc, this);
 			_ralph = new Ralph(ralph_mc, this);
 			_bricks = new Array(3);
 		}
