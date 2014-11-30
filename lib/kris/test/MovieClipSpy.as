@@ -1,6 +1,6 @@
-package lib.test {
+package kris.test {
 	import flash.display.MovieClip;
-	import lib.test.Spy;
+	import kris.test.Spy;
 
 	public class MovieClipSpy extends MovieClip {
 		private var _spy:Spy;

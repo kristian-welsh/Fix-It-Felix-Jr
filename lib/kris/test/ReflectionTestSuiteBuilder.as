@@ -1,7 +1,7 @@
-package lib.test {
+package kris.test {
 	import asunit.framework.TestSuite;
-	import lib.assert;
-	import lib.Util;
+	import assert;
+	import kris.Util;
 
 	public class ReflectionTestSuiteBuilder {
 		private var objectInstance:Object;
@@ -13,12 +13,11 @@ package lib.test {
 		}
 
 		/**
-		 * @param	tests An array of public test functions.
+		 * @param	tests An array of public test functions, from the instance provided to the constructor.
 		 */
 		public function addTests(tests:Array):void {
-			tests.map(function(element:*, ... restMapParams):void {
-				assert(element is Function)
-			})
+			for each (var test:Object in tests)
+				assert(test is Function)
 			for each (var test:Object in tests)
 				addTest(test as Function)
 		}

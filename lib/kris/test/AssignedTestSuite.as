@@ -1,4 +1,4 @@
-package lib.test {
+package kris.test {
 	import asunit.framework.TestSuite;
 
 	public class AssignedTestSuite {

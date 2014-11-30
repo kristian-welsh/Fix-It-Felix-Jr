@@ -1,4 +1,4 @@
-package lib.test {
+package kris.test {
 	import asunit.framework.Assert;
 	import lib.StringUtil;
 
