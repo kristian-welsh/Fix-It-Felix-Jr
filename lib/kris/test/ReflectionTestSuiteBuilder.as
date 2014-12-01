@@ -16,10 +16,14 @@ package kris.test {
 		 * @param	tests An array of public test functions, from the instance provided to the constructor.
 		 */
 		public function addTests(tests:Array):void {
-			for each (var test:Object in tests)
-				assert(test is Function)
+			validateTests(tests)
 			for each (var test:Object in tests)
 				addTest(test as Function)
+		}
+
+		private function validateTests(tests:Array):void {
+			for each (var test:Object in tests)
+				assert(test is Function)
 		}
 
 		private function addTest(method:Function):void {

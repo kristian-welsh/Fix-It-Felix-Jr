@@ -9,6 +9,7 @@
 
 		private var _par:Game;
 		private var _target:DisplayObject;
+		// _XX is window column position
 		private var _XX:uint;
 		private var _delayed:Timer;
 		private var _fall_timer:Timer;
@@ -19,8 +20,8 @@
 			_par = caller;
 			_target = target;
 			_XX = XX;
-			_cur_window = _par._building.segments[0].getWindowAt(_XX);
-			_felix_target = _par._felix.target;
+			_cur_window = _par.building.segments[0].getWindowAt(_XX);
+			_felix_target = _par.felix.target;
 
 			_delayed = new Timer(delay,1);
 			_delayed.addEventListener(TimerEvent.TIMER_COMPLETE, onDelayComplete);
@@ -36,8 +37,8 @@
 		}
 
 		private function positionTarget():void {
-			_target.x = _par._building.target.x+_par._building.segments[0].target.x+_cur_window.target.x+35;
-			_target.y = _par._building.target.y+_par._building.segments[0].target.y+_cur_window.target.y-50;
+			_target.x = _par.building.target.x+_par.building.segments[0].target.x+_cur_window.target.x+35;
+			_target.y = _par.building.target.y+_par.building.segments[0].target.y+_cur_window.target.y-50;
 		}
 
 		private function startFalling():void {
@@ -53,7 +54,7 @@
 				destroy()
 			}
 			if(_target.hitTestObject(_felix_target)){
-				_par._felix.loseLife();
+				_par.felix.loseLife();
 			}
 		}
 

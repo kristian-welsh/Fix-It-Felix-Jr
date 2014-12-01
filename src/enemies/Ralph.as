@@ -20,8 +20,8 @@
 		public function Ralph(target:MovieClip, par:Game):void {
 			_target = target;
 			_par = par;
-			_building = _par._building;
-			_felix = _par._felix;
+			_building = _par.building;
+			_felix = _par.felix;
 			_target.y = 115;
 			if (_building.isBuilt) {
 				initialize();

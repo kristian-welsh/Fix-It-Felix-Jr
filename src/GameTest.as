@@ -8,7 +8,9 @@ package {
 		private var game:Game;
 
 		public function GameTest(testMethod:String = null):void {
-			super([it_should_construct_properly], testMethod);
+			super([
+				it_should_construct_properly,
+				it_should_do_other_stuff], testMethod);
 		}
 
 		override protected function setUp():void {
@@ -20,7 +22,7 @@ package {
 		}
 
 		public function it_should_do_other_stuff():void {
-
+			//game.spawnBricks(
 		}
 	}
 }

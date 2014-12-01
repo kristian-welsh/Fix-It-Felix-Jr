@@ -23,7 +23,7 @@
 		public function Felix(target:MovieClip, caller:Game):void {
 			_par = caller;
 			_target = target;
-			_building = _par._building;
+			_building = _par.building;
 
 			if (_building.isBuilt) {
 				initialize();
