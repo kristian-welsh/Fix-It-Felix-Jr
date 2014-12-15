@@ -8,15 +8,15 @@
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>
-      <value>false</value>
-    </define>
-    <define append="true">
-      <name>CONFIG::release</name>
       <value>true</value>
     </define>
     <define append="true">
+      <name>CONFIG::release</name>
+      <value>false</value>
+    </define>
+    <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'30/11/2014'</value>
+      <value>'15/12/2014'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -30,17 +30,15 @@
       <name>CONFIG::desktop</name>
       <value>false</value>
     </define>
-    <omit-trace-statements>true</omit-trace-statements>
-    <verbose-stacktraces>false</verbose-stacktraces>
+    <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Kris\Projects\1 - Games\Programing Project Files\AS3\Personal Projects\In Progress\Fix It Felix Jr\src</path-element>
-      <path-element>C:\Users\Kris\Projects\1 - Games\Programing Project Files\AS3\Personal Projects\In Progress\Fix It Felix Jr\lib</path-element>
-      <path-element>C:\Users\Kris\AppData\Local\FlashDevelop\Library\AS3</path-element>
+      <path-element>C:\Users\Barry Manilow\Projects\Programming\Actionscript\Fix-It-Felix-Jr\src</path-element>
+      <path-element>C:\Users\Barry Manilow\AppData\Local\FlashDevelop\Library</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Kris\Projects\1 - Games\Programing Project Files\AS3\Personal Projects\In Progress\Fix It Felix Jr\src\Tests.as</path-element>
+    <path-element>C:\Users\Barry Manilow\Projects\Programming\Actionscript\Fix-It-Felix-Jr\src\Tests.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
