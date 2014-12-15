@@ -1,7 +1,8 @@
-﻿package felix {
-	import building.BuildingSegment;
-	import building.DoubleWindow;
-	import building.IBuilding;
+﻿package com.felix {
+	import com.building.BuildingSegment;
+	import com.building.DoubleWindow;
+	import com.building.IBuilding;
+	import com.Game;
 	import flash.display.MovieClip;
 	import flash.events.KeyboardEvent;
 	import flash.events.TimerEvent;

@@ -1,5 +1,4 @@
-﻿package building{
-	import flash.display.DisplayObject;
+﻿package com.building {
 	import flash.display.MovieClip;
 	
 	public class DoubleWindow {

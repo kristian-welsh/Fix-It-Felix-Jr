@@ -1,8 +1,9 @@
-﻿package enemies {
-	import building.BuildingSegment;
-	import building.DoubleWindow;
-	import building.IBuilding;
-	import felix.IFelix;
+﻿package com.enemies {
+	import com.building.BuildingSegment;
+	import com.building.DoubleWindow;
+	import com.building.IBuilding;
+	import com.felix.IFelix;
+	import com.Game;
 	import flash.display.MovieClip;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

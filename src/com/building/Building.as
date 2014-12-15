@@ -1,4 +1,4 @@
-﻿package building{
+﻿package com.building {
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;
 

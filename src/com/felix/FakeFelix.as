@@ -1,4 +1,4 @@
-package felix {
+package com.felix {
 	import flash.display.MovieClip;
 
 	public class FakeFelix implements IFelix {

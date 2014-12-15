@@ -38,7 +38,7 @@
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Barry Manilow\Projects\Programming\Actionscript\Fix-It-Felix-Jr\src\Tests.as</path-element>
+    <path-element>C:\Users\Barry Manilow\Projects\Programming\Actionscript\Fix-It-Felix-Jr\src\com\Tests.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

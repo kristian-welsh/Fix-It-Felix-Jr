@@ -1,4 +1,4 @@
-package {
+package com {
 	import asunit.framework.TestCase;
 	import asunit.framework.TestSuite;
 	import kris.test.ReflectionTestSuiteBuilder;

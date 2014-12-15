@@ -1,7 +1,5 @@
-﻿package building{
+﻿package com.building {
 	import flash.display.MovieClip;
-	import flash.display.DisplayObject;
-	import building.BuildingSegment;
 
 	public class BuildingSegment {
 		public var _target:MovieClip;

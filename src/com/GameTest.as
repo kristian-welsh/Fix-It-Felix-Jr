@@ -1,9 +1,8 @@
-package {
-	import building.FakeBuilding;
-	import enemies.FakeRalph;
-	import felix.FakeFelix;
-	import kris.test.SuiteProvider;
-
+package com {
+	import com.building.FakeBuilding;
+	import com.enemies.FakeRalph;
+	import com.felix.FakeFelix;
+	
 	public class GameTest extends SuiteProvidingTestCase {
 		private var game:Game;
 

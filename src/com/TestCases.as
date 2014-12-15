@@ -1,6 +1,7 @@
-package {
+package com {
 	import asunit.framework.TestSuite;
 	import kris.test.SuiteProvider;
+	import com.GameTest;
 
 	public class TestCases extends TestSuite {
 		public function TestCases() {

@@ -1,12 +1,12 @@
-﻿package {
-	import building.Building;
-	import building.BuildingSegment;
-	import building.IBuilding;
-	import enemies.Brick;
-	import enemies.IRalph;
-	import enemies.Ralph;
-	import felix.Felix;
-	import felix.IFelix;
+﻿package com {
+	import com.building.Building;
+	import com.building.BuildingSegment;
+	import com.building.IBuilding;
+	import com.enemies.Brick;
+	import com.enemies.Ralph;
+	import com.felix.Felix;
+	import com.enemies.IRalph
+	import com.felix.IFelix;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 
