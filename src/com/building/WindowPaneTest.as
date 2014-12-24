@@ -19,7 +19,7 @@ package com.building {
 		}
 		
 		public function initialized_correctly():void {
-			pane
+			graphics.spy.assertLogged(graphics.gotoAndStop, [1])
 		}
 	}
 }
