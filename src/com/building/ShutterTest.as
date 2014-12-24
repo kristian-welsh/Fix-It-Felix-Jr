@@ -10,7 +10,8 @@ package com.building {
 			super([
 				shutter_set_up_correctly,
 				can_set_active,
-				can_set_inactive], testMethod);
+				can_set_inactive,
+				can_get_active], testMethod);
 		}
 		
 		override protected function setUp():void {
@@ -30,6 +31,12 @@ package com.building {
 		public function can_set_inactive():void {
 			shutter.active = false
 			assertGotoAndStopCalled(2, 1)
+		}
+		
+		public function can_get_active():void {
+			assertFalse(shutter.active)
+			shutter.active = true
+			assertTrue(shutter.active)
 		}
 		
 		/**
