@@ -6,7 +6,7 @@
 		
 		public function Shutter(target:MovieClip):void {
 			_target = target;
-			_target.gotoAndStop(2);
+			active = false;
 		}
 		
 		public function set active (value:Boolean):void  {
