@@ -10,11 +10,7 @@
 		}
 		
 		public function set active (value:Boolean):void  {
-			if(value){
-				_target.gotoAndStop(1);
-			} else {
-				_target.gotoAndStop(2);
-			}
+			_target.gotoAndStop(value ? 1 : 2)
 		}
 		
 		public function get active ():Boolean {
