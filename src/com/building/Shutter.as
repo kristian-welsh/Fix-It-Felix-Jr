@@ -16,9 +16,5 @@
 		public function get active ():Boolean {
 			return _target.currentFrame==1;
 		}
-		
-		public function get target ():MovieClip {
-			return _target;
-		}
 	}
 }
