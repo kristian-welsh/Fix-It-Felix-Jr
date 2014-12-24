@@ -1,4 +1,5 @@
 ﻿package com.building {
+	import com.util.RandomValueGeneratorImp;
 	import flash.display.MovieClip;
 	
 	public class DoubleWindow {
@@ -14,46 +15,50 @@
 		public function DoubleWindow(target:MovieClip):void {
 			_target = target;
 			
-			_pane1 = new WindowPane(_target.pane_mc_1);
-			_pane2 = new WindowPane(_target.pane_mc_2);
+			_pane1 = new WindowPane(_target.pane_mc_1, new RandomValueGeneratorImp());
+			_pane2 = new WindowPane(_target.pane_mc_2, new RandomValueGeneratorImp());
 			
 			_top_shutter = new Shutter(_target.top_shutter);
 			_left_shutter = new Shutter(_target.left_shutter);
-			
+		
 		}
 		
 		public function shutterWindow():void {
 			//breaks random combos of  panes on broken windows
 			var randomness:Boolean = randomBoolean()
-			switch(_target.name){
-				case"window_00":
+			switch (_target.name) {
+				case "window_00":
 					_top_shutter.active = true;
 					_left_shutter.active = true;
-				return;
-				case "window_01": case "window_02": case "window_03": case "window_04":
+					return;
+				case "window_01":
+				case "window_02":
+				case "window_03":
+				case "window_04":
 					_left_shutter.active = true;
-				return;
-				case "window_05": case "window_10":
+					return;
+				case "window_05":
+				case "window_10":
 					_top_shutter.active = true;
-				return;
+					return;
 				case "window_15":
-				return;
+					return;
 			}
 			
-			if(randomness){
+			if (randomness) {
 				_top_shutter.active = true;
 			} else {
 				_left_shutter.active = true;
 			}
 		}
 		
-		public function breakWindow():void  {
+		public function breakWindow():void {
 			//breaks random combos of  panes on broken windows
 			
 			_broken = true;
-			if(randomBoolean()){
+			if (randomBoolean()) {
 				_pane1.breakGlass();
-				if(randomBoolean()){
+				if (randomBoolean()) {
 					_pane2.breakGlass();
 				}
 			} else {
@@ -63,18 +68,18 @@
 		
 		public function fixWindow():void {
 			//breaks random combos of  panes on broken windows
-			if( _pane1.broken && _pane2.broken){
-				if(randomBoolean()){
+			if (_pane1.broken && _pane2.broken) {
+				if (randomBoolean()) {
 					_pane1.fixGlass()
 				} else {
 					_pane2.fixGlass()
 				}
-			} else if(_pane1.broken && !_pane2.broken ){
+			} else if (_pane1.broken && !_pane2.broken) {
 				_pane1.fixGlass()
-			} else if(!_pane1.broken&&_pane2.broken){
+			} else if (!_pane1.broken && _pane2.broken) {
 				_pane2.fixGlass()
 			}
-			if(!_pane1.broken&&!_pane2.broken){
+			if (!_pane1.broken && !_pane2.broken) {
 				_broken = false;
 			}
 		}
@@ -98,6 +103,6 @@
 		public function topShutterExists():Boolean {
 			return _top_shutter.active;
 		}
-		
+	
 	}
 }

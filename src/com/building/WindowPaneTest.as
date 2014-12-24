@@ -1,5 +1,6 @@
 package com.building {
 	import com.test.SuiteProvidingTestCase;
+	import com.util.FakeRandomValueGenerator;
 	import kris.test.MovieClipSpy;
 	
 	public class WindowPaneTest extends SuiteProvidingTestCase {
@@ -8,16 +9,16 @@ package com.building {
 		
 		public function WindowPaneTest(testMethod:String = null) {
 			super([
-				foo
+				initialized_correctly
 				], testMethod);
 		}
 		
 		override protected function setUp():void {
 			graphics = new MovieClipSpy()
-			pane = new WindowPane(graphics)
+			pane = new WindowPane(graphics, new FakeRandomValueGenerator())
 		}
 		
-		public function foo():void {
+		public function initialized_correctly():void {
 			pane
 		}
 	}
