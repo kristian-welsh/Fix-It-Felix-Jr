@@ -1,5 +1,6 @@
-package com {
+package com.test {
 	import asunit.framework.TestSuite;
+	import com.building.ShutterTest;
 	import kris.test.SuiteProvider;
 	import com.GameTest;
 
@@ -7,6 +8,7 @@ package com {
 		public function TestCases() {
 			super()
 			includeTestsFrom(GameTest)
+			includeTestsFrom(ShutterTest)
 		}
 
 		private function includeTestsFrom(testClass:Class):void {
