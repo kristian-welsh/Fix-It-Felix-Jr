@@ -14,7 +14,7 @@
 		}
 		
 		/**
-		 * @deprecated Use setOpen or setClosed instead
+		 * @deprecated Use open or close instead.
 		 */
 		public function set active(value:Boolean):void {
 			value ? open() : close()

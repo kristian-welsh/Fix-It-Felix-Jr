@@ -10,7 +10,9 @@ package com.building {
 			super([
 				shutter_set_up_correctly,
 				can_set_active,
+				can_open,
 				can_set_inactive,
+				can_close,
 				can_get_active], testMethod);
 		}
 		
@@ -28,8 +30,18 @@ package com.building {
 			assertGotoAndStopCalled(1, 1)
 		}
 		
+		public function can_open():void {
+			shutter.open()
+			assertGotoAndStopCalled(1, 1)
+		}
+		
 		public function can_set_inactive():void {
 			shutter.active = false
+			assertGotoAndStopCalled(2, 1)
+		}
+		
+		public function can_close():void {
+			shutter.close()
 			assertGotoAndStopCalled(2, 1)
 		}
 		
