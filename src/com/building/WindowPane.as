@@ -9,7 +9,7 @@
 		
 		public function WindowPane(graphics:MovieClip, random:RandomValueGenerator):void {
 			this.random = random;
-			graphics = graphics;
+			this.graphics = graphics;
 			graphics.gotoAndStop(1);
 		}
 		
