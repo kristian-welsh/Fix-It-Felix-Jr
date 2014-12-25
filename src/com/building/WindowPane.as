@@ -15,11 +15,7 @@
 		
 		public function breakGlass():void {
 			_broken = true;
-			if (randomBoolean()) {
-				graphics.gotoAndStop(2);
-			} else {
-				graphics.gotoAndStop(3);
-			}
+			graphics.gotoAndStop(shouldShowAltGraphic() ? 2 : 3)
 		}
 		
 		public function fixGlass():void {
@@ -27,7 +23,7 @@
 			graphics.gotoAndStop(1);
 		}
 		
-		private function randomBoolean():Boolean {
+		private function shouldShowAltGraphic():Boolean {
 			return random.boolean()
 		}
 		

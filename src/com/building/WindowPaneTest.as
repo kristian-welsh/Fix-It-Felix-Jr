@@ -14,6 +14,7 @@ package com.building {
 				initialized_correctly,
 				break_glass_randomizes_broken_graphic_1,
 				break_glass_randomizes_broken_graphic_2,
+				break_glass_breaks_glass,
 				], testMethod);
 		}
 		
@@ -37,6 +38,12 @@ package com.building {
 			setRandomValue(false)
 			pane.breakGlass();
 			assertGraphicChange(3, 1)
+		}
+		
+		public function break_glass_breaks_glass():void {
+			assertFalse(pane.broken)
+			pane.breakGlass()
+			assertTrue(pane.broken)
 		}
 		
 		private function setRandomValue(newValue:Boolean):void {
