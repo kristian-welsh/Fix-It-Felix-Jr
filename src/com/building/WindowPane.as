@@ -3,8 +3,8 @@
 	import flash.display.MovieClip;
 	
 	public class WindowPane {
+		private var _broken:Boolean = false;
 		private var graphics:MovieClip;
-		private var _broken:Boolean;
 		private var random:RandomValueGenerator;
 		
 		public function WindowPane(graphics:MovieClip, random:RandomValueGenerator):void {

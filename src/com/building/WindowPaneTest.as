@@ -12,9 +12,11 @@ package com.building {
 		public function WindowPaneTest(testMethod:String = null) {
 			super([
 				initialized_correctly,
-				break_glass_randomizes_broken_graphic_1,
-				break_glass_randomizes_broken_graphic_2,
 				break_glass_breaks_glass,
+				break_glass_could_show_frame_2,
+				break_glass_could_show_frame_3,
+				fix_glass_fixes_glass,
+				fix_glass_shows_frame_1
 				], testMethod);
 		}
 		
@@ -25,37 +27,46 @@ package com.building {
 		}
 		
 		public function initialized_correctly():void {
-			assertGraphicChange(1)
+			assertFalse(pane.broken)
+			assertGraphicChange(1, 0)
 		}
 		
-		public function break_glass_randomizes_broken_graphic_1():void {
+		public function break_glass_breaks_glass():void {
+			assert(!pane.broken)
+			pane.breakGlass()
+			assertTrue(pane.broken)
+		}
+		
+		public function break_glass_could_show_frame_2():void {
 			setRandomValue(true)
 			pane.breakGlass();
 			assertGraphicChange(2, 1)
 		}
 		
-		public function break_glass_randomizes_broken_graphic_2():void {
+		public function break_glass_could_show_frame_3():void {
 			setRandomValue(false)
 			pane.breakGlass();
 			assertGraphicChange(3, 1)
 		}
 		
-		public function break_glass_breaks_glass():void {
-			assertFalse(pane.broken)
+		public function fix_glass_fixes_glass():void {
 			pane.breakGlass()
-			assertTrue(pane.broken)
+			assert(pane.broken)
+			pane.fixGlass()
+			assertFalse(pane.broken)
+		}
+		
+		public function fix_glass_shows_frame_1():void {
+			pane.fixGlass()
+			assertGraphicChange(1, 1)
 		}
 		
 		private function setRandomValue(newValue:Boolean):void {
 			randomValueGenerator.setBooleanReturnValue(newValue)
 		}
 		
-		private function assertGraphicChange(newFrameNumber:uint, functionLogPosition:int = -1):void {
-			assert(functionLogPosition >= -1);
-			if (functionLogPosition == -1)
-				graphics.spy.assertLogged(graphics.gotoAndStop, [newFrameNumber])
-			else
-				graphics.spy.assertLoggedAtPosition(functionLogPosition, graphics.gotoAndStop, [newFrameNumber])
+		private function assertGraphicChange(newFrameNumber:uint, functionLogPosition:uint):void {
+			graphics.spy.assertLoggedAtPosition(functionLogPosition, graphics.gotoAndStop, [newFrameNumber])
 		}
 	}
 }
