@@ -8,23 +8,31 @@
 		private var random:RandomValueGenerator;
 		
 		public function WindowPane(graphics:MovieClip, random:RandomValueGenerator):void {
-			this.random = random;
 			this.graphics = graphics;
-			graphics.gotoAndStop(1);
+			this.random = random;
+			displayIntact();
 		}
 		
-		public function breakGlass():void {
-			_broken = true;
-			graphics.gotoAndStop(shouldShowAltGraphic() ? 2 : 3)
-		}
-		
-		public function fixGlass():void {
+		public function repair():void {
 			_broken = false;
+			displayIntact();
+		}
+		
+		private function displayIntact():void {
 			graphics.gotoAndStop(1);
 		}
 		
-		private function shouldShowAltGraphic():Boolean {
-			return random.boolean()
+		public function shatter():void {
+			_broken = true;
+			displayBroken();
+		}
+		
+		private function displayBroken():void {
+			graphics.gotoAndStop(randomBrokenFrame())
+		}
+		
+		private function randomBrokenFrame():uint {
+			return random.boolean() ? 2 : 3
 		}
 		
 		public function get broken():Boolean {

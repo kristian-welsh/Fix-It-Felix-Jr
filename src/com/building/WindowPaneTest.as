@@ -33,31 +33,31 @@ package com.building {
 		
 		public function break_glass_breaks_glass():void {
 			assert(!pane.broken)
-			pane.breakGlass()
+			pane.shatter()
 			assertTrue(pane.broken)
 		}
 		
 		public function break_glass_could_show_frame_2():void {
 			setRandomValue(true)
-			pane.breakGlass();
+			pane.shatter();
 			assertGraphicChange(2, 1)
 		}
 		
 		public function break_glass_could_show_frame_3():void {
 			setRandomValue(false)
-			pane.breakGlass();
+			pane.shatter();
 			assertGraphicChange(3, 1)
 		}
 		
 		public function fix_glass_fixes_glass():void {
-			pane.breakGlass()
+			pane.shatter()
 			assert(pane.broken)
-			pane.fixGlass()
+			pane.repair()
 			assertFalse(pane.broken)
 		}
 		
 		public function fix_glass_shows_frame_1():void {
-			pane.fixGlass()
+			pane.repair()
 			assertGraphicChange(1, 1)
 		}
 		
