@@ -1,6 +1,6 @@
 package com.building {
-	import com.test.SuiteProvidingTestCase;
 	import kris.test.MovieClipSpy;
+	import kris.test.SuiteProvidingTestCase;
 	
 	public class ShutterTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;

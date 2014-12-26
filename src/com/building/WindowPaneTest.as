@@ -1,7 +1,7 @@
 package com.building {
-	import com.test.SuiteProvidingTestCase;
 	import com.util.FakeRandomValueGenerator;
 	import kris.test.MovieClipSpy;
+	import kris.test.SuiteProvidingTestCase;
 	
 	// TODO: improve spy
 	public class WindowPaneTest extends SuiteProvidingTestCase {

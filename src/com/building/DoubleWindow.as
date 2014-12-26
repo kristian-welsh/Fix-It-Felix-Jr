@@ -57,12 +57,12 @@
 			
 			_broken = true;
 			if (randomBoolean()) {
-				_pane1.breakGlass();
+				_pane1.shatter();
 				if (randomBoolean()) {
-					_pane2.breakGlass();
+					_pane2.shatter();
 				}
 			} else {
-				_pane2.breakGlass();
+				_pane2.shatter();
 			}
 		}
 		
@@ -70,14 +70,14 @@
 			//breaks random combos of  panes on broken windows
 			if (_pane1.broken && _pane2.broken) {
 				if (randomBoolean()) {
-					_pane1.fixGlass()
+					_pane1.repair()
 				} else {
-					_pane2.fixGlass()
+					_pane2.repair()
 				}
 			} else if (_pane1.broken && !_pane2.broken) {
-				_pane1.fixGlass()
+				_pane1.repair()
 			} else if (!_pane1.broken && _pane2.broken) {
-				_pane2.fixGlass()
+				_pane2.repair()
 			}
 			if (!_pane1.broken && !_pane2.broken) {
 				_broken = false;
