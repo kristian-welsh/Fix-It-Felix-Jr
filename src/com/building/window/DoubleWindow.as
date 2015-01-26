@@ -1,4 +1,6 @@
-﻿package com.building {
+﻿package com.building.window {
+	import com.building.window.pane.WindowPane;
+	import com.building.window.shutter.Shutter;
 	import com.util.RandomValueGeneratorImp;
 	import flash.display.MovieClip;
 	

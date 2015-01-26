@@ -1,5 +1,6 @@
 ﻿package com.building {
 	import flash.display.MovieClip;
+	import com.building.window.DoubleWindow;
 
 	public class BuildingSegment {
 		public var _target:MovieClip;
@@ -135,7 +136,7 @@
 			return true;
 		}
 
-		public function getWindowAt(_XX:uint=0, _YY:uint=0):DoubleWindow{
+		public function getWindowAt(_XX:uint=0, _YY:uint=0):DoubleWindow {
 			return _windows[_XX+_YY*5];
 		}
 

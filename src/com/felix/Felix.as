@@ -1,11 +1,9 @@
 ﻿package com.felix {
-	import com.building.BuildingSegment;
-	import com.building.DoubleWindow;
-	import com.building.IBuilding;
-	import com.Game;
+	import com.building.*;
+	import com.building.window.DoubleWindow;
+	import com.game.Game;
 	import flash.display.MovieClip;
-	import flash.events.KeyboardEvent;
-	import flash.events.TimerEvent;
+	import flash.events.*;
 	import flash.utils.Timer;
 
 	public class Felix implements IFelix {

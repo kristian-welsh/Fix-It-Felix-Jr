@@ -1,4 +1,4 @@
-package com.building {
+package com.building.window.shutter {
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	

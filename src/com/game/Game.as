@@ -1,11 +1,11 @@
-﻿package com {
+﻿package com.game {
 	import com.building.Building;
 	import com.building.BuildingSegment;
 	import com.building.IBuilding;
 	import com.enemies.Brick;
-	import com.enemies.Ralph;
+	import com.enemies.ralph.Ralph;
 	import com.felix.Felix;
-	import com.enemies.IRalph
+	import com.enemies.ralph.IRalph
 	import com.felix.IFelix;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;

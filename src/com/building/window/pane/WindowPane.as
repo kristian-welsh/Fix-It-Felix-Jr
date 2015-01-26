@@ -1,4 +1,4 @@
-﻿package com.building {
+﻿package com.building.window.pane {
 	import com.util.RandomValueGenerator;
 	import flash.display.MovieClip;
 	

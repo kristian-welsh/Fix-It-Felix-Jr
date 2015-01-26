@@ -1,4 +1,4 @@
-﻿package com.building {
+﻿package com.building.window.shutter {
 	import flash.display.MovieClip;
 	
 	/**

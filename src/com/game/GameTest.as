@@ -1,6 +1,6 @@
-package com {
+package com.game {
 	import com.building.FakeBuilding;
-	import com.enemies.FakeRalph;
+	import com.enemies.ralph.FakeRalph;
 	import com.felix.FakeFelix;
 	import kris.test.SuiteProvidingTestCase;
 	

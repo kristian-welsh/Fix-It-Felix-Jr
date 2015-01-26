@@ -1,6 +1,6 @@
 ﻿package com.enemies {
-	import com.building.DoubleWindow;
-	import com.Game;
+	import com.building.window.DoubleWindow;
+	import com.game.Game;
 	import flash.display.DisplayObject;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
