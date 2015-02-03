@@ -70,7 +70,6 @@
 		}
 
 		private function fixWindow():void {
-			trace("tets");
 			if (_cur_window.broken) {
 				_can_fix = false;
 				_timer.addEventListener(TimerEvent.TIMER, stopWaiting);

@@ -10,13 +10,10 @@
 		public var _windows:Array = [];
 
 		public function BuildingSegment(target:MovieClip, dificulty:uint):void {
-
 			_target = target;
 			_num_broken = dificulty;
 			_num_shutters = Math.ceil(dificulty/4);
 			_windows = createWindows(15,_num_broken,_num_shutters);
-			//trace(testCreateWindows());
-			//trace(testCreateRandomBoundedInts());
 		}
 
 		private function createWindows(num_windows:uint, num_broken_windows:uint, num_shuttered_windows:uint):Array {
@@ -41,25 +38,6 @@
 			}
 
 			return finished_array;
-		}
-
-		private function testCreateWindows():Boolean {
-
-			var windows:Array = createWindows(15,8,2);
-			var num_broken:uint = 0;
-
-			for( var i:uint = 0 ; i<15 ; ++i ){
-				if ( windows[i].toString() !== "[object DoubleWindow]" )
-					return false;
-
-				if( windows[i].broken === true )
-					num_broken++;
-			}
-
-			if(num_broken != 8)
-				return false
-
-			return Boolean(windows.length==i);
 		}
 
 		private function createRandomBoundedInts(num:uint, lowest:int, highest:int):Array {
@@ -88,44 +66,6 @@
 
 		private function createRandomBoundedInt(lowest:int, highest:int):int {
 			return Math.round((Math.random()*(highest-lowest))+lowest);
-		}
-
-		private function testCreateRandomBoundedInts():Boolean {
-			var rand0:Array = [10,20,30];
-			var rand1:Array = [10,-50,50];
-			var rand2:Array = [1,0,1];
-			var rand3:Array = [1,0,0];
-			var rand4:Array = [15,0,14];
-			var rand5:Array = [100,0,50];
-			var rand6:Array = [1000,0,0];
-			var rand7:Array = [10,1,10];
-			var rand8:Array = [0,0,0];
-			var rand9:Array = [0,-1,5];
-			var rands:Array = [rand0,rand1,rand2,rand3,rand4,rand5,rand6,rand7,rand8,rand9];
-			var products:Array = new Array(10);
-
-			for( var i : uint = 0 ; i < products.length ; ++i ) {
-				products[i] = createRandomBoundedInts(rands[i][0],rands[i][1],rands[i][2]);
-				/*//decomment to actively debug this function
-				trace(rands[i]);
-				trace(products[i]);
-				trace();*/
-			}
-
-			for( i = 0 ; i < products.length ; ++i ) {
-				if( products[i].length != rands[i][0] ){
-					return false;
-				}
-				for( var j :uint = 0 ; j < products[i].length ; ++j ) {
-					if(rands[i][1] > products[i][j]){
-						return false;
-					}
-					if(products[i][j] > rands[i][2]){
-						return false;
-					}
-				}
-			}
-			return true;
 		}
 
 		public function checkSegmentCleared():Boolean {

@@ -32,7 +32,6 @@
 		private var _bricks:Array;
 
 		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null, passedRaplh:IRalph = null):void {
-			trace("hi")
 			_building = passedBuilding || new Building(building_mc);
 			_felix = passedFelix || new Felix(felix_mc, this);
 			_ralph = passedRaplh || new Ralph(ralph_mc, this);
@@ -81,7 +80,7 @@
 		}
 
 		public function resetGame():void {
-			trace(3);
+			throw new Error("Not Yet Implemented")
 		}
 
 		public function get building():IBuilding {
