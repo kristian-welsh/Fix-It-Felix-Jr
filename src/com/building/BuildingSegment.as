@@ -1,4 +1,5 @@
 ﻿package com.building {
+	import com.building.window.DoubleWindowFactory;
 	import flash.display.MovieClip;
 	import com.building.window.DoubleWindow;
 
@@ -30,7 +31,7 @@
 				} else {
 					clip = _target.getChildByName("window_"+i) as MovieClip;
 				}
-				finished_array[i] = new DoubleWindow(clip);
+				finished_array[i] = new DoubleWindowFactory().create(clip);
 				if(windows_to_break.indexOf(i)!=-1){
 					finished_array[i].breakWindow();
 				}
