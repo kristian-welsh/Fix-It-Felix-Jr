@@ -1,7 +1,6 @@
 ﻿package com.building.window.pane {
 	import com.util.RandomValueGenerator;
 	import flash.display.MovieClip;
-	import org.flashdevelop.utils.FlashConnect;
 	
 	public class WindowPane {
 		private var _broken:Boolean = false;
