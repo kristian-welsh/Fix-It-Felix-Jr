@@ -7,6 +7,7 @@ package com.test {
 	import kris.test.TestSuiteCollector;
 	
 	// possibility for future API: super(GameTest, ShutterTest, etc...)
+	// maybe apply strategy pattern for test methods, so each has their own class.
 	public class TestCases extends TestSuiteCollector {
 		public function TestCases() {
 			super()

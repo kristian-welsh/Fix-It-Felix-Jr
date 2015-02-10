@@ -2,64 +2,104 @@ package com.building.window {
 	import com.building.window.pane.WindowPane;
 	import com.building.window.shutter.Shutter;
 	import com.util.FakeRandomValueGenerator;
-	import com.util.RandomValueGenerator;
 	import flash.display.MovieClip;
+	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
 	public class DoubleWindowFactoryTest extends SuiteProvidingTestCase {
-		private var factory:DoubleWindowFactory;
 		private var subject:DoubleWindow;
 		private var view:MovieClip;
 		private var random:FakeRandomValueGenerator
 		
 		public function DoubleWindowFactoryTest(testMethod:String = null) {
-			super([no_nulls_passed_to_window], testMethod);
+			super([
+				no_nulls_passed_to_window,
+				passes_provided_components_to_window,
+				passes_view_and_children
+				], testMethod);
 		}
 		
 		override protected function setUp():void {
+			view = new MovieClip()
 			random = new FakeRandomValueGenerator()
-			factory = new DoubleWindowFactory()
-			createView()
+			random.setBooleanReturnValue(true)
 		}
 		
-		private function createView():void {
-			// view is named window_00 to so we can test shutter nulls with assertShuttersWithViewsReceived()
-			view = new MovieClip()
+		private function createWindowPane():WindowPane {
+			return new WindowPane(new MovieClip(), random);
+		}
+		
+		private function createShutter():Shutter {
+			return new Shutter(new MovieClip())
+		}
+		
+		private function createWindow(pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null):void {
+			subject = new DoubleWindowFactory().create(view, pane1_, pane2_, topShutter_, leftShutter_, random)
 		}
 		
 		public function no_nulls_passed_to_window():void {
+			createWindow()
+			assertNoNullsPassed()
+		}
+		
+		public function passes_provided_components_to_window():void {
+			var pane1:WindowPane = createWindowPane()
+			var pane2:WindowPane = createWindowPane()
+			var topShutter:Shutter = createShutter()
+			var leftShutter:Shutter = createShutter()
+			createWindow(pane1, pane2, topShutter, leftShutter)
+			assertComponentsPassed(pane1, pane2, topShutter, leftShutter)
+		}
+		
+		public function passes_view_and_children():void {
+			var pane1View:MovieClipSpy = new MovieClipSpy()
+			var pane2View:MovieClipSpy = new MovieClipSpy()
+			var topShutterView:MovieClipSpy = new MovieClipSpy()
+			var leftShutterView:MovieClipSpy = new MovieClipSpy()
+			view["pane_mc_1"] = pane1View
+			view["pane_mc_2"] = pane2View
+			view["top_shutter"] = topShutterView
+			view["left_shutter"] = leftShutterView
 			
-			createWindow(new MovieClip())
-			assertComponentsReceived()
+			createWindow()
+			
+			pane1View.spy.assertLogged(pane1View.gotoAndStop, [1])
+			pane2View.spy.assertLogged(pane2View.gotoAndStop, [1])
+			topShutterView.spy.assertLogged(topShutterView.gotoAndStop, [2])
+			leftShutterView.spy.assertLogged(leftShutterView.gotoAndStop, [2])
 		}
 		
-		private function createWindow(view:MovieClip, pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null):void {
-			subject = factory.create(view, pane1_, pane2_, topShutter_, leftShutter_, random)
-		}
-		
-		private function assertComponentsReceived():void {
-			// induce calls on shutters and panes in double window to force flashplayer to notice if they're null
-			// movieClips are automaticaly checked from whithing shutter and pane's constructors
+		private function assertNoNullsPassed():void {
+			// Call functions on double window to detect null variables
 			assertShuttersWithViewsReceived()
 			assertPanesWithViewsReceived()
 		}
 		
 		private function assertPanesWithViewsReceived():void {
-			/* subject.breakWindow() calls pane.break on both panes if it's RandomValueGenerator returns true twice in a row
-			 * pane.break referances the pane's MovieClip.
-			 * this forces flash to check for nulls on the panes and their MovieClips.
-			 */
-			random.setBooleanReturnValue(true)
 			subject.breakWindow()
 		}
 		
 		private function assertShuttersWithViewsReceived():void {
-			/* subject.shutterWindow() calls shutter.active on both shutters if the main view is named window_00
-			 * shutter.active referances the shutter's MovieClip.
-			 * this forces flash to check for nulls on the shutters and their MovieClips.
-			 */
 			subject.leftShutterExists()
 			subject.topShutterExists()
+		}
+		
+		private function assertComponentsPassed(pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter):void {
+			assertPanesPassed(pane1, pane2)
+			assertShuttersPassed(topShutter, leftShutter)
+		}
+		
+		private function assertPanesPassed(pane1:WindowPane, pane2:WindowPane):void {
+			subject.breakWindow()
+			assertTrue(pane1.broken)
+			assertTrue(pane2.broken)
+		}
+		
+		private function assertShuttersPassed(topShutter:Shutter, leftShutter:Shutter):void {
+			topShutter.open()
+			leftShutter.open()
+			assertTrue(subject.topShutterExists())
+			assertTrue(subject.leftShutterExists())
 		}
 	}
 }

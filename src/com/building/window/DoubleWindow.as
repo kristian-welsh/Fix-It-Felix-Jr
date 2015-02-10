@@ -54,7 +54,6 @@
 		
 		public function breakWindow():void {
 			//breaks random combos of panes on broken windows
-			
 			_broken = true;
 			if (randomBoolean()) {
 				_pane1.shatter();
@@ -96,10 +95,12 @@
 			return _target;
 		}
 		
+		//rename to leftShutterOpen
 		public function leftShutterExists():Boolean {
 			return _left_shutter.active;
 		}
 		
+		//rename to topShutterOpen
 		public function topShutterExists():Boolean {
 			return _top_shutter.active;
 		}
