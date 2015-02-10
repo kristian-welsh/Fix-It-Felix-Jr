@@ -52,21 +52,18 @@ package com.building.window {
 		}
 		
 		public function passes_view_and_children():void {
-			var pane1View:MovieClipSpy = new MovieClipSpy()
-			var pane2View:MovieClipSpy = new MovieClipSpy()
-			var topShutterView:MovieClipSpy = new MovieClipSpy()
-			var leftShutterView:MovieClipSpy = new MovieClipSpy()
-			view["pane_mc_1"] = pane1View
-			view["pane_mc_2"] = pane2View
-			view["top_shutter"] = topShutterView
-			view["left_shutter"] = leftShutterView
-			
+			assertViewPropertyUsed("pane_mc_1", 1);
+			assertViewPropertyUsed("pane_mc_2", 1);
+			assertViewPropertyUsed("top_shutter", 2);
+			assertViewPropertyUsed("left_shutter", 2);
+		}
+		
+		private function assertViewPropertyUsed(name:String, frame:uint):void {
+			// Asserts that a movieclip saved into a value on view named "name" is changed to frame "frame"
+			var bar:MovieClipSpy = new MovieClipSpy()
+			view[name] = bar
 			createWindow()
-			
-			pane1View.spy.assertLogged(pane1View.gotoAndStop, [1])
-			pane2View.spy.assertLogged(pane2View.gotoAndStop, [1])
-			topShutterView.spy.assertLogged(topShutterView.gotoAndStop, [2])
-			leftShutterView.spy.assertLogged(leftShutterView.gotoAndStop, [2])
+			bar.spy.assertLogged(bar.gotoAndStop, [frame])
 		}
 		
 		private function assertNoNullsPassed():void {
