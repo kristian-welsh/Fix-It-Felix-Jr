@@ -12,14 +12,9 @@ package com.building.window {
 			this.random = random || new RandomValueGeneratorImp()
 			
 			var pane1:WindowPane = createWindowPane(pane1_, view.pane_mc_1)
-			
 			var pane2:WindowPane = createWindowPane(pane2_, view.pane_mc_2)
-			
-			var topShutterView:MovieClip = view.top_shutter || new MovieClip();
-			var topShutter:Shutter = topShutter_ || new Shutter(topShutterView);
-			
-			var leftShutterView:MovieClip = view.left_shutter || new MovieClip();
-			var leftShutter:Shutter = leftShutter_ || new Shutter(leftShutterView);
+			var topShutter:Shutter = createShutter(topShutter_, view.top_shutter)
+			var leftShutter:Shutter = createShutter(leftShutter_, view.left_shutter)
 			
 			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, this.random);
 		}
@@ -27,6 +22,11 @@ package com.building.window {
 		private function createWindowPane(pane:WindowPane, graphics:MovieClip):WindowPane {
 			graphics = graphics || new MovieClip();
 			return pane || new WindowPane(graphics, random);
+		}
+		
+		private function createShutter(shutter:Shutter, graphics:MovieClip):Shutter {
+			graphics = graphics || new MovieClip();
+			return shutter || new Shutter(graphics);
 		}
 	}
 }
