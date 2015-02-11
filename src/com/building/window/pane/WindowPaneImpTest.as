@@ -4,12 +4,12 @@ package com.building.window.pane {
 	import kris.test.SuiteProvidingTestCase;
 	
 	// TODO: improve spy
-	public class WindowPaneTest extends SuiteProvidingTestCase {
+	public class WindowPaneImpTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;
 		private var randomValueGenerator:FakeRandomValueGenerator;
-		private var pane:WindowPane;
+		private var pane:WindowPaneImp;
 		
-		public function WindowPaneTest(testMethod:String = null) {
+		public function WindowPaneImpTest(testMethod:String = null) {
 			super([
 				initialized_correctly,
 				break_glass_breaks_glass,
@@ -23,7 +23,7 @@ package com.building.window.pane {
 		override protected function setUp():void {
 			graphics = new MovieClipSpy()
 			randomValueGenerator = new FakeRandomValueGenerator()
-			pane = new WindowPane(graphics, randomValueGenerator)
+			pane = new WindowPaneImp(graphics, randomValueGenerator)
 		}
 		
 		public function initialized_correctly():void {

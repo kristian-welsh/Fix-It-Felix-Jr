@@ -1,6 +1,6 @@
 package com.building.window {
-	import com.building.window.pane.WindowPane;
-	import com.building.window.shutter.Shutter;
+	import com.building.window.pane.WindowPaneImp;
+	import com.building.window.shutter.ShutterImp;
 	import com.util.FakeRandomValueGenerator;
 	import flash.display.MovieClip;
 	import kris.test.MovieClipSpy;
@@ -25,15 +25,15 @@ package com.building.window {
 			random.setBooleanReturnValue(true)
 		}
 		
-		private function createWindowPane():WindowPane {
-			return new WindowPane(new MovieClip(), random);
+		private function createWindowPane():WindowPaneImp {
+			return new WindowPaneImp(new MovieClip(), random);
 		}
 		
-		private function createShutter():Shutter {
-			return new Shutter(new MovieClip())
+		private function createShutter():ShutterImp {
+			return new ShutterImp(new MovieClip())
 		}
 		
-		private function createWindow(pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null):void {
+		private function createWindow(pane1_:WindowPaneImp = null, pane2_:WindowPaneImp = null, topShutter_:ShutterImp = null, leftShutter_:ShutterImp = null):void {
 			window = new DoubleWindowFactory().create(view, pane1_, pane2_, topShutter_, leftShutter_, random)
 		}
 		
@@ -58,40 +58,40 @@ package com.building.window {
 		}
 		
 		public function passes_provided_components_to_window():void {
-			var pane1:WindowPane = createWindowPane()
-			var pane2:WindowPane = createWindowPane()
-			var topShutter:Shutter = createShutter()
-			var leftShutter:Shutter = createShutter()
+			var pane1:WindowPaneImp = createWindowPane()
+			var pane2:WindowPaneImp = createWindowPane()
+			var topShutter:ShutterImp = createShutter()
+			var leftShutter:ShutterImp = createShutter()
 			createWindow(pane1, pane2, topShutter, leftShutter)
 			assertComponentsPassed(pane1, pane2, topShutter, leftShutter)
 		}
 		
-		private function assertComponentsPassed(pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter):void {
+		private function assertComponentsPassed(pane1:WindowPaneImp, pane2:WindowPaneImp, topShutter:ShutterImp, leftShutter:ShutterImp):void {
 			assertPanesPassed(pane1, pane2)
 			assertShuttersPassed(topShutter, leftShutter)
 		}
 		
-		private function assertPanesPassed(pane1:WindowPane, pane2:WindowPane):void {
+		private function assertPanesPassed(pane1:WindowPaneImp, pane2:WindowPaneImp):void {
 			window.breakWindow()
 			assertPanesBroken(pane1, pane2)
 		}
 		
-		private function assertPanesBroken(pane1:WindowPane, pane2:WindowPane):void {
+		private function assertPanesBroken(pane1:WindowPaneImp, pane2:WindowPaneImp):void {
 			assertTrue(pane1.broken)
 			assertTrue(pane2.broken)
 		}
 		
-		private function assertShuttersPassed(topShutter:Shutter, leftShutter:Shutter):void {
+		private function assertShuttersPassed(topShutter:ShutterImp, leftShutter:ShutterImp):void {
 			assertTopShutterPassed(topShutter)
 			assertLeftShutterPassed(leftShutter)
 		}
 		
-		private function assertLeftShutterPassed(leftShutter:Shutter):void {
+		private function assertLeftShutterPassed(leftShutter:ShutterImp):void {
 			leftShutter.open()
 			assertTrue(window.leftShutterExists())
 		}
 		
-		private function assertTopShutterPassed(topShutter:Shutter):void {
+		private function assertTopShutterPassed(topShutter:ShutterImp):void {
 			topShutter.open()
 			assertTrue(window.topShutterExists())
 		}

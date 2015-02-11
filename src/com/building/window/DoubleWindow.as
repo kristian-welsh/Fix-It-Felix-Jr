@@ -16,12 +16,12 @@
 		private var random:RandomValueGenerator;
 		
 		public function DoubleWindow(target:MovieClip, pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter, random:RandomValueGenerator):void {
-			this.random = random;
 			_target = target;
 			_pane1 = pane1
 			_pane2 = pane2
 			_top_shutter = topShutter
 			_left_shutter = leftShutter
+			this.random = random;
 		}
 		
 		public function shutterWindow():void {

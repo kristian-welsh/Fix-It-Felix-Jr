@@ -2,11 +2,11 @@ package com.building.window.shutter {
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
-	public class ShutterTest extends SuiteProvidingTestCase {
+	public class ShutterImpTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;
-		private var shutter:Shutter;
+		private var shutter:ShutterImp;
 		
-		public function ShutterTest(testMethod:String = null) {
+		public function ShutterImpTest(testMethod:String = null) {
 			super([
 				shutter_set_up_correctly,
 				can_set_active,
@@ -18,7 +18,7 @@ package com.building.window.shutter {
 		
 		override protected function setUp():void {
 			graphics = new MovieClipSpy()
-			shutter = new Shutter(graphics)
+			shutter = new ShutterImp(graphics)
 		}
 		
 		public function shutter_set_up_correctly():void {

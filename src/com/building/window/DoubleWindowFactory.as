@@ -1,6 +1,8 @@
 package com.building.window {
 	import com.building.window.pane.WindowPane;
+	import com.building.window.pane.WindowPaneImp;
 	import com.building.window.shutter.Shutter;
+	import com.building.window.shutter.ShutterImp;
 	import com.util.RandomValueGenerator;
 	import com.util.RandomValueGeneratorImp;
 	import flash.display.MovieClip;
@@ -16,17 +18,17 @@ package com.building.window {
 			var topShutter:Shutter = createShutter(topShutter_, view.top_shutter)
 			var leftShutter:Shutter = createShutter(leftShutter_, view.left_shutter)
 			
-			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, this.random);
+			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, random);
 		}
 		
 		private function createWindowPane(pane:WindowPane, graphics:MovieClip):WindowPane {
 			graphics = graphics || new MovieClip();
-			return pane || new WindowPane(graphics, random);
+			return pane || new WindowPaneImp(graphics, random);
 		}
 		
 		private function createShutter(shutter:Shutter, graphics:MovieClip):Shutter {
 			graphics = graphics || new MovieClip();
-			return shutter || new Shutter(graphics);
+			return shutter || new ShutterImp(graphics);
 		}
 	}
 }

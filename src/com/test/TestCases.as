@@ -1,8 +1,8 @@
 package com.test {
 	import com.building.window.DoubleWindowFactoryTest;
 	import com.building.window.DoubleWindowTest;
-	import com.building.window.pane.WindowPaneTest;
-	import com.building.window.shutter.ShutterTest;
+	import com.building.window.pane.WindowPaneImpTest;
+	import com.building.window.shutter.ShutterImpTest;
 	import com.game.GameTest;
 	import kris.test.TestSuiteCollector;
 	
@@ -12,8 +12,8 @@ package com.test {
 		public function TestCases() {
 			super()
 			includeTestsFrom(GameTest)
-			includeTestsFrom(ShutterTest)
-			includeTestsFrom(WindowPaneTest)
+			includeTestsFrom(ShutterImpTest)
+			includeTestsFrom(WindowPaneImpTest)
 			includeTestsFrom(DoubleWindowTest)
 			includeTestsFrom(DoubleWindowFactoryTest)
 		}
