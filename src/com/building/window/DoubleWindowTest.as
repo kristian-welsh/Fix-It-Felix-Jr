@@ -24,7 +24,9 @@ package com.building.window {
 				broken_is_false_by_default,
 				gives_shutter_status,
 				breaking_window_makes_broken_true,
-				breaking_window_shatters_panes_appropriately
+				pane2_breaks_for_false_random_output,
+				pane1_breaks_for_true_false_random_output,
+				both_panes_break_for_true_true_random_output
 				//,repairs_single_broken_pane
 				], testMethod);
 		}
@@ -78,38 +80,31 @@ package com.building.window {
 			assertTrue(window.broken)
 		}
 		
-		public function breaking_window_shatters_panes_appropriately():void {
-			testFalse();
+		public function pane2_breaks_for_false_random_output():void {
+			random.setBooleanQue([false])
+			assertPanesBreak(false, true)
+		}
+		
+		public function pane1_breaks_for_true_false_random_output():void {
+			random.setBooleanQue([true, false])
+			assertPanesBreak(true, false)
+		}
+		
+		public function both_panes_break_for_true_true_random_output():void {
+			random.setBooleanQue([true, true])
+			assertPanesBreak(true, true)
+		}
+		
+		private function assertPanesBreak(pane1Breaks:Boolean, pane2Breaks:Boolean):void {
 			resetPanes();
-			testTrueFalse();
-			resetPanes();
-			testTrueTrue();
+			window.breakWindow()
+			assertEquals(pane1Breaks, pane1.broken)
+			assertEquals(pane2Breaks, pane2.broken)
 		}
 		
 		private function resetPanes():void {
 			pane1.repair()
 			pane2.repair()
-		}
-		
-		private function testFalse():void {
-			random.setBooleanQue([false])
-			window.breakWindow()
-			assertFalse(pane1.broken)
-			assertTrue(pane2.broken)
-		}
-		
-		private function testTrueFalse():void {
-			random.setBooleanQue([true, false])
-			window.breakWindow()
-			assertTrue(pane1.broken)
-			assertFalse(pane2.broken)
-		}
-		
-		private function testTrueTrue():void {
-			random.setBooleanQue([true, true])
-			window.breakWindow()
-			assertTrue(pane1.broken)
-			assertTrue(pane2.broken)
 		}
 	
 	/*
