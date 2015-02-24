@@ -68,13 +68,6 @@
 			}
 		}
 		
-		/**
-		 * @deprecated Please use repair instead.
-		 */
-		public function fixWindow():void {
-			repair()
-		}
-		
 		public function repair():void {
 			bothPanesBroken() ? repairPaneAtRandom() : repairSingleBrokenPane();
 		}
@@ -92,7 +85,7 @@
 		}
 		
 		private function shouldRepairPane1():Boolean {
-			randomBoolean()
+			return randomBoolean()
 		}
 		
 		private function repairSingleBrokenPane():void {

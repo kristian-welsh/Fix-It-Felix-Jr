@@ -115,7 +115,7 @@ package com.building.window {
 		private function assertFixingWindowMakesBrokenFalse():void {
 			window.breakWindow()
 			assert(window.broken)
-			window.fixWindow()
+			window.repair()
 			assertFalse(window.broken)
 		}
 		
@@ -127,7 +127,7 @@ package com.building.window {
 		private function assertRandomResultFixesPane(randomResult:Boolean, pane:WindowPane):void {
 			shatterBothPanes()
 			random.setBooleanQue([randomResult])
-			window.fixWindow()
+			window.repair()
 			assertFalse(pane.broken)
 		}
 		
@@ -144,7 +144,7 @@ package com.building.window {
 		private function assertPaneRepairs(pane:WindowPane):void {
 			pane.shatter()
 			assert(pane.broken)
-			window.fixWindow()
+			window.repair()
 			assertFalse(pane.broken)
 		}
 	}

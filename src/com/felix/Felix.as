@@ -81,7 +81,7 @@
 			_can_fix = true;
 			_timer.removeEventListener(TimerEvent.TIMER, stopWaiting);
 			_timer.stop();
-			_cur_window.fixWindow();
+			_cur_window.repair();
 			_par.checkWindows();
 		}
 
