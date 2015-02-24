@@ -27,7 +27,8 @@ package com.building.window {
 				pane2_breaks_for_false_random_output,
 				pane1_breaks_for_true_false_random_output,
 				both_panes_break_for_true_true_random_output,
-				repairs_single_broken_pane
+				fixing_both_shattered_panes_chooses_one_randomly,
+				can_repair_single_broken_pane
 				], testMethod);
 		}
 		
@@ -96,27 +97,15 @@ package com.building.window {
 		}
 		
 		private function assertPanesBreak(pane1Breaks:Boolean, pane2Breaks:Boolean):void {
-			resetPanes();
+			repairPanes();
 			window.breakWindow()
 			assertEquals(pane1Breaks, pane1.broken)
 			assertEquals(pane2Breaks, pane2.broken)
 		}
 		
-		private function resetPanes():void {
+		private function repairPanes():void {
 			pane1.repair()
 			pane2.repair()
-		}
-		
-		public function repairs_single_broken_pane():void {
-			assertPaneRepairs(pane1)
-			assertPaneRepairs(pane2)
-		}
-		
-		private function assertPaneRepairs(pane:WindowPane):void {
-			pane.shatter()
-			assert(pane.broken)
-			window.fixWindow()
-			assertFalse(pane.broken)
 		}
 		
 		public function repairing_window_makes_broken_false():void {
@@ -128,6 +117,35 @@ package com.building.window {
 			assert(window.broken)
 			window.fixWindow()
 			assertFalse(window.broken)
+		}
+		
+		public function fixing_both_shattered_panes_chooses_one_randomly():void {
+			assertRandomResultFixesPane(true, pane1)
+			assertRandomResultFixesPane(false, pane2)
+		}
+		
+		private function assertRandomResultFixesPane(randomResult:Boolean, pane:WindowPane):void {
+			shatterBothPanes()
+			random.setBooleanQue([randomResult])
+			window.fixWindow()
+			assertFalse(pane.broken)
+		}
+		
+		private function shatterBothPanes():void {
+			pane1.shatter()
+			pane2.shatter()
+		}
+		
+		public function can_repair_single_broken_pane():void {
+			assertPaneRepairs(pane1)
+			assertPaneRepairs(pane2)
+		}
+		
+		private function assertPaneRepairs(pane:WindowPane):void {
+			pane.shatter()
+			assert(pane.broken)
+			window.fixWindow()
+			assertFalse(pane.broken)
 		}
 	}
 }
