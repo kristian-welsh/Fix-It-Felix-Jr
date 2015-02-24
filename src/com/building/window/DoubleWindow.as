@@ -56,7 +56,7 @@
 		
 		// TODO: rename to break
 		public function breakWindow():void {
-			//breaks random combos of panes on broken windows
+			// breaks random combos of panes on broken windows
 			_broken = true;
 			if (randomBoolean()) {
 				_pane1.shatter();
@@ -68,30 +68,40 @@
 			}
 		}
 		
-		// TODO: rename to fix
+		/**
+		 * @deprecated Please use repair instead.
+		 */
 		public function fixWindow():void {
-			//breaks random combos of  panes on broken windows
-			if (_pane1.broken && _pane2.broken) {
-				if (randomBoolean()) {
-					_pane1.repair()
-				} else {
-					_pane2.repair()
-				}
-			} else if (_pane1.broken && !_pane2.broken) {
+			repair()
+		}
+		
+		public function repair():void {
+			if (_pane1.broken && _pane2.broken)
+				repairPaneAtRandom()
+			else
+				repairSingleBrokenPane()
+		}
+		
+		private function repairPaneAtRandom():void {
+			if (randomBoolean())
 				_pane1.repair()
-			} else if (!_pane1.broken && _pane2.broken) {
+			else
 				_pane2.repair()
-			}
-			if (!_pane1.broken && !_pane2.broken) {
-				_broken = false;
-			}
+		}
+		
+		private function repairSingleBrokenPane():void {
+			_broken = false;
+			if (_pane1.broken)
+				_pane1.repair()
+			else if (_pane2.broken)
+				_pane2.repair()
 		}
 		
 		private function randomBoolean():Boolean {
 			return random.boolean()
 		}
 		
-		// TODO: rename to getBroken()
+		// TODO: rename to getBroken()s
 		public function get broken():Boolean {
 			return _broken;
 		}
