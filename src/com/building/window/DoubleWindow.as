@@ -76,25 +76,35 @@
 		}
 		
 		public function repair():void {
-			if (_pane1.broken && _pane2.broken)
-				repairPaneAtRandom()
-			else
-				repairSingleBrokenPane()
+			bothPanesBroken() ? repairPaneAtRandom() : repairSingleBrokenPane();
+		}
+		
+		private function bothPanesBroken():Boolean {
+			return brokenPane(_pane1) && brokenPane(_pane2)
+		}
+		
+		private function brokenPane(pane:WindowPane):Boolean {
+			return pane.broken
 		}
 		
 		private function repairPaneAtRandom():void {
-			if (randomBoolean())
-				_pane1.repair()
-			else
-				_pane2.repair()
+			shouldRepairPane1() ? repairPane(_pane1) : repairPane(_pane2);
+		}
+		
+		private function shouldRepairPane1():Boolean {
+			randomBoolean()
 		}
 		
 		private function repairSingleBrokenPane():void {
 			_broken = false;
-			if (_pane1.broken)
-				_pane1.repair()
-			else if (_pane2.broken)
-				_pane2.repair()
+			if (brokenPane(_pane1))
+				repairPane(_pane1)
+			else if (brokenPane(_pane2))
+				repairPane(_pane2)
+		}
+		
+		private function repairPane(pane:WindowPane):void {
+			pane.repair()
 		}
 		
 		private function randomBoolean():Boolean {
