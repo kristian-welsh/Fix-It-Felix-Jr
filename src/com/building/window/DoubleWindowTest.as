@@ -26,8 +26,8 @@ package com.building.window {
 				breaking_window_makes_broken_true,
 				pane2_breaks_for_false_random_output,
 				pane1_breaks_for_true_false_random_output,
-				both_panes_break_for_true_true_random_output
-				//,repairs_single_broken_pane
+				both_panes_break_for_true_true_random_output,
+				repairs_single_broken_pane
 				], testMethod);
 		}
 		
@@ -106,22 +106,28 @@ package com.building.window {
 			pane1.repair()
 			pane2.repair()
 		}
-	
-	/*
-	   public function fully_repairing_window_makes_broken_true():void {
-	   window.breakWindow()
-	   }
-	
-	   public function repairs_single_broken_pane():void {
-	   assertPaneRepairs(pane1)
-	   assertPaneRepairs(pane2)
-	   }
-	
-	   private function assertPaneRepairs(pane:WindowPane):void {
-	   pane.shatter()
-	   assert(pane.broken)
-	   window.fixWindow()
-	   assertFalse(pane.broken)
-	 }*/
+		
+		public function repairs_single_broken_pane():void {
+			assertPaneRepairs(pane1)
+			assertPaneRepairs(pane2)
+		}
+		
+		private function assertPaneRepairs(pane:WindowPane):void {
+			pane.shatter()
+			assert(pane.broken)
+			window.fixWindow()
+			assertFalse(pane.broken)
+		}
+		
+		public function repairing_window_makes_broken_false():void {
+			assertFixingWindowMakesBrokenFalse()
+		}
+		
+		private function assertFixingWindowMakesBrokenFalse():void {
+			window.breakWindow()
+			assert(window.broken)
+			window.fixWindow()
+			assertFalse(window.broken)
+		}
 	}
 }

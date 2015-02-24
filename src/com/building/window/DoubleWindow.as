@@ -24,6 +24,8 @@
 			this.random = random;
 		}
 		
+		// TODO: extract class that decided how the window should be shuttered, and replace this function with shutterTop(), and shutterBottom()
+		// TODO: rename to shutter
 		public function shutterWindow():void {
 			//breaks random combos of  panes on broken windows
 			switch (_target.name) {
@@ -52,6 +54,7 @@
 			}
 		}
 		
+		// TODO: rename to break
 		public function breakWindow():void {
 			//breaks random combos of panes on broken windows
 			_broken = true;
@@ -65,6 +68,7 @@
 			}
 		}
 		
+		// TODO: rename to fix
 		public function fixWindow():void {
 			//breaks random combos of  panes on broken windows
 			if (_pane1.broken && _pane2.broken) {
@@ -87,10 +91,12 @@
 			return random.boolean()
 		}
 		
+		// TODO: rename to getBroken()
 		public function get broken():Boolean {
 			return _broken;
 		}
 		
+		// TODO: rename to getTarget()
 		public function get target():MovieClip {
 			return _target;
 		}
