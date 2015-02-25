@@ -54,18 +54,34 @@
 			}
 		}
 		
-		// TODO: rename to shatter
+		/**
+		 * @deprecated Please use shatter() instead.
+		 */
 		public function breakWindow():void {
-			// breaks random combos of panes on broken windows
+			shatter()
+		}
+		
+		public function shatter():void {
+			couldShatterBoth() ? maybeShatterBoth() : shatterPane(_pane2);
 			_broken = true;
-			if (randomBoolean()) {
-				_pane1.shatter();
-				if (randomBoolean()) {
-					_pane2.shatter();
-				}
-			} else {
-				_pane2.shatter();
-			}
+		}
+		
+		private function couldShatterBoth():Boolean {
+			return randomBoolean()
+		}
+		
+		private function maybeShatterBoth():void {
+			shatterPane(_pane1);
+			mightShatterPane2();
+		}
+		
+		private function mightShatterPane2():void {
+			if (randomBoolean())
+				shatterPane(_pane2);
+		}
+		
+		private function shatterPane(pane:WindowPane):void {
+			pane.shatter()
 		}
 		
 		public function repair():void {
@@ -104,7 +120,7 @@
 			return random.boolean()
 		}
 		
-		// TODO: rename to getBroken()s
+		// TODO: rename to getBroken()
 		public function get broken():Boolean {
 			return _broken;
 		}
