@@ -1,5 +1,5 @@
 ﻿package com.building {
-	import com.building.window.DoubleWindowFactory;
+	import com.building.window.factory.DoubleWindowFactory;
 	import flash.display.MovieClip;
 	import com.building.window.DoubleWindow;
 

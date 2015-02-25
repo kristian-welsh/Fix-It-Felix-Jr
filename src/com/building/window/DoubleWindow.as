@@ -54,7 +54,7 @@
 			}
 		}
 		
-		// TODO: rename to break
+		// TODO: rename to shatter
 		public function breakWindow():void {
 			// breaks random combos of panes on broken windows
 			_broken = true;

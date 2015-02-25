@@ -1,10 +1,8 @@
-package com.building.window {
-	import com.building.window.pane.WindowPane;
-	import com.building.window.pane.WindowPaneImp;
-	import com.building.window.shutter.Shutter;
-	import com.building.window.shutter.ShutterImp;
-	import com.util.RandomValueGenerator;
-	import com.util.RandomValueGeneratorImp;
+package com.building.window.factory {
+	import com.building.window.DoubleWindow;
+	import com.building.window.pane.*;
+	import com.building.window.shutter.*;
+	import com.util.*;
 	import flash.display.MovieClip;
 	
 	public class DoubleWindowFactory {

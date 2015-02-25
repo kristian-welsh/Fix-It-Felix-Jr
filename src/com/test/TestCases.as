@@ -1,5 +1,5 @@
 package com.test {
-	import com.building.window.DoubleWindowFactoryTest;
+	import com.building.window.factory.DoubleWindowFactoryTest;
 	import com.building.window.DoubleWindowTest;
 	import com.building.window.pane.WindowPaneImpTest;
 	import com.building.window.shutter.ShutterImpTest;
