@@ -28,7 +28,8 @@ package com.building.window {
 				pane1_breaks_for_true_false_random_output,
 				both_panes_break_for_true_true_random_output,
 				fixing_both_shattered_panes_chooses_one_randomly,
-				can_repair_single_broken_pane
+				can_repair_single_broken_pane,
+				window_00_activates_both_shutters
 				], testMethod);
 		}
 		
@@ -146,6 +147,13 @@ package com.building.window {
 			assert(pane.broken)
 			window.repair()
 			assertFalse(pane.broken)
+		}
+		
+		public function window_00_activates_both_shutters():void {
+			target.name = "window_00"
+			window.shutterWindow()
+			assertTrue(topShutter.active)
+			assertTrue(leftShutter.active)
 		}
 	}
 }
