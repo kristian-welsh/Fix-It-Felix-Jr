@@ -12,6 +12,7 @@ package com.building.window.factory {
 		private var view:MovieClip;
 		private var random:FakeRandomValueGenerator
 		
+		// TODO: test for passing ShutterSwitcher
 		public function DoubleWindowFactoryTest(testMethod:String = null) {
 			super([
 				no_nulls_passed_to_window,

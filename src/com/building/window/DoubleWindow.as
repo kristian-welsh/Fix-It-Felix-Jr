@@ -15,43 +15,27 @@
 		private var _left_shutter:Shutter;
 		private var random:RandomValueGenerator;
 		
-		public function DoubleWindow(target:MovieClip, pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter, random:RandomValueGenerator):void {
+		private var shutterSwitcher:ShutterSwitcher;
+		
+		public function DoubleWindow(target:MovieClip, pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter, random:RandomValueGenerator, shutterSwitcher:ShutterSwitcher = null):void {
 			_target = target;
 			_pane1 = pane1
 			_pane2 = pane2
 			_top_shutter = topShutter
 			_left_shutter = leftShutter
 			this.random = random;
+			this.shutterSwitcher = shutterSwitcher
 		}
 		
-		// TODO: extract class that decided how the window should be shuttered, and replace this function with shutterTop(), and shutterBottom()
-		// TODO: rename to shutter
+		/**
+		 * @deprecated Please use shutter() instead.
+		 */
 		public function shutterWindow():void {
-			//breaks random combos of  panes on broken windows
-			switch (_target.name) {
-				case "window_00":
-					_top_shutter.active = true;
-					_left_shutter.active = true;
-					return;
-				case "window_01":
-				case "window_02":
-				case "window_03":
-				case "window_04":
-					_left_shutter.active = true;
-					return;
-				case "window_05":
-				case "window_10":
-					_top_shutter.active = true;
-					return;
-				case "window_15":
-					return;
-			}
-			
-			if (randomBoolean()) {
-				_top_shutter.active = true;
-			} else {
-				_left_shutter.active = true;
-			}
+			shutter()
+		}
+		
+		public function shutter():void {
+			shutterSwitcher.execute(_target.name)
 		}
 		
 		/**

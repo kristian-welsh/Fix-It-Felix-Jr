@@ -16,6 +16,9 @@ package com.building.window {
 		private var leftShutter:Shutter;
 		private var random:QueFakeRandomValueGenerator;
 		
+		// This is now ready to have the tests seperated
+		private var shutterSwitcher:ShutterSwitcher;
+		
 		private var window:DoubleWindow;
 		
 		public function DoubleWindowTest(testMethod:String = null) {
@@ -49,7 +52,8 @@ package com.building.window {
 			pane1 = createWindowPane()
 			pane2 = createWindowPane()
 			random = new QueFakeRandomValueGenerator()
-			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random)
+			shutterSwitcher = new ShutterSwitcher(topShutter, leftShutter, random)
+			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
 		}
 		
 		private function createWindowPane():WindowPane {
