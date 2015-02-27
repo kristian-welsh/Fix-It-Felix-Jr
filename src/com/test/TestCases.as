@@ -3,6 +3,7 @@ package com.test {
 	import com.building.window.DoubleWindowTest;
 	import com.building.window.pane.WindowPaneImpTest;
 	import com.building.window.shutter.ShutterImpTest;
+	import com.building.window.shutter.switcher.ShutterSwitcherTest;
 	import com.game.GameTest;
 	import kris.test.TestSuiteCollector;
 	
@@ -16,6 +17,7 @@ package com.test {
 			includeTestsFrom(WindowPaneImpTest)
 			includeTestsFrom(DoubleWindowTest)
 			includeTestsFrom(DoubleWindowFactoryTest)
+			includeTestsFrom(ShutterSwitcherTest)
 		}
 	}
 }

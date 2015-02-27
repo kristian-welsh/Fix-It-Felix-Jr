@@ -1,4 +1,4 @@
-package com.building.window {
+package com.building.window.shutter.switcher {
 	import com.building.window.shutter.Shutter;
 	import com.util.RandomValueGenerator;
 	
@@ -7,6 +7,7 @@ package com.building.window {
 		private var leftShutter:Shutter;
 		private var random:RandomValueGenerator;
 		
+		// Not intended use of the Object class, look up alternatives.
 		private var nameFunctionMap:Object = {
 			"default":shutterRandomly,
 			"window_00":shutterBoth,

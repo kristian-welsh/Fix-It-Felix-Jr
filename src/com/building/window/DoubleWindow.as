@@ -1,6 +1,7 @@
 ﻿package com.building.window {
 	import com.building.window.pane.WindowPane;
 	import com.building.window.shutter.Shutter;
+	import com.building.window.shutter.switcher.ShutterSwitcher;
 	import com.util.RandomValueGenerator;
 	import flash.display.MovieClip;
 	

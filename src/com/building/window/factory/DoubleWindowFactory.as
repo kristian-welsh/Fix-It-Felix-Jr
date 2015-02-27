@@ -2,7 +2,7 @@ package com.building.window.factory {
 	import com.building.window.DoubleWindow;
 	import com.building.window.pane.*;
 	import com.building.window.shutter.*;
-	import com.building.window.ShutterSwitcher;
+	import com.building.window.shutter.switcher.ShutterSwitcher;
 	import com.util.*;
 	import flash.display.MovieClip;
 	
