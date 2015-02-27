@@ -28,22 +28,8 @@
 			this.shutterSwitcher = shutterSwitcher
 		}
 		
-		/**
-		 * @deprecated Please use shutter() instead.
-		 */
-		public function shutterWindow():void {
-			shutter()
-		}
-		
 		public function shutter():void {
 			shutterSwitcher.execute(_target.name)
-		}
-		
-		/**
-		 * @deprecated Please use shatter() instead.
-		 */
-		public function breakWindow():void {
-			shatter()
 		}
 		
 		public function shatter():void {

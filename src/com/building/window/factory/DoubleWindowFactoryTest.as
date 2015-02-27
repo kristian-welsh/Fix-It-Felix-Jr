@@ -51,7 +51,7 @@ package com.building.window.factory {
 		}
 		
 		private function assertPanesExist():void {
-			window.breakWindow()
+			window.shatter()
 		}
 		
 		private function assertShuttersExist():void {
@@ -74,7 +74,7 @@ package com.building.window.factory {
 		}
 		
 		private function assertPanesPassed(pane1:WindowPaneImp, pane2:WindowPaneImp):void {
-			window.breakWindow()
+			window.shatter()
 			assertPanesBroken(pane1, pane2)
 		}
 		

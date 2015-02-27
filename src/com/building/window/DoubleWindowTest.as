@@ -82,7 +82,7 @@ package com.building.window {
 		
 		public function breaking_window_makes_broken_true():void {
 			assert(!window.broken)
-			window.breakWindow()
+			window.shatter()
 			assertTrue(window.broken)
 		}
 		
@@ -103,7 +103,7 @@ package com.building.window {
 		
 		private function assertPanesBreak(pane1Breaks:Boolean, pane2Breaks:Boolean):void {
 			repairPanes();
-			window.breakWindow()
+			window.shatter()
 			assertEquals(pane1Breaks, pane1.broken)
 			assertEquals(pane2Breaks, pane2.broken)
 		}
@@ -118,7 +118,7 @@ package com.building.window {
 		}
 		
 		private function assertFixingWindowMakesBrokenFalse():void {
-			window.breakWindow()
+			window.shatter()
 			assert(window.broken)
 			window.repair()
 			assertFalse(window.broken)
