@@ -55,8 +55,8 @@ package com.building.window.factory {
 		}
 		
 		private function assertShuttersExist():void {
-			window.leftShutterExists()
-			window.topShutterExists()
+			window.leftShutterActive()
+			window.topShutterActive()
 		}
 		
 		public function passes_provided_components_to_window():void {
@@ -90,12 +90,12 @@ package com.building.window.factory {
 		
 		private function assertLeftShutterPassed(leftShutter:ShutterImp):void {
 			leftShutter.open()
-			assertTrue(window.leftShutterExists())
+			assertTrue(window.leftShutterActive())
 		}
 		
 		private function assertTopShutterPassed(topShutter:ShutterImp):void {
 			topShutter.open()
-			assertTrue(window.topShutterExists())
+			assertTrue(window.topShutterActive())
 		}
 		
 		public function passes_view_and_children():void {

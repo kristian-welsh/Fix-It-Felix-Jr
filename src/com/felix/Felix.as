@@ -39,8 +39,8 @@
 
 		private function moveToWindow(XX:uint, YY:uint):void {
 			setCurWindow(XX, YY);
-			_target.x = _building.target.x + _building_segment.target.x + _cur_window.target.x + 35;
-			_target.y = _building.target.y + _building_segment.target.y + _cur_window.target.y + 100;
+			_target.x = _building.target.x + _building_segment.target.x + _cur_window.getTarget().x + 35;
+			_target.y = _building.target.y + _building_segment.target.y + _cur_window.getTarget().y + 100;
 		}
 
 		private function setCurWindow(XX:uint, YY:uint):void {
@@ -70,7 +70,7 @@
 		}
 
 		private function fixWindow():void {
-			if (_cur_window.broken) {
+			if (_cur_window.getBroken()) {
 				_can_fix = false;
 				_timer.addEventListener(TimerEvent.TIMER, stopWaiting);
 				_timer.start();
@@ -87,7 +87,7 @@
 
 		private function moveUp():void {
 			if (_YY > 0) {
-				if (!_building_segment.windows[_XX + _YY * 5].topShutterExists()) {
+				if (!_building_segment.windows[_XX + _YY * 5].topShutterActive()) {
 					moveToWindow(_XX, --_YY)
 				}
 			}
@@ -95,7 +95,7 @@
 
 		private function moveDown():void {
 			if (_YY < 2) {
-				if (!_building_segment.windows[_XX + (_YY + 1) * 5].topShutterExists()) {
+				if (!_building_segment.windows[_XX + (_YY + 1) * 5].topShutterActive()) {
 					moveToWindow(_XX, ++_YY)
 				}
 			}
@@ -103,7 +103,7 @@
 
 		private function moveLeft():void {
 			if (_XX > 0) {
-				if (!_building_segment.windows[_XX + _YY * 5].leftShutterExists()) {
+				if (!_building_segment.windows[_XX + _YY * 5].leftShutterActive()) {
 					moveToWindow(--_XX, _YY)
 				}
 			}
@@ -111,7 +111,7 @@
 
 		private function moveRight():void {
 			if (_XX < 4) {
-				if (!_building_segment.windows[(_XX + 1) + _YY * 5].leftShutterExists()) {
+				if (!_building_segment.windows[(_XX + 1) + _YY * 5].leftShutterActive()) {
 					moveToWindow(++_XX, _YY)
 				}
 			}

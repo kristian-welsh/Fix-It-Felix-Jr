@@ -48,7 +48,7 @@
 		
 		private function moveToWindow():void {
 			setCurWindow();
-			_target.x = _building.target.x + _building_segment.target.x + _cur_window.target.x + 35;
+			_target.x = _building.target.x + _building_segment.target.x + _cur_window.getTarget().x + 35;
 		}
 		
 		private function setCurWindow():void {

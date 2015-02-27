@@ -56,11 +56,11 @@ package com.building.window {
 		}
 		
 		public function target_can_be_retrieved():void {
-			assertEquals(target, window.target);
+			assertEquals(target, window.getTarget());
 		}
 		
 		public function broken_is_false_by_default():void {
-			assertFalse(window.broken);
+			assertFalse(window.getBroken());
 		}
 		
 		public function gives_shutter_status():void {
@@ -69,21 +69,21 @@ package com.building.window {
 		}
 		
 		private function givesTopShutterStatus():void {
-			assertFalse(window.topShutterExists())
+			assertFalse(window.topShutterActive())
 			topShutter.open()
-			assertTrue(window.topShutterExists())
+			assertTrue(window.topShutterActive())
 		}
 		
 		private function givestestLeftShutterStatus():void {
-			assertFalse(window.leftShutterExists())
+			assertFalse(window.leftShutterActive())
 			leftShutter.open()
-			assertTrue(window.leftShutterExists())
+			assertTrue(window.leftShutterActive())
 		}
 		
 		public function breaking_window_makes_broken_true():void {
-			assert(!window.broken)
+			assert(!window.getBroken())
 			window.shatter()
-			assertTrue(window.broken)
+			assertTrue(window.getBroken())
 		}
 		
 		public function pane2_breaks_for_false_random_output():void {
@@ -119,9 +119,9 @@ package com.building.window {
 		
 		private function assertFixingWindowMakesBrokenFalse():void {
 			window.shatter()
-			assert(window.broken)
+			assert(window.getBroken())
 			window.repair()
-			assertFalse(window.broken)
+			assertFalse(window.getBroken())
 		}
 		
 		public function fixing_both_shattered_panes_chooses_one_randomly():void {

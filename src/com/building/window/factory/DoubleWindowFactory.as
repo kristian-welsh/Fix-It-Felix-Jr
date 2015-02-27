@@ -8,17 +8,22 @@ package com.building.window.factory {
 	
 	public class DoubleWindowFactory {
 		private var random:RandomValueGenerator;
+		private var pane1:WindowPane;
+		private var pane2:WindowPane;
+		private var topShutter:Shutter;
+		private var leftShutter:Shutter;
+		private var shutterSwitcher:ShutterSwitcher;
 		
-		public function create(view:MovieClip, pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null, random:RandomValueGenerator = null, shutterSwitcher_:ShutterSwitcher = null):DoubleWindow {
-			this.random = random || new RandomValueGeneratorImp()
+		public function create(view:MovieClip, pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null, random_:RandomValueGenerator = null, shutterSwitcher_:ShutterSwitcher = null):DoubleWindow {
+			this.random = random_ || new RandomValueGeneratorImp()
 			
-			var pane1:WindowPane = createWindowPane(pane1_, view.pane_mc_1)
-			var pane2:WindowPane = createWindowPane(pane2_, view.pane_mc_2)
-			var topShutter:Shutter = createShutter(topShutter_, view.top_shutter)
-			var leftShutter:Shutter = createShutter(leftShutter_, view.left_shutter)
-			var shutterSwitcher:ShutterSwitcher = shutterSwitcher_ || new ShutterSwitcher(topShutter, leftShutter, random)
+			pane1 = createWindowPane(pane1_, view.pane_mc_1)
+			pane2 = createWindowPane(pane2_, view.pane_mc_2)
+			topShutter = createShutter(topShutter_, view.top_shutter)
+			leftShutter = createShutter(leftShutter_, view.left_shutter)
+			shutterSwitcher = shutterSwitcher_ || new ShutterSwitcher(topShutter, leftShutter, random)
 			
-			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher);
+			return createDoubleWindow(view)
 		}
 		
 		private function createWindowPane(pane:WindowPane, graphics:MovieClip):WindowPane {
@@ -29,6 +34,10 @@ package com.building.window.factory {
 		private function createShutter(shutter:Shutter, graphics:MovieClip):Shutter {
 			graphics = graphics || new MovieClip();
 			return shutter || new ShutterImp(graphics);
+		}
+		
+		private function createDoubleWindow(view:MovieClip):DoubleWindow {
+			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher);
 		}
 	}
 }

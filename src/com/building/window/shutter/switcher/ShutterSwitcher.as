@@ -7,7 +7,7 @@ package com.building.window.shutter.switcher {
 		private var leftShutter:Shutter;
 		private var random:RandomValueGenerator;
 		
-		// Not intended use of the Object class, look up alternatives.
+		// TODO: Not intended use of the Object class, look up alternatives.
 		private var nameFunctionMap:Object = {
 			"default":shutterRandomly,
 			"window_00":shutterBoth,

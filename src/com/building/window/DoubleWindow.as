@@ -91,23 +91,19 @@
 			return random.boolean()
 		}
 		
-		// TODO: rename to getBroken()
-		public function get broken():Boolean {
+		public function getBroken():Boolean {
 			return _broken;
 		}
 		
-		// TODO: rename to getTarget()
-		public function get target():MovieClip {
+		public function getTarget():MovieClip {
 			return _target;
 		}
 		
-		//rename to leftShutterOpen
-		public function leftShutterExists():Boolean {
+		public function leftShutterActive():Boolean {
 			return _left_shutter.active;
 		}
 		
-		//rename to topShutterOpen
-		public function topShutterExists():Boolean {
+		public function topShutterActive():Boolean {
 			return _top_shutter.active;
 		}
 	

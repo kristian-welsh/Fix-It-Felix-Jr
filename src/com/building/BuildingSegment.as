@@ -30,10 +30,10 @@
 				}
 				finished_array[i] = new DoubleWindowFactory().create(clip);
 				if(windows_to_break.indexOf(i)!=-1){
-					finished_array[i].breakWindow();
+					finished_array[i].shatter();
 				}
 				if(windows_to_shutter.indexOf(i)!=-1){
-					finished_array[i].shutterWindow();
+					finished_array[i].shutter();
 				}
 			}
 
@@ -70,7 +70,7 @@
 
 		public function checkSegmentCleared():Boolean {
 			for( var i:uint = 0 ; i < _windows.length ; ++i ){
-				if(_windows[i].broken){
+				if(_windows[i].getBroken()){
 					return false;
 				}
 			}

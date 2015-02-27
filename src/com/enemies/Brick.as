@@ -38,8 +38,8 @@
 		}
 		
 		private function positionTarget():void {
-			_target.x = _par.building.target.x + _par.building.segments[0].target.x + _cur_window.target.x + 35;
-			_target.y = _par.building.target.y + _par.building.segments[0].target.y + _cur_window.target.y - 50;
+			_target.x = _par.building.target.x + _par.building.segments[0].target.x + _cur_window.getTarget().x + 35;
+			_target.y = _par.building.target.y + _par.building.segments[0].target.y + _cur_window.getTarget().y - 50;
 		}
 		
 		private function startFalling():void {
