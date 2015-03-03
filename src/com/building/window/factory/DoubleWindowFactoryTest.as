@@ -36,7 +36,7 @@ package com.building.window.factory {
 		}
 		
 		private function createWindow(pane1_:WindowPaneImp = null, pane2_:WindowPaneImp = null, topShutter_:ShutterImp = null, leftShutter_:ShutterImp = null):void {
-			window = new DoubleWindowFactory().create(view, pane1_, pane2_, topShutter_, leftShutter_, random)
+			window = new DoubleWindowFactoryImp().create(view, pane1_, pane2_, topShutter_, leftShutter_, random)
 		}
 		
 		public function no_nulls_passed_to_window():void {

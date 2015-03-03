@@ -1,4 +1,5 @@
 ﻿package com.building {
+	import com.building.window.factory.DoubleWindowFactoryImp;
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;
 
@@ -17,7 +18,7 @@
 			var finished_array:Array = new Array(num_segments);
 			for( var i:uint = 0 ; i<num_segments ; ++i ){
 				var clip:MovieClip = _target.getChildByName("segment_mc_"+i) as MovieClip;
-				finished_array[i] = new BuildingSegment(clip, num_broken_windows);
+				finished_array[i] = new BuildingSegment(clip, num_broken_windows, new DoubleWindowFactoryImp());
 			}
 			return finished_array;
 		}

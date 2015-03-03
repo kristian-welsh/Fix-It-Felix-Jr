@@ -2,6 +2,7 @@
 	import com.building.Building;
 	import com.building.BuildingSegment;
 	import com.building.IBuilding;
+	import com.building.window.factory.DoubleWindowFactoryImp;
 	import com.enemies.Brick;
 	import com.enemies.ralph.Ralph;
 	import com.felix.Felix;
@@ -66,7 +67,7 @@
 			if (_building.segments[0].checkSegmentCleared()) {
 				resetSegment();
 				var seg:BuildingSegment = _building.segments[0];
-				seg = new BuildingSegment(seg._target, 8);
+				seg = new BuildingSegment(seg._target, 8, new DoubleWindowFactoryImp());
 				_felix.resetFelix();
 			}
 		}

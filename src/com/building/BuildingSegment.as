@@ -4,12 +4,16 @@
 	import com.building.window.DoubleWindow;
 
 	public class BuildingSegment {
+		private var windowFactory:DoubleWindowFactory;
 		public var _target:MovieClip;
 		public var _num_broken:uint;
 		public var _num_shutters:uint;
 		public var _windows:Array = [];
 
-		public function BuildingSegment(target:MovieClip, dificulty:uint):void {
+		public function BuildingSegment(target:MovieClip, dificulty:uint, windowFactory:DoubleWindowFactory = null):void {
+			//testability code
+			this.windowFactory = windowFactory;
+			
 			_target = target;
 			_num_broken = dificulty;
 			_num_shutters = Math.ceil(dificulty/4);
@@ -28,7 +32,8 @@
 				} else {
 					clip = _target.getChildByName("window_"+i) as MovieClip;
 				}
-				finished_array[i] = new DoubleWindowFactory().create(clip);
+				
+				finished_array[i] = windowFactory.create(clip);
 				if(windows_to_break.indexOf(i)!=-1){
 					finished_array[i].shatter();
 				}
@@ -40,17 +45,6 @@
 			return finished_array;
 		}
 
-		private function createRandomBoundedInts(num:uint, lowest:int, highest:int):Array {
-			// returns a an array with length=[num] filled with integers which are randomly dispursed between the [lowest] and [highest]
-			var return_me:Array=[];
-			var temp_rand:int;
-			while(return_me.length<num) {
-				temp_rand = createRandomBoundedInt(lowest, highest);
-				return_me.push(temp_rand);
-			}
-			return return_me;
-		}
-
 		private function createNonRepeatedRandomBoundedInts(num:uint, lowest:int, highest:int):Array {
 			// returns a an array with length=[num] filled with integers which are randomly dispursed between the [lowest] and [highest]
 			var return_me:Array=[];
@@ -60,6 +54,17 @@
 				if(return_me.indexOf(temp_rand)==-1){
 					return_me.push(temp_rand);
 				}
+			}
+			return return_me;
+		}
+
+		private function createRandomBoundedInts(num:uint, lowest:int, highest:int):Array {
+			// returns a an array with length=[num] filled with integers which are randomly dispursed between the [lowest] and [highest]
+			var return_me:Array=[];
+			var temp_rand:int;
+			while(return_me.length<num) {
+				temp_rand = createRandomBoundedInt(lowest, highest);
+				return_me.push(temp_rand);
 			}
 			return return_me;
 		}
