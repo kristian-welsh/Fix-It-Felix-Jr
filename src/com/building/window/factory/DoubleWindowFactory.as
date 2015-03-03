@@ -2,7 +2,7 @@ package com.building.window.factory {
 	import com.building.window.DoubleWindow;
 	import com.building.window.pane.*;
 	import com.building.window.shutter.*;
-	import com.building.window.shutter.switcher.ShutterSwitcher;
+	import com.building.window.shutter.switcher.*;
 	import com.util.*;
 	import flash.display.MovieClip;
 	
@@ -21,11 +21,14 @@ package com.building.window.factory {
 			pane2 = createWindowPane(pane2_, view.pane_mc_2)
 			topShutter = createShutter(topShutter_, view.top_shutter)
 			leftShutter = createShutter(leftShutter_, view.left_shutter)
-			shutterSwitcher = shutterSwitcher_ || new ShutterSwitcher(topShutter, leftShutter, random)
+			shutterSwitcher = createShutterSwitcher(shutterSwitcher_)
 			
 			return createDoubleWindow(view)
 		}
 		
+		/**
+		 * Depends upon random
+		 */
 		private function createWindowPane(pane:WindowPane, graphics:MovieClip):WindowPane {
 			graphics = graphics || new MovieClip();
 			return pane || new WindowPaneImp(graphics, random);
@@ -36,6 +39,16 @@ package com.building.window.factory {
 			return shutter || new ShutterImp(graphics);
 		}
 		
+		/**
+		 * Depends upon topShutter, leftShutter, and random
+		 */
+		private function createShutterSwitcher(shutterSwitcher_:ShutterSwitcher):ShutterSwitcher {
+			return shutterSwitcher_ || new ShutterSwitcherImp(topShutter, leftShutter, random)
+		}
+		
+		/**
+		 * Depends upon all other instances
+		 */
 		private function createDoubleWindow(view:MovieClip):DoubleWindow {
 			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher);
 		}

@@ -4,11 +4,11 @@ package com.building.window.shutter.switcher {
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	
-	public class ShutterSwitcherTest extends SuiteProvidingTestCase {
+	public class ShutterSwitcherImpTest extends SuiteProvidingTestCase {
 		private var topShutter:ShutterImp;
 		private var leftShutter:ShutterImp;
 		private var random:QueFakeRandomValueGenerator;
-		private var switcher:ShutterSwitcher;
+		private var switcher:ShutterSwitcherImp;
 		
 		/**
 		 * This array holds the values necessary to test the reslut of a window.shutter() call.
@@ -27,7 +27,7 @@ package com.building.window.shutter.switcher {
 			["window_15", false, false]
 		]
 		
-		public function ShutterSwitcherTest(testMethod:String = null) {
+		public function ShutterSwitcherImpTest(testMethod:String = null) {
 			super([
 				test_configured_name_results,
 				other_names_activate_top_shutter_while_random_returns_true,
@@ -39,7 +39,7 @@ package com.building.window.shutter.switcher {
 			topShutter = new ShutterImp(new MovieClip())
 			leftShutter = new ShutterImp(new MovieClip())
 			random = new QueFakeRandomValueGenerator()
-			switcher = new ShutterSwitcher(topShutter, leftShutter, random)
+			switcher = new ShutterSwitcherImp(topShutter, leftShutter, random)
 		}
 		
 		public function test_configured_name_results():void {
@@ -62,7 +62,9 @@ package com.building.window.shutter.switcher {
 		}
 		
 		private function assertNameResultsNonRandomly(name:String, topShutterActive:Boolean, leftShutterActive:Boolean):void {
-			setUp() // Necessary call to reset after each mapped test.
+			// Necessary to call setUp to reset after each mapped test.
+			setUp();
+			// Ensures that the change in shutter state is deifinately specific to This window name
 			random.setBooleanQue([!topShutterActive]);
 			assertNameResults(name, topShutterActive, leftShutterActive);
 		}

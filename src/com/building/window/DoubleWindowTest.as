@@ -3,7 +3,8 @@ package com.building.window {
 	import com.building.window.pane.WindowPaneImp;
 	import com.building.window.shutter.Shutter;
 	import com.building.window.shutter.ShutterImp;
-	import com.building.window.shutter.switcher.ShutterSwitcher;
+	import com.building.window.shutter.switcher.ShutterSwitcherImp;
+	import com.building.window.shutter.switcher.ShutterSwitcherImp;
 	import com.util.QueFakeRandomValueGenerator;
 	import com.util.RandomValueGeneratorImp;
 	import kris.test.MovieClipSpy;
@@ -18,7 +19,7 @@ package com.building.window {
 		private var random:QueFakeRandomValueGenerator;
 		
 		// This is now ready to have the tests seperated
-		private var shutterSwitcher:ShutterSwitcher;
+		private var shutterSwitcher:ShutterSwitcherImp;
 		
 		private var window:DoubleWindow;
 		
@@ -43,7 +44,7 @@ package com.building.window {
 			pane1 = createWindowPane()
 			pane2 = createWindowPane()
 			random = new QueFakeRandomValueGenerator()
-			shutterSwitcher = new ShutterSwitcher(topShutter, leftShutter, random)
+			shutterSwitcher = new ShutterSwitcherImp(topShutter, leftShutter, random)
 			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
 		}
 		
