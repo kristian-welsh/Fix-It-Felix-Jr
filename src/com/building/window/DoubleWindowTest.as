@@ -3,8 +3,7 @@ package com.building.window {
 	import com.building.window.pane.WindowPaneImp;
 	import com.building.window.shutter.Shutter;
 	import com.building.window.shutter.ShutterImp;
-	import com.building.window.shutter.switcher.ShutterSwitcherImp;
-	import com.building.window.shutter.switcher.ShutterSwitcherImp;
+	import com.building.window.shutter.switcher.ShutterSwitcherSpy;
 	import com.util.QueFakeRandomValueGenerator;
 	import com.util.RandomValueGeneratorImp;
 	import kris.test.MovieClipSpy;
@@ -18,8 +17,7 @@ package com.building.window {
 		private var leftShutter:Shutter;
 		private var random:QueFakeRandomValueGenerator;
 		
-		// This is now ready to have the tests seperated
-		private var shutterSwitcher:ShutterSwitcherImp;
+		private var shutterSwitcher:ShutterSwitcherSpy;
 		
 		private var window:DoubleWindow;
 		
@@ -33,7 +31,9 @@ package com.building.window {
 				pane1_breaks_for_true_false_random_output,
 				both_panes_break_for_true_true_random_output,
 				fixing_both_shattered_panes_chooses_one_randomly,
-				can_repair_single_broken_pane
+				can_repair_single_broken_pane,
+				uses_shutter_switcher_to_shutter_window,
+				passes_shutter_switcher_correct_name
 				], testMethod);
 		}
 		
@@ -44,7 +44,7 @@ package com.building.window {
 			pane1 = createWindowPane()
 			pane2 = createWindowPane()
 			random = new QueFakeRandomValueGenerator()
-			shutterSwitcher = new ShutterSwitcherImp(topShutter, leftShutter, random)
+			shutterSwitcher = new ShutterSwitcherSpy()
 			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
 		}
 		
@@ -152,6 +152,17 @@ package com.building.window {
 			assert(pane.broken)
 			window.repair()
 			assertFalse(pane.broken)
+		}
+		
+		public function uses_shutter_switcher_to_shutter_window():void {
+			window.shutter()
+			shutterSwitcher.spy.assertLogged(shutterSwitcher.execute)
+		}
+		
+		public function passes_shutter_switcher_correct_name():void {
+			target.name = "test"
+			window.shutter()
+			shutterSwitcher.spy.assertLogged(shutterSwitcher.execute, ["test"])
 		}
 	}
 }

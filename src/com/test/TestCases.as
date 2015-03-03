@@ -1,4 +1,5 @@
 package com.test {
+	import com.building.BuildingSegmentTest;
 	import com.building.window.factory.DoubleWindowFactoryTest;
 	import com.building.window.DoubleWindowTest;
 	import com.building.window.pane.WindowPaneImpTest;
@@ -18,6 +19,7 @@ package com.test {
 			includeTestsFrom(DoubleWindowTest)
 			includeTestsFrom(DoubleWindowFactoryTest)
 			includeTestsFrom(ShutterSwitcherImpTest)
+			includeTestsFrom(BuildingSegmentTest)
 		}
 	}
 }

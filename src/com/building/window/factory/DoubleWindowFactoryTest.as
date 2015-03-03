@@ -105,8 +105,11 @@ package com.building.window.factory {
 			assertViewPropertyUsed("left_shutter");
 		}
 		
+		/**
+		 * Asserts that a movieclip saved on view as propertyName is used during createWindow()
+		 * @param	propertyName
+		 */
 		private function assertViewPropertyUsed(propertyName:String):void {
-			// Asserts that a movieclip saved on view as propertyName is used during createWindow()
 			var child:MovieClipSpy = new MovieClipSpy()
 			view[propertyName] = child
 			createWindow()
