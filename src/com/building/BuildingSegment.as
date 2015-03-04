@@ -41,7 +41,7 @@
 					finished_array[i].shutter();
 				}
 			}
-
+			
 			return finished_array;
 		}
 
