@@ -13,7 +13,9 @@ package com.building {
 		private var segment:BuildingSegment;
 		
 		public function BuildingSegmentTest(testMethod:String = null) {
-			super([foo], testMethod);
+			super([
+			constructor_sets_basic_parameters_correctly
+			], testMethod);
 		}
 		
 		override protected function setUp():void {
@@ -39,8 +41,10 @@ package com.building {
 			return returnMe
 		}
 		
-		public function foo():void {
-		
+		public function constructor_sets_basic_parameters_correctly():void {
+			assertEquals(target, segment._target)
+			assertEquals(8, segment._num_broken)
+			assertEquals(2, segment._num_shutters)
 		}
 	}
 }
