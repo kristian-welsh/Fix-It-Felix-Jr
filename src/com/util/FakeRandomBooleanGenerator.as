@@ -1,5 +1,5 @@
 package com.util {
-	public class FakeRandomValueGenerator implements RandomValueGenerator {
+	public class FakeRandomBooleanGenerator implements RandomBooleanGenerator {
 		private var booleanReturnValue:Boolean = false;
 		
 		public function boolean():Boolean {

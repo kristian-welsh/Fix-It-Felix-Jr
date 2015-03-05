@@ -1,5 +1,5 @@
 package com.util {
-	public interface RandomValueGenerator {
+	public interface RandomBooleanGenerator {
 		function boolean():Boolean;
 	}
 }

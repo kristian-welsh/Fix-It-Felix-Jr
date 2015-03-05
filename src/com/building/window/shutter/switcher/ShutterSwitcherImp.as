@@ -1,11 +1,11 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.Shutter;
-	import com.util.RandomValueGenerator;
+	import com.util.RandomBooleanGenerator;
 	
 	public class ShutterSwitcherImp implements ShutterSwitcher{
 		private var topShutter:Shutter;
 		private var leftShutter:Shutter;
-		private var random:RandomValueGenerator;
+		private var random:RandomBooleanGenerator;
 		
 		// TODO: Not intended use of the Object class, look up alternatives.
 		private var nameFunctionMap:Object = {
@@ -20,7 +20,7 @@ package com.building.window.shutter.switcher {
 			"window_15":function():void { }
 		}
 		
-		public function ShutterSwitcherImp(topShutter:Shutter, leftShutter:Shutter, random:RandomValueGenerator) {
+		public function ShutterSwitcherImp(topShutter:Shutter, leftShutter:Shutter, random:RandomBooleanGenerator) {
 			this.topShutter = topShutter;
 			this.leftShutter = leftShutter;
 			this.random = random;

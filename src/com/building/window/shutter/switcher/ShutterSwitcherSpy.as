@@ -1,6 +1,6 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.Shutter;
-	import com.util.QueFakeRandomValueGenerator;
+	import com.util.QueFakeRandomBooleanGenerator;
 	import kris.test.Spy;
 	
 	public class ShutterSwitcherSpy implements ShutterSwitcher {

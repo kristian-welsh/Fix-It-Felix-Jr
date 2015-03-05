@@ -4,8 +4,8 @@ package com.building.window {
 	import com.building.window.shutter.Shutter;
 	import com.building.window.shutter.ShutterImp;
 	import com.building.window.shutter.switcher.ShutterSwitcherSpy;
-	import com.util.QueFakeRandomValueGenerator;
-	import com.util.RandomValueGeneratorImp;
+	import com.util.QueFakeRandomBooleanGenerator;
+	import com.util.RandomBooleanGeneratorImp;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
@@ -15,7 +15,7 @@ package com.building.window {
 		private var pane2:WindowPane;
 		private var topShutter:Shutter;
 		private var leftShutter:Shutter;
-		private var random:QueFakeRandomValueGenerator;
+		private var random:QueFakeRandomBooleanGenerator;
 		
 		private var shutterSwitcher:ShutterSwitcherSpy;
 		
@@ -43,13 +43,13 @@ package com.building.window {
 			leftShutter = createShutter()
 			pane1 = createWindowPane()
 			pane2 = createWindowPane()
-			random = new QueFakeRandomValueGenerator()
+			random = new QueFakeRandomBooleanGenerator()
 			shutterSwitcher = new ShutterSwitcherSpy()
 			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
 		}
 		
 		private function createWindowPane():WindowPane {
-			return new WindowPaneImp(new MovieClipSpy(), new RandomValueGeneratorImp())
+			return new WindowPaneImp(new MovieClipSpy(), new RandomBooleanGeneratorImp())
 		}
 		
 		private function createShutter():Shutter {

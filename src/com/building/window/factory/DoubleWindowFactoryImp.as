@@ -7,15 +7,15 @@ package com.building.window.factory {
 	import flash.display.MovieClip;
 	
 	public class DoubleWindowFactoryImp implements DoubleWindowFactory {
-		private var random:RandomValueGenerator;
+		private var random:RandomBooleanGenerator;
 		private var pane1:WindowPane;
 		private var pane2:WindowPane;
 		private var topShutter:Shutter;
 		private var leftShutter:Shutter;
 		private var shutterSwitcher:ShutterSwitcher;
 		
-		public function create(view:MovieClip, pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null, random_:RandomValueGenerator = null, shutterSwitcher_:ShutterSwitcher = null):DoubleWindow {
-			this.random = random_ || new RandomValueGeneratorImp()
+		public function create(view:MovieClip, pane1_:WindowPane = null, pane2_:WindowPane = null, topShutter_:Shutter = null, leftShutter_:Shutter = null, random_:RandomBooleanGenerator = null, shutterSwitcher_:ShutterSwitcher = null):DoubleWindow {
+			this.random = random_ || new RandomBooleanGeneratorImp()
 			
 			pane1 = createWindowPane(pane1_, view.pane_mc_1)
 			pane2 = createWindowPane(pane2_, view.pane_mc_2)

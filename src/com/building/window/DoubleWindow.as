@@ -2,7 +2,7 @@
 	import com.building.window.pane.WindowPane;
 	import com.building.window.shutter.Shutter;
 	import com.building.window.shutter.switcher.ShutterSwitcher;
-	import com.util.RandomValueGenerator;
+	import com.util.RandomBooleanGenerator;
 	import flash.display.MovieClip;
 	
 	public class DoubleWindow {
@@ -14,11 +14,11 @@
 		
 		private var _top_shutter:Shutter;
 		private var _left_shutter:Shutter;
-		private var random:RandomValueGenerator;
+		private var random:RandomBooleanGenerator;
 		
 		private var shutterSwitcher:ShutterSwitcher;
 		
-		public function DoubleWindow(target:MovieClip, pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter, random:RandomValueGenerator, shutterSwitcher:ShutterSwitcher = null):void {
+		public function DoubleWindow(target:MovieClip, pane1:WindowPane, pane2:WindowPane, topShutter:Shutter, leftShutter:Shutter, random:RandomBooleanGenerator, shutterSwitcher:ShutterSwitcher = null):void {
 			_target = target;
 			_pane1 = pane1
 			_pane2 = pane2

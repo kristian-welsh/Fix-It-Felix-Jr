@@ -1,13 +1,13 @@
 ﻿package com.building.window.pane {
-	import com.util.RandomValueGenerator;
+	import com.util.RandomBooleanGenerator;
 	import flash.display.MovieClip;
 	
 	public class WindowPaneImp implements WindowPane {
 		private var _broken:Boolean = false;
 		private var graphics:MovieClip;
-		private var random:RandomValueGenerator;
+		private var random:RandomBooleanGenerator;
 		
-		public function WindowPaneImp(graphics:MovieClip, random:RandomValueGenerator):void {
+		public function WindowPaneImp(graphics:MovieClip, random:RandomBooleanGenerator):void {
 			this.graphics = graphics;
 			this.random = random;
 			displayIntact();

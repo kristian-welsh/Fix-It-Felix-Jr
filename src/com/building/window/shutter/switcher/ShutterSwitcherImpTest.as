@@ -1,13 +1,13 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.ShutterImp;
-	import com.util.QueFakeRandomValueGenerator;
+	import com.util.QueFakeRandomBooleanGenerator;
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	
 	public class ShutterSwitcherImpTest extends SuiteProvidingTestCase {
 		private var topShutter:ShutterImp;
 		private var leftShutter:ShutterImp;
-		private var random:QueFakeRandomValueGenerator;
+		private var random:QueFakeRandomBooleanGenerator;
 		private var switcher:ShutterSwitcherImp;
 		
 		/**
@@ -38,7 +38,7 @@ package com.building.window.shutter.switcher {
 		override protected function setUp():void {
 			topShutter = new ShutterImp(new MovieClip())
 			leftShutter = new ShutterImp(new MovieClip())
-			random = new QueFakeRandomValueGenerator()
+			random = new QueFakeRandomBooleanGenerator()
 			switcher = new ShutterSwitcherImp(topShutter, leftShutter, random)
 		}
 		

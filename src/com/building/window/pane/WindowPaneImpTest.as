@@ -1,12 +1,12 @@
 package com.building.window.pane {
-	import com.util.FakeRandomValueGenerator;
+	import com.util.FakeRandomBooleanGenerator;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
 	// TODO: improve spy
 	public class WindowPaneImpTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;
-		private var randomValueGenerator:FakeRandomValueGenerator;
+		private var randomValueGenerator:FakeRandomBooleanGenerator;
 		private var pane:WindowPaneImp;
 		
 		public function WindowPaneImpTest(testMethod:String = null) {
@@ -22,7 +22,7 @@ package com.building.window.pane {
 		
 		override protected function setUp():void {
 			graphics = new MovieClipSpy()
-			randomValueGenerator = new FakeRandomValueGenerator()
+			randomValueGenerator = new FakeRandomBooleanGenerator()
 			pane = new WindowPaneImp(graphics, randomValueGenerator)
 		}
 		
