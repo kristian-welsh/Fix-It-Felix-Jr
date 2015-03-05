@@ -5,7 +5,7 @@ package com.util {
 			
 		}
 		
-		public function setContents(contents:* = null):void {
+		public function setContents(... contents):void {
 			
 		}
 	}
