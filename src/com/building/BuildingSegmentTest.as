@@ -58,25 +58,44 @@ package com.building {
 		public function constructor_builds_window_array_correctly():void {
 			assertEquals(15, segment._windows.length)
 			assertUsesFactoryToCreateWindow();
-			// TODO: Consider outputing fake windows from factory to improve testing.
-			for each (var window:DoubleWindow in segment._windows)
-				assertWindowCorrect(window);
+			assertWindowTargetsFromConstructor();
+			assertWindowsShutteredAndBrokenCorrectly()
 		}
 		
 		private function assertUsesFactoryToCreateWindow():void {
 			factory.spy.assertLogged(factory.create, [target, null])
 		}
 		
+		// TODO: Consider outputing fake windows from factory to improve testing.
+		private function assertWindowTargetsFromConstructor():void {
+			for each (var window:DoubleWindow in segment._windows)
+				assertWindowCorrect(window);
+		}
+		
 		private function assertWindowCorrect(window:DoubleWindow):void {
-			if (window.leftShutterActive() || window.topShutterActive())
-				shuttered++
-			if (window.getBroken())
-				broken++
 			assertTargetFromConstructor(window)
 		}
 		
 		private function assertTargetFromConstructor(window:DoubleWindow):void {
 			assertNotNull(target.getChildByName(window.getTarget().name));
+		}
+		
+		private function assertWindowsShutteredAndBrokenCorrectly():void {
+			countWindowConditions()
+			assertEquals(2, shuttered)
+			assertEquals(8, broken)
+		}
+		
+		private function countWindowConditions():void {
+			for each (var window:DoubleWindow in segment._windows)
+				logWindowConditions(window);
+		}
+		
+		private function logWindowConditions(window:DoubleWindow):void {
+			if (window.leftShutterActive() || window.topShutterActive())
+				shuttered++
+			if (window.getBroken())
+				broken++
 		}
 	}
 }
