@@ -9,7 +9,9 @@ package com.util {
 			super([
 				can_set_contents_to_nothing,
 				can_set_contents_to_single_object,
-				can_set_contents_to_argritrary_large_number_of_objects
+				can_set_contents_to_argritrary_large_number_of_objects,
+				can_set_contents_from_constructor,
+				can_retrieve_exact_contents
 				], testMethod);
 		}
 		
@@ -32,6 +34,16 @@ package com.util {
 		public function can_set_contents_to_argritrary_large_number_of_objects():void {
 			que.setContents(1, 1, 1)
 			que.setContents(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+		}
+		
+		public function can_set_contents_from_constructor():void {
+			que = new Que(1, 1, 1)
+		}
+		
+		public function can_retrieve_exact_contents():void {
+			var contents:Object = {}
+			que.setContents(contents)
+			assertEquals(contents, que.next())
 		}
 	}
 }
