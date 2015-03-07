@@ -18,6 +18,8 @@ package com.util {
 		}
 		
 		public function next():* {
+			if (currentPosition >= contents.length)
+				throw new QueError(QueError.NEXT_OVERFLOW)
 			return contents[currentPosition++];
 		}
 	}

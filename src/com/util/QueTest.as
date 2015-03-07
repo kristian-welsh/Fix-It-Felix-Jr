@@ -1,5 +1,4 @@
 package com.util {
-	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	
 	// TODO: remember to test at the end of a uint's value range
@@ -9,12 +8,13 @@ package com.util {
 		public function QueTest(testMethod:String = null) {
 			super([
 				can_set_contents_to_nothing,
-				can_set_contents_to_single_object,
+				can_set_contents_to_single_object_of_any_type,
 				can_set_contents_to_argritrary_large_number_of_objects,
 				can_set_contents_from_constructor,
 				can_retrieve_exact_contents_with_next,
 				can_retrieve_contents_set_from_constructor_with_next,
-				can_retrieve_multiple_contents_with_next
+				can_retrieve_multiple_contents_with_next,
+				throws_QueError_when_next_is_called_more_times_than_que_has_contents
 				], testMethod);
 		}
 		
@@ -26,12 +26,12 @@ package com.util {
 			que.setContents()
 		}
 		
-		public function can_set_contents_to_single_object():void {
+		public function can_set_contents_to_single_object_of_any_type():void {
 			que.setContents({})
 			que.setContents("")
 			que.setContents(1)
 			que.setContents([])
-			que.setContents(new MovieClip())
+			que.setContents(new QueTest())
 		}
 		
 		public function can_set_contents_to_argritrary_large_number_of_objects():void {
@@ -58,6 +58,12 @@ package com.util {
 			que.setContents(1, 2)
 			assertEquals(1, que.next())
 			assertEquals(2, que.next())
+		}
+		
+		public function throws_QueError_when_next_is_called_more_times_than_que_has_contents():void {
+			que.setContents(1)
+			que.next()
+			assertThrows(QueError, que.next)
 		}
 	}
 }
