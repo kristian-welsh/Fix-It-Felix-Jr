@@ -6,7 +6,6 @@ package com.test {
 	import com.building.window.shutter.ShutterImpTest;
 	import com.building.window.shutter.switcher.ShutterSwitcherImpTest;
 	import com.game.GameTest;
-	import com.util.QueTest;
 	import kris.test.TestSuiteCollector;
 	
 	// possibility for future API: super(GameTest, ShutterTest, etc...)
@@ -21,7 +20,6 @@ package com.test {
 			includeTestsFrom(DoubleWindowFactoryTest)
 			includeTestsFrom(ShutterSwitcherImpTest)
 			includeTestsFrom(BuildingSegmentTest)
-			includeTestsFrom(QueTest)
 		}
 	}
 }
