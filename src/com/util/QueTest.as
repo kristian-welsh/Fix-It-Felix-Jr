@@ -14,7 +14,8 @@ package com.util {
 				can_retrieve_exact_contents_with_next,
 				can_retrieve_contents_set_from_constructor_with_next,
 				can_retrieve_multiple_contents_with_next,
-				throws_QueError_when_next_is_called_more_times_than_que_has_contents
+				throws_QueError_when_next_is_called_more_times_than_que_has_contents,
+				setContents_resets_Que_to_start
 				], testMethod);
 		}
 		
@@ -64,6 +65,13 @@ package com.util {
 			que.setContents(1)
 			que.next()
 			assertThrows(QueError, que.next)
+		}
+		
+		public function setContents_resets_Que_to_start():void {
+			que.setContents(1, 2)
+			que.next()
+			que.setContents(1, 2)
+			assertEquals(1, que.next())
 		}
 	}
 }

@@ -2,7 +2,7 @@ package com.util {
 	import flash.utils.getQualifiedClassName;
 	
 	public class Que {
-		private var currentPosition:uint = 0
+		private var currentPosition:uint;
 		private var contents:Array;
 		
 		public function Que(... contents) {
@@ -15,6 +15,7 @@ package com.util {
 		 */
 		public function setContents(... contents):void {
 			this.contents = contents;
+			currentPosition = 0;
 		}
 		
 		public function next():* {
