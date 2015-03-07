@@ -2,6 +2,8 @@ package com.util {
 	import flash.utils.getQualifiedClassName;
 	
 	public class Que {
+		private const OVERFLOW_ERROR:QueError = new QueError(QueError.NEXT_OVERFLOW)
+		
 		private var currentPosition:uint;
 		private var contents:Array;
 		
@@ -19,9 +21,17 @@ package com.util {
 		}
 		
 		public function next():* {
-			if (currentPosition >= contents.length)
-				throw new QueError(QueError.NEXT_OVERFLOW)
+			rejectOverflows()
 			return contents[currentPosition++];
+		}
+		
+		private function rejectOverflows():void {
+			if (willOverflow())
+				throw OVERFLOW_ERROR;
+		}
+		
+		private function willOverflow():Boolean {
+			return currentPosition >= contents.length;
 		}
 	}
 }
