@@ -3,6 +3,7 @@ package com.test {
 	import flash.display.Sprite;
 	import com.test.TestCases;
 
+	// TODO: improve the display of test results, might have to fork ASUnit.
 	public class Tests extends Sprite {
 		public function Tests() {
 			super();
