@@ -1,6 +1,6 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.ShutterImp;
-	import com.util.QueFakeRandomBooleanGenerator;
+	import com.util.random.QueFakeRandomBooleanGenerator;
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	

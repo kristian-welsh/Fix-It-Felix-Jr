@@ -1,4 +1,4 @@
-package com.util {
+package com.util.random {
 	public class FakeRandomBooleanGenerator implements RandomBooleanGenerator {
 		private var booleanReturnValue:Boolean = false;
 		

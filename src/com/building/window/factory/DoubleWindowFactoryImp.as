@@ -3,7 +3,7 @@ package com.building.window.factory {
 	import com.building.window.pane.*;
 	import com.building.window.shutter.*;
 	import com.building.window.shutter.switcher.*;
-	import com.util.*;
+	import com.util.random.*;
 	import flash.display.MovieClip;
 	
 	public class DoubleWindowFactoryImp implements DoubleWindowFactory {

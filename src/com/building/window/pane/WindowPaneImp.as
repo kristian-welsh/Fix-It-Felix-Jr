@@ -1,5 +1,5 @@
 ﻿package com.building.window.pane {
-	import com.util.RandomBooleanGenerator;
+	import com.util.random.RandomBooleanGenerator;
 	import flash.display.MovieClip;
 	
 	public class WindowPaneImp implements WindowPane {

@@ -1,11 +1,8 @@
 package com.building.window {
-	import com.building.window.pane.WindowPane;
-	import com.building.window.pane.WindowPaneImp;
-	import com.building.window.shutter.Shutter;
-	import com.building.window.shutter.ShutterImp;
+	import com.building.window.pane.*;
+	import com.building.window.shutter.*;
 	import com.building.window.shutter.switcher.ShutterSwitcherSpy;
-	import com.util.QueFakeRandomBooleanGenerator;
-	import com.util.RandomBooleanGeneratorImp;
+	import com.util.random.*;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
