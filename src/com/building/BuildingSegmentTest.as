@@ -1,6 +1,5 @@
 package com.building {
 	import com.building.window.DoubleWindow;
-	import com.building.window.factory.DoubleWindowFactoryImp;
 	import com.building.window.factory.DoubleWindowFactorySpy;
 	import com.building.window.FakeDoubleWindowMovieClip;
 	import flash.display.MovieClip;
@@ -21,7 +20,8 @@ package com.building {
 		public function BuildingSegmentTest(testMethod:String = null) {
 			super([
 				constructor_sets_basic_parameters_correctly,
-				constructor_builds_window_array_correctly
+				constructor_builds_window_array_correctly,
+				constructor_breaks_the_correct_windows
 				], testMethod);
 		}
 		
@@ -96,6 +96,10 @@ package com.building {
 				shuttered++
 			if (window.getBroken())
 				broken++
+		}
+		
+		public function constructor_breaks_the_correct_windows():void {
+			
 		}
 	}
 }
