@@ -1,27 +1,16 @@
 package com.util {
-	import org.flashdevelop.utils.FlashConnect;
+	import kris.collections.que.Que;
 	
-	// TODO: Extract concept of Que to own class.
-	// possibly use annother class to combine fakes by type checking a generaic argument
+	// TODO: possibly use another class to combine fakes by type checking a generic argument
 	public class QueFakeRandomBooleanGenerator implements RandomBooleanGenerator {
-		private var returnValueIndex:int;
-		private var returnValues:Array;
-		
-		public function QueFakeRandomBooleanGenerator() {
-			setBooleanQue([false])
-		}
+		private var que:Que = new Que(false)
 		
 		public function boolean():Boolean {
-			if (returnValueIndex + 1 < returnValues.length) {
-				returnValueIndex++;
-				return returnValues[returnValueIndex];
-			} else
-				throw new RangeError("return value not found at index " + returnValueIndex);
+			return que.next()
 		}
 		
-		public function setBooleanQue(que:Array):void {
-			returnValueIndex = -1 // incremention makes first accessed value [0]
-			returnValues = que;
+		public function setBooleanQue(newContents:Array):void {
+			que.setContents.apply(que, newContents)
 		}
 	}
 }
