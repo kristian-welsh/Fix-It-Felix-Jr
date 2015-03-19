@@ -2,8 +2,7 @@ package com.building.window.factory {
 	import com.building.window.DoubleWindow;
 	import com.building.window.pane.WindowPaneImp;
 	import com.building.window.shutter.ShutterImp;
-	import com.util.random.boolean.FakeRandomBooleanGenerator;
-	import com.util.random.boolean.QueFakeRandomBooleanGenerator;
+	import com.util.random.boolean.fake.SetFakeRandomBooleanGenerator;
 	import flash.display.MovieClip;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
@@ -11,7 +10,7 @@ package com.building.window.factory {
 	public class DoubleWindowFactoryTest extends SuiteProvidingTestCase {
 		private var window:DoubleWindow;
 		private var view:MovieClip;
-		private var random:FakeRandomBooleanGenerator;
+		private var random:SetFakeRandomBooleanGenerator;
 		
 		// TODO: test for passing ShutterSwitcher
 		public function DoubleWindowFactoryTest(testMethod:String = null) {
@@ -24,7 +23,7 @@ package com.building.window.factory {
 		
 		override protected function setUp():void {
 			view = new MovieClip()
-			random = new FakeRandomBooleanGenerator()
+			random = new SetFakeRandomBooleanGenerator()
 			random.setBooleanReturnValue(true)
 		}
 		

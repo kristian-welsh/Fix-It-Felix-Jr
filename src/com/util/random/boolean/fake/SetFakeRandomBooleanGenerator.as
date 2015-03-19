@@ -1,5 +1,7 @@
-package com.util.random.boolean {
-	public class FakeRandomBooleanGenerator implements RandomBooleanGenerator {
+package com.util.random.boolean.fake {
+	import com.util.random.boolean.RandomBooleanGenerator;
+	
+	public class SetFakeRandomBooleanGenerator implements RandomBooleanGenerator {
 		private var booleanReturnValue:Boolean = false;
 		
 		public function boolean():Boolean {

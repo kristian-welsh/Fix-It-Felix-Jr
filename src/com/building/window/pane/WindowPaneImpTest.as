@@ -1,12 +1,12 @@
 package com.building.window.pane {
-	import com.util.random.boolean.FakeRandomBooleanGenerator;
+	import com.util.random.boolean.fake.SetFakeRandomBooleanGenerator;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
 	// TODO: make spy more flexible, add more assertions, add the ability to string log properties together eg: view.spy.logged(function).times(2).withArgs([false, true])
 	public class WindowPaneImpTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;
-		private var randomValueGenerator:FakeRandomBooleanGenerator;
+		private var randomValueGenerator:SetFakeRandomBooleanGenerator;
 		private var pane:WindowPaneImp;
 		
 		public function WindowPaneImpTest(testMethod:String = null) {
@@ -22,7 +22,7 @@ package com.building.window.pane {
 		
 		override protected function setUp():void {
 			graphics = new MovieClipSpy()
-			randomValueGenerator = new FakeRandomBooleanGenerator()
+			randomValueGenerator = new SetFakeRandomBooleanGenerator()
 			pane = new WindowPaneImp(graphics, randomValueGenerator)
 		}
 		

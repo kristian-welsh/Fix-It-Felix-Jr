@@ -1,6 +1,6 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.ShutterImp;
-	import com.util.random.boolean.QueFakeRandomBooleanGenerator;
+	import com.util.random.boolean.fake.QueFakeRandomBooleanGenerator;
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	
@@ -25,7 +25,7 @@ package com.building.window.shutter.switcher {
 			["window_05", true, false],
 			["window_10", true, false],
 			["window_15", false, false]
-		]
+			]
 		
 		public function ShutterSwitcherImpTest(testMethod:String = null) {
 			super([
