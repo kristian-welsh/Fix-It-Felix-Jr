@@ -22,7 +22,7 @@
 			graphics.gotoAndStop(1);
 		}
 		
-		public function shatter():void {
+		public function smash():void {
 			_broken = true;
 			displayBroken();
 		}

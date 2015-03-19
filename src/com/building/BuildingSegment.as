@@ -20,7 +20,7 @@
 			_num_broken = dificulty;
 			_num_shutters = Math.ceil(dificulty / 4);
 			createWindows();
-			shatterAppropriateWindows(_num_broken)
+			smashAppropriateWindows(_num_broken)
 			shutterAppropriateWindows(_num_shutters)
 		}
 		
@@ -39,11 +39,10 @@
 				_windows[index].shutter()
 		}
 		
-		// TODO: rename all instances of shatter to break, difficult to differentiate between shatter and shutter.
-		private function shatterAppropriateWindows(numShattered:uint):void {
-			var indexesToShatter:Array = random.nonRepeatedBoundedInts(numShattered, 0, 14);
-			for each (var index:uint in indexesToShatter)
-				_windows[index].shatter()
+		private function smashAppropriateWindows(numSmashed:uint):void {
+			var indexesToSmash:Array = random.nonRepeatedBoundedInts(numSmashed, 0, 14);
+			for each (var index:uint in indexesToSmash)
+				_windows[index].smash()
 		}
 		
 		public function checkSegmentCleared():Boolean {

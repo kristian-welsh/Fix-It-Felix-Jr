@@ -32,27 +32,28 @@
 			shutterSwitcher.execute(_target.name)
 		}
 		
-		public function shatter():void {
-			couldShatterBoth() ? maybeShatterBoth() : shatterPane(_pane2);
+		// TODO: logic for which panes to smash is complex, replace with different simpler system (it's okay if functionality chnages)
+		public function smash():void {
+			couldSmashBoth() ? maybeSmashBoth() : smashPane(_pane2);
 			_broken = true;
 		}
 		
-		private function couldShatterBoth():Boolean {
+		private function couldSmashBoth():Boolean {
 			return randomBoolean()
 		}
 		
-		private function maybeShatterBoth():void {
-			shatterPane(_pane1);
-			mightShatterPane2();
+		private function maybeSmashBoth():void {
+			smashPane(_pane1);
+			mightSmashPane2();
 		}
 		
-		private function mightShatterPane2():void {
+		private function mightSmashPane2():void {
 			if (randomBoolean())
-				shatterPane(_pane2);
+				smashPane(_pane2);
 		}
 		
-		private function shatterPane(pane:WindowPane):void {
-			pane.shatter()
+		private function smashPane(pane:WindowPane):void {
+			pane.smash()
 		}
 		
 		public function repair():void {
