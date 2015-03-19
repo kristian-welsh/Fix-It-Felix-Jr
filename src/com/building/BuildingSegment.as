@@ -30,9 +30,7 @@
 		}
 		
 		private function findWindowsView(i:uint):MovieClip {
-			// TODO: remove the 0 prefix from windows in the fla
-			var name:String = i < 10 ? "window_0" + i : "window_" + i
-			return _target.getChildByName(name) as MovieClip;
+			return _target.getChildByName("window_" + i) as MovieClip;
 		}
 		
 		private function shutterAppropriateWindows(numShuttered:uint):void {

@@ -6,8 +6,8 @@ package com.building {
 	import kris.test.SuiteProvidingTestCase;
 	
 	public class BuildingSegmentTest extends SuiteProvidingTestCase {
-		private const REQUIRED_WINDOW_NAMES:Array = ["window_00", "window_01", "window_02", "window_03", "window_04", "window_05",
-			"window_06", "window_07", "window_08", "window_09", "window_10", "window_11", "window_12", "window_13", "window_14"];
+		private const REQUIRED_WINDOW_NAMES:Array = ["window_0", "window_1", "window_2", "window_3", "window_4", "window_5",
+			"window_6", "window_7", "window_8", "window_9", "window_10", "window_11", "window_12", "window_13", "window_14"];
 		
 		private var target:MovieClip;
 		private var difficulty:uint;
@@ -99,7 +99,7 @@ package com.building {
 		}
 		
 		public function constructor_breaks_the_correct_windows():void {
-			
+		
 		}
 	}
 }
