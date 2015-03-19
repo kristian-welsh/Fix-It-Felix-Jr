@@ -32,7 +32,6 @@
 			shutterSwitcher.execute(_target.name)
 		}
 		
-		// TODO: logic for which panes to smash is complex, replace with different simpler system (it's okay if functionality chnages)
 		public function smash():void {
 			couldSmashBoth() ? maybeSmashBoth() : smashPane(_pane2);
 			_broken = true;

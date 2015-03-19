@@ -1,0 +1,11 @@
+Test for passing a ShutterSwitcher into DoubleWindowFactory
+
+Make Spy more flexible by adding more assertions, and adding the abbility to string log properties togeter
+  eg: view.spy.assertLogged(func).times.2.withArgs([true, false])
+
+Improve the display of test results, remove full path to test classes, add test name to result.
+  Might have to fork ASUnit.
+
+System for which DoubleWindow panes to smash is too complex, replace with a different simpler system
+
+Create a class named RNG as a facade for the rest of the random generation classes

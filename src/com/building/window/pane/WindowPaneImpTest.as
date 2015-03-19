@@ -3,7 +3,6 @@ package com.building.window.pane {
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	
-	// TODO: make spy more flexible, add more assertions, add the ability to string log properties together eg: view.spy.logged(function).times(2).withArgs([false, true])
 	public class WindowPaneImpTest extends SuiteProvidingTestCase {
 		private var graphics:MovieClipSpy;
 		private var randomValueGenerator:SetFakeRandomBooleanGenerator;
