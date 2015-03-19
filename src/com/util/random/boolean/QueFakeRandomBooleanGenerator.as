@@ -1,4 +1,4 @@
-package com.util.random {
+package com.util.random.boolean {
 	import kris.collections.que.Que;
 	
 	// TODO: possibly use another class to combine fakes by type checking a generic argument

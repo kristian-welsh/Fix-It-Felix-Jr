@@ -2,7 +2,7 @@ package com.building.window {
 	import com.building.window.pane.*;
 	import com.building.window.shutter.*;
 	import com.building.window.shutter.switcher.ShutterSwitcherSpy;
-	import com.util.random.*;
+	import com.util.random.boolean.*;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	

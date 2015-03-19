@@ -1,6 +1,6 @@
 package com.building.window.shutter.switcher {
 	import com.building.window.shutter.Shutter;
-	import com.util.random.RandomBooleanGenerator;
+	import com.util.random.boolean.RandomBooleanGenerator;
 	
 	public class ShutterSwitcherImp implements ShutterSwitcher{
 		private var topShutter:Shutter;

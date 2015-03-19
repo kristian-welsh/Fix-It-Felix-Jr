@@ -1,5 +1,5 @@
 package com.building.window.pane {
-	import com.util.random.FakeRandomBooleanGenerator;
+	import com.util.random.boolean.FakeRandomBooleanGenerator;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
 	

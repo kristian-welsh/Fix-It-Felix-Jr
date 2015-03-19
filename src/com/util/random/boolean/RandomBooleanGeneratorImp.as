@@ -1,4 +1,4 @@
-package com.util.random {
+package com.util.random.boolean {
 	
 	public class RandomBooleanGeneratorImp implements RandomBooleanGenerator {
 		public function boolean():Boolean {

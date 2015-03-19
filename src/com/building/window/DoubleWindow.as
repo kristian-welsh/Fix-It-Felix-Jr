@@ -2,7 +2,7 @@
 	import com.building.window.pane.WindowPane;
 	import com.building.window.shutter.Shutter;
 	import com.building.window.shutter.switcher.ShutterSwitcher;
-	import com.util.random.RandomBooleanGenerator;
+	import com.util.random.boolean.RandomBooleanGenerator;
 	import flash.display.MovieClip;
 	
 	public class DoubleWindow {

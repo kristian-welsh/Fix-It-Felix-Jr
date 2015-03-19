@@ -2,8 +2,8 @@ package com.building.window.factory {
 	import com.building.window.DoubleWindow;
 	import com.building.window.pane.WindowPaneImp;
 	import com.building.window.shutter.ShutterImp;
-	import com.util.random.FakeRandomBooleanGenerator;
-	import com.util.random.QueFakeRandomBooleanGenerator;
+	import com.util.random.boolean.FakeRandomBooleanGenerator;
+	import com.util.random.boolean.QueFakeRandomBooleanGenerator;
 	import flash.display.MovieClip;
 	import kris.test.MovieClipSpy;
 	import kris.test.SuiteProvidingTestCase;
