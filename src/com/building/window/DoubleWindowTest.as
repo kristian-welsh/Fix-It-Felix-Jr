@@ -25,9 +25,9 @@ package com.building.window {
 				broken_is_false_by_default,
 				gives_shutter_status,
 				breaking_window_makes_broken_true,
-				pane2_breaks_for_false_random_output,
-				pane1_breaks_for_true_false_random_output,
 				both_panes_break_for_true_true_random_output,
+				pane1_breaks_for_true_extra_random_output_after_non_true_true,
+				pane2_breaks_for_false_extra_random_output_after_non_true_true,
 				fixing_both_broken_panes_chooses_one_randomly,
 				can_repair_single_broken_pane,
 				uses_shutter_switcher_to_shutter_window,
@@ -81,23 +81,26 @@ package com.building.window {
 		
 		public function breaking_window_makes_broken_true():void {
 			assert(!window.getBroken())
+			random.setBooleanQue([false, false, false])
 			window.smash()
 			assertTrue(window.getBroken())
-		}
-		
-		public function pane2_breaks_for_false_random_output():void {
-			random.setBooleanQue([false])
-			assertPanesBreak(false, true)
-		}
-		
-		public function pane1_breaks_for_true_false_random_output():void {
-			random.setBooleanQue([true, false])
-			assertPanesBreak(true, false)
 		}
 		
 		public function both_panes_break_for_true_true_random_output():void {
 			random.setBooleanQue([true, true])
 			assertPanesBreak(true, true)
+		}
+		
+		public function pane1_breaks_for_true_extra_random_output_after_non_true_true():void {
+			//first two decides that a single pane is broken, third decides it's pane1
+			random.setBooleanQue([true, false, true])
+			assertPanesBreak(true, false)
+		}
+		
+		public function pane2_breaks_for_false_extra_random_output_after_non_true_true():void {
+			//first two decides that a single pane is broken, third decides it's pane2
+			random.setBooleanQue([true, false, false])
+			assertPanesBreak(false, true)
 		}
 		
 		private function assertPanesBreak(pane1Breaks:Boolean, pane2Breaks:Boolean):void {

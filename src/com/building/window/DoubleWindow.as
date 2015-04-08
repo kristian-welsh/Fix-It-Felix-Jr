@@ -33,26 +33,25 @@
 		}
 		
 		public function smash():void {
-			couldSmashBoth() ? maybeSmashBoth() : smashPane(_pane2);
-			_broken = true;
+			smallChance() ? smashBothPanes() : smashRandomPane();
 		}
 		
-		private function couldSmashBoth():Boolean {
-			return randomBoolean()
+		private function smallChance():Boolean {
+			return randomBoolean() && randomBoolean()
 		}
 		
-		private function maybeSmashBoth():void {
+		private function smashBothPanes():void {
 			smashPane(_pane1);
-			mightSmashPane2();
+			smashPane(_pane2);
 		}
 		
-		private function mightSmashPane2():void {
-			if (randomBoolean())
-				smashPane(_pane2);
+		private function smashRandomPane():void {
+			randomBoolean() ? smashPane(_pane1) : smashPane(_pane2);
 		}
 		
 		private function smashPane(pane:WindowPane):void {
 			pane.smash()
+			_broken = true;
 		}
 		
 		public function repair():void {
@@ -68,11 +67,11 @@
 		}
 		
 		private function repairPaneAtRandom():void {
-			shouldRepairPane1() ? repairPane(_pane1) : repairPane(_pane2);
+			randomBoolean() ? repairPane(_pane1) : repairPane(_pane2);
 		}
 		
-		private function shouldRepairPane1():Boolean {
-			return randomBoolean()
+		private function randomBoolean():Boolean {
+			return random.boolean()
 		}
 		
 		private function repairSingleBrokenPane():void {
@@ -85,10 +84,6 @@
 		
 		private function repairPane(pane:WindowPane):void {
 			pane.repair()
-		}
-		
-		private function randomBoolean():Boolean {
-			return random.boolean()
 		}
 		
 		public function getBroken():Boolean {
