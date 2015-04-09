@@ -16,7 +16,8 @@ package com.building.window.pane {
 				break_glass_could_show_frame_3,
 				fix_glass_fixes_glass,
 				fix_glass_shows_frame_1,
-				extra_calls_to_repair_dont_process
+				extra_calls_to_repair_dont_process,
+				extra_calls_to_smash_dont_process
 				], testMethod);
 		}
 		
@@ -70,6 +71,14 @@ package com.building.window.pane {
 		public function extra_calls_to_repair_dont_process():void {
 			graphics.gotoAndStop(50)
 			pane.repair()
+			
+			assertEquals(50, graphics.currentFrame)
+		}
+		
+		public function extra_calls_to_smash_dont_process():void {
+			pane.smash()
+			graphics.gotoAndStop(50)
+			pane.smash()
 			
 			assertEquals(50, graphics.currentFrame)
 		}

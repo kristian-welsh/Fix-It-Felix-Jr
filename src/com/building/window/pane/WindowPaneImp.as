@@ -18,8 +18,10 @@
 		}
 		
 		public function smash():void {
-			_broken = true;
-			view.displayBroken();
+			if (!broken) {
+				_broken = true;
+				view.displayBroken();
+			}
 		}
 		
 		public function get broken():Boolean {
