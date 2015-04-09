@@ -14,8 +14,10 @@
 		}
 		
 		public function repair():void {
-			_broken = false;
-			displayIntact();
+			if (broken) {
+				_broken = false;
+				displayIntact();
+			}
 		}
 		
 		private function displayIntact():void {

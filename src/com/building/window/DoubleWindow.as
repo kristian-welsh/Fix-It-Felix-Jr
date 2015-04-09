@@ -37,7 +37,7 @@
 		}
 		
 		private function smallChance():Boolean {
-			return randomBoolean() && randomBoolean()
+			return randomBoolean() && randomBoolean();
 		}
 		
 		private function smashBothPanes():void {
@@ -59,10 +59,10 @@
 		}
 		
 		private function bothPanesBroken():Boolean {
-			return brokenPane(_pane1) && brokenPane(_pane2)
+			return paneBroken(_pane1) && paneBroken(_pane2)
 		}
 		
-		private function brokenPane(pane:WindowPane):Boolean {
+		private function paneBroken(pane:WindowPane):Boolean {
 			return pane.broken
 		}
 		
@@ -76,9 +76,9 @@
 		
 		private function repairSingleBrokenPane():void {
 			_broken = false;
-			if (brokenPane(_pane1))
+			if (paneBroken(_pane1))
 				repairPane(_pane1)
-			else if (brokenPane(_pane2))
+			else if (paneBroken(_pane2))
 				repairPane(_pane2)
 		}
 		
