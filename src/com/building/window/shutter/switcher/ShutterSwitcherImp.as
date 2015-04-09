@@ -43,11 +43,11 @@ package com.building.window.shutter.switcher {
 		}
 		
 		private function shutterLeft():void {
-			leftShutter.active = true;
+			leftShutter.open()
 		}
 		
 		private function shutterTop():void {
-			topShutter.active = true;
+			topShutter.open()
 		}
 	}
 }

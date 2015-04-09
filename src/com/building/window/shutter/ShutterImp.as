@@ -10,14 +10,7 @@
 		
 		public function ShutterImp(graphics:MovieClip):void {
 			this.graphics = graphics;
-			active = false;
-		}
-		
-		/**
-		 * @deprecated Use open or close instead.
-		 */
-		public function set active(value:Boolean):void {
-			value ? open() : close()
+			close()
 		}
 		
 		public function open():void {

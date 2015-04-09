@@ -26,7 +26,7 @@ package com.building.window.shutter {
 		}
 		
 		public function can_set_active():void {
-			shutter.active = true
+			shutter.open()
 			assertGotoAndStopCalled(1, 1)
 		}
 		
@@ -36,7 +36,7 @@ package com.building.window.shutter {
 		}
 		
 		public function can_set_inactive():void {
-			shutter.active = false
+			shutter.close()
 			assertGotoAndStopCalled(2, 1)
 		}
 		
@@ -47,7 +47,7 @@ package com.building.window.shutter {
 		
 		public function can_get_active():void {
 			assertFalse(shutter.active)
-			shutter.active = true
+			shutter.open()
 			assertTrue(shutter.active)
 		}
 		
