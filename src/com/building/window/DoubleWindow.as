@@ -55,7 +55,7 @@
 		}
 		
 		public function repair():void {
-			bothPanesBroken() ? repairPaneAtRandom() : repairSingleBrokenPane();
+			bothPanesBroken() ? repairPaneAtRandom() : repairFully();
 		}
 		
 		private function bothPanesBroken():Boolean {
@@ -74,12 +74,10 @@
 			return random.boolean()
 		}
 		
-		private function repairSingleBrokenPane():void {
+		private function repairFully():void {
 			_broken = false;
-			if (paneBroken(_pane1))
-				repairPane(_pane1)
-			else if (paneBroken(_pane2))
-				repairPane(_pane2)
+			repairPane(_pane1)
+			repairPane(_pane2)
 		}
 		
 		private function repairPane(pane:WindowPane):void {
