@@ -15,3 +15,5 @@ Rename RandomBooleanGenerator::boolean() to generate()
 Add optional parameter to RandomBooleanGenerator::boolean() to accept a percentage chance of a true output
 
 Change Arrays of Objects to Vectors of specific object types.
+
+Finish testing RandomIntGenerator

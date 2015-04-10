@@ -2,6 +2,7 @@ package com.building {
 	import com.building.window.DoubleWindow;
 	import com.building.window.factory.DoubleWindowFactorySpy;
 	import com.building.window.FakeDoubleWindowMovieClip;
+	import com.util.random.int.*;
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;
 	
@@ -9,9 +10,13 @@ package com.building {
 		private const REQUIRED_WINDOW_NAMES:Array = ["window_0", "window_1", "window_2", "window_3", "window_4", "window_5",
 			"window_6", "window_7", "window_8", "window_9", "window_10", "window_11", "window_12", "window_13", "window_14"];
 		
+		private const INDICES_TO_SMASH:Array = [0, 1, 2, 3, 4, 5, 6, 7]
+		private const INDICES_TO_SHUTTER:Array = [0, 1]
+		
 		private var target:MovieClip;
 		private var difficulty:uint;
 		private var factory:DoubleWindowFactorySpy;
+		private var random:FakeRandomIntGenerator;
 		private var segment:BuildingSegment;
 		
 		private var shuttered:uint = 0;
@@ -29,7 +34,9 @@ package com.building {
 			target = createTarget()
 			difficulty = 8; // Found i'm using this value in Game.as, so test this first.
 			factory = new DoubleWindowFactorySpy()
-			segment = new BuildingSegment(target, difficulty, factory)
+			random = new FakeRandomIntGenerator()
+			random.setOutputs(INDICES_TO_SMASH, INDICES_TO_SHUTTER)
+			segment = new BuildingSegment(target, difficulty, factory, random)
 		}
 		
 		private function createTarget():MovieClip {
@@ -99,7 +106,12 @@ package com.building {
 		}
 		
 		public function constructor_breaks_the_correct_windows():void {
+			assertSmashed(INDICES_TO_SMASH)
+		}
 		
+		private function assertSmashed(indices:Array):void {
+			for each (var index:uint in indices)
+				assertTrue(segment._windows[index].getBroken());
 		}
 	}
 }

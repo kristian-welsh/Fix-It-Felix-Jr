@@ -1,27 +1,28 @@
 ﻿package com.building {
 	import com.building.window.DoubleWindow;
 	import com.building.window.factory.DoubleWindowFactory;
-	import com.util.random.int.RandomIntGenerator;
+	import com.util.random.int.*;
 	import flash.display.MovieClip;
 	
 	public class BuildingSegment {
 		private var windowFactory:DoubleWindowFactory;
-		private var random:RandomIntGenerator = new RandomIntGenerator()
+		private var random:RandomIntGenerator = new RandomIntGeneratorImp()
 		
 		public var _target:MovieClip;
 		public var _num_broken:uint;
 		public var _num_shutters:uint;
 		public var _windows:Array = new Array(15);
 		
-		public function BuildingSegment(target:MovieClip, dificulty:uint, windowFactory:DoubleWindowFactory = null):void {
+		public function BuildingSegment(target:MovieClip, dificulty:uint, windowFactory:DoubleWindowFactory, random:RandomIntGenerator = null):void {
 			this.windowFactory = windowFactory;
+			this.random = random || new RandomIntGeneratorImp();
 			
 			_target = target;
 			_num_broken = dificulty;
 			_num_shutters = Math.ceil(dificulty / 4);
 			createWindows();
-			smashAppropriateWindows(_num_broken)
-			shutterAppropriateWindows(_num_shutters)
+			smashAppropriateWindows(_num_broken);
+			shutterAppropriateWindows(_num_shutters);
 		}
 		
 		private function createWindows():void {
@@ -33,16 +34,16 @@
 			return _target.getChildByName("window_" + i) as MovieClip;
 		}
 		
-		private function shutterAppropriateWindows(numShuttered:uint):void {
-			var indexesToShutter:Array = random.nonRepeatedBoundedInts(numShuttered, 0, 14);
-			for each (var index:uint in indexesToShutter)
-				_windows[index].shutter()
-		}
-		
 		private function smashAppropriateWindows(numSmashed:uint):void {
 			var indexesToSmash:Array = random.nonRepeatedBoundedInts(numSmashed, 0, 14);
 			for each (var index:uint in indexesToSmash)
 				_windows[index].smash()
+		}
+		
+		private function shutterAppropriateWindows(numShuttered:uint):void {
+			var indexesToShutter:Array = random.nonRepeatedBoundedInts(numShuttered, 0, 14);
+			for each (var index:uint in indexesToShutter)
+				_windows[index].shutter()
 		}
 		
 		public function checkSegmentCleared():Boolean {

@@ -13,7 +13,7 @@ package com.util.random.int {
 		}
 		
 		override protected function setUp():void {
-			generator = new RandomIntGenerator()
+			generator = new RandomIntGeneratorImp()
 		}
 		
 		public function asking_for_zero_results_returns_empty_array():void {
