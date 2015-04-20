@@ -17,3 +17,6 @@ Add optional parameter to RandomBooleanGenerator::boolean() to accept a percenta
 Change Arrays of Objects to Vectors of specific object types.
 
 Finish testing RandomIntGenerator
+
+Consider outputing fake windows from factory to improve testing in BuildingSegmentTest.
+

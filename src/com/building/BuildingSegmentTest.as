@@ -19,14 +19,15 @@ package com.building {
 		private var random:FakeRandomIntGenerator;
 		private var segment:BuildingSegment;
 		
-		private var shuttered:uint = 0;
+		private var numShuttered:uint = 0;
 		private var broken:uint = 0;
 		
 		public function BuildingSegmentTest(testMethod:String = null) {
 			super([
 				constructor_sets_basic_parameters_correctly,
 				constructor_builds_window_array_correctly,
-				constructor_breaks_the_correct_windows
+				constructor_smashes_the_correct_windows,
+				constructor_shutters_the_correct_windows
 				], testMethod);
 		}
 		
@@ -73,7 +74,6 @@ package com.building {
 			factory.spy.assertLogged(factory.create, [target, null])
 		}
 		
-		// TODO: Consider outputing fake windows from factory to improve testing.
 		private function assertWindowTargetsFromConstructor():void {
 			for each (var window:DoubleWindow in segment._windows)
 				assertWindowCorrect(window);
@@ -89,7 +89,7 @@ package com.building {
 		
 		private function assertWindowsShutteredAndBrokenCorrectly():void {
 			countWindowConditions()
-			assertEquals(2, shuttered)
+			assertEquals(2, numShuttered)
 			assertEquals(8, broken)
 		}
 		
@@ -100,18 +100,39 @@ package com.building {
 		
 		private function logWindowConditions(window:DoubleWindow):void {
 			if (window.leftShutterActive() || window.topShutterActive())
-				shuttered++
+				numShuttered++
 			if (window.getBroken())
 				broken++
 		}
 		
-		public function constructor_breaks_the_correct_windows():void {
-			assertSmashed(INDICES_TO_SMASH)
+		public function constructor_smashes_the_correct_windows():void {
+			assertSmashed(INDICES_TO_SMASH);
 		}
 		
 		private function assertSmashed(indices:Array):void {
 			for each (var index:uint in indices)
-				assertTrue(segment._windows[index].getBroken());
+				assertTrue(isSmashed(windowAt(index)));
+		}
+		
+		private function isSmashed(window:DoubleWindow):Boolean {
+			return window.getBroken();
+		}
+		
+		public function constructor_shutters_the_correct_windows():void {
+			assertShuttered(INDICES_TO_SHUTTER);
+		}
+		
+		private function assertShuttered(indices:Array):void {
+			for each (var index:uint in indices)
+				assertTrue(isShuttered(windowAt(index)));
+		}
+		
+		private function isShuttered(window:DoubleWindow):Boolean {
+			return window.leftShutterActive() || window.topShutterActive();
+		}
+		
+		private function windowAt(index:uint):DoubleWindow {
+			return segment._windows[index];
 		}
 	}
 }
