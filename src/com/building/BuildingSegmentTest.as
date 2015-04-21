@@ -27,7 +27,8 @@ package com.building {
 				constructor_sets_basic_parameters_correctly,
 				constructor_builds_window_array_correctly,
 				constructor_smashes_the_correct_windows,
-				constructor_shutters_the_correct_windows
+				constructor_shutters_the_correct_windows,
+				check_segment_cleared_returns_true_when_no_windows_are_broken
 				], testMethod);
 		}
 		
@@ -36,7 +37,11 @@ package com.building {
 			difficulty = 8; // Found i'm using this value in Game.as, so test this first.
 			factory = new DoubleWindowFactorySpy()
 			random = new FakeRandomIntGenerator()
-			random.setOutputs(INDICES_TO_SMASH, INDICES_TO_SHUTTER)
+			setRandomReturnsAndCreateSegment()
+		}
+		
+		private function setRandomReturnsAndCreateSegment(indicesToSmash:Array = null, indiciesToShutter:Array = null):void {
+			random.setOutputs(indicesToSmash || INDICES_TO_SMASH, indiciesToShutter || INDICES_TO_SHUTTER)
 			segment = new BuildingSegment(target, difficulty, factory, random)
 		}
 		
@@ -133,6 +138,11 @@ package com.building {
 		
 		private function windowAt(index:uint):DoubleWindow {
 			return segment._windows[index];
+		}
+		
+		public function check_segment_cleared_returns_true_when_no_windows_are_broken():void {
+			setRandomReturnsAndCreateSegment([]);
+			assertTrue(segment.checkSegmentCleared());
 		}
 	}
 }
