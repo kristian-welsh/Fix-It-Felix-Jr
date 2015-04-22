@@ -30,7 +30,8 @@ package com.building {
 				constructor_shutters_the_correct_windows,
 				check_segment_cleared_returns_true_when_no_windows_are_broken,
 				check_segment_cleared_returns_false_when_first_window_is_broken,
-				check_segment_cleared_returns_false_when_last_window_is_broken
+				check_segment_cleared_returns_false_when_last_window_is_broken,
+				get_window_at_returns_null_when_given_indecies_over_15
 				], testMethod);
 		}
 		
@@ -155,6 +156,12 @@ package com.building {
 		public function check_segment_cleared_returns_false_when_last_window_is_broken():void {
 			setRandomReturnsAndCreateSegment([14]);
 			assertFalse(segment.checkSegmentCleared());
+		}
+		
+		// Shouldn't return null, should probably throw an error instead. Fix in future commit.
+		public function get_window_at_returns_null_when_given_indecies_over_15():void {
+			assertNull(segment.getWindowAt(15, 0))
+			assertNull(segment.getWindowAt(0, 15))
 		}
 	}
 }
