@@ -31,7 +31,8 @@ package com.building {
 				check_segment_cleared_returns_true_when_no_windows_are_broken,
 				check_segment_cleared_returns_false_when_first_window_is_broken,
 				check_segment_cleared_returns_false_when_last_window_is_broken,
-				get_window_at_returns_null_when_given_indecies_over_15
+				get_window_at_returns_null_when_given_indecies_over_15,
+				get_window_at_works_correctly
 				], testMethod);
 		}
 		
@@ -158,10 +159,19 @@ package com.building {
 			assertFalse(segment.checkSegmentCleared());
 		}
 		
-		// Shouldn't return null, should probably throw an error instead. Fix in future commit.
+		// Not intended behavior, but test as documenntation. Fix in future commit.
 		public function get_window_at_returns_null_when_given_indecies_over_15():void {
-			assertNull(segment.getWindowAt(15, 0))
-			assertNull(segment.getWindowAt(0, 15))
+			assertNotNull(segment.getWindowAt(5, 0)); // should throw error instead of returning window
+			assertNull(segment.getWindowAt(0, 3)); // should throw error instead of returning null
+		}
+		
+		public function get_window_at_works_correctly():void {
+			assertEquals(segment._windows[0], segment.getWindowAt(0, 0));
+			assertEquals(segment._windows[4], segment.getWindowAt(4, 0));
+			assertEquals(segment._windows[5], segment.getWindowAt(0, 1));
+			assertEquals(segment._windows[9], segment.getWindowAt(4, 1));
+			assertEquals(segment._windows[10], segment.getWindowAt(0, 2));
+			assertEquals(segment._windows[14], segment.getWindowAt(4, 2));
 		}
 	}
 }

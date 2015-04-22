@@ -20,3 +20,4 @@ Finish testing RandomIntGenerator
 
 Consider outputing fake windows from factory to improve testing in BuildingSegmentTest.
 
+Throw an error when BuildingSegment::getWindowAt() recieves a number over 14.

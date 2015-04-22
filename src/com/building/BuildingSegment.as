@@ -56,7 +56,7 @@
 		}
 		
 		public function getWindowAt(_XX:uint = 0, _YY:uint = 0):DoubleWindow {
-			return _windows[_XX + _YY * 5];
+			return _windows[_YY * 5 + _XX];
 		}
 		
 		public function get num_broken():uint {
