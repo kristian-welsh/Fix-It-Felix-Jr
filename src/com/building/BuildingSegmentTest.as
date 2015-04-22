@@ -28,7 +28,8 @@ package com.building {
 				constructor_builds_window_array_correctly,
 				constructor_smashes_the_correct_windows,
 				constructor_shutters_the_correct_windows,
-				check_segment_cleared_returns_true_when_no_windows_are_broken
+				check_segment_cleared_returns_true_when_no_windows_are_broken,
+				check_segment_cleared_returns_false_when_first_window_is_broken
 				], testMethod);
 		}
 		
@@ -143,6 +144,11 @@ package com.building {
 		public function check_segment_cleared_returns_true_when_no_windows_are_broken():void {
 			setRandomReturnsAndCreateSegment([]);
 			assertTrue(segment.checkSegmentCleared());
+		}
+		
+		public function check_segment_cleared_returns_false_when_first_window_is_broken():void {
+			setRandomReturnsAndCreateSegment([0]);
+			assertFalse(segment.checkSegmentCleared());
 		}
 	}
 }
