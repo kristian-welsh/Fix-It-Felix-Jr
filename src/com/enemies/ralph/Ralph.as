@@ -1,5 +1,5 @@
 ﻿package com.enemies.ralph {
-	import com.building.BuildingSegment;
+	import com.building.segment.BuildingSegment;
 	import com.building.IBuilding;
 	import com.building.window.DoubleWindow;
 	import com.felix.IFelix;

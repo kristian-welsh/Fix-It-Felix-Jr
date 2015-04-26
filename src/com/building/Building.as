@@ -1,4 +1,5 @@
 ﻿package com.building {
+	import com.building.segment.BuildingSegment;
 	import com.building.window.factory.DoubleWindowFactoryImp;
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;

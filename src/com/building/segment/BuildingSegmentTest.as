@@ -1,4 +1,4 @@
-package com.building {
+package com.building.segment {
 	import com.building.window.DoubleWindow;
 	import com.building.window.factory.DoubleWindowFactorySpy;
 	import com.building.window.FakeDoubleWindowMovieClip;

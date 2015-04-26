@@ -1,5 +1,6 @@
 ﻿package com.felix {
 	import com.building.*;
+	import com.building.segment.BuildingSegment;
 	import com.building.window.DoubleWindow;
 	import com.game.Game;
 	import flash.display.MovieClip;

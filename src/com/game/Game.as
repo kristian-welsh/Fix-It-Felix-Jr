@@ -1,6 +1,6 @@
 ﻿package com.game {
 	import com.building.Building;
-	import com.building.BuildingSegment;
+	import com.building.segment.BuildingSegment;
 	import com.building.IBuilding;
 	import com.building.window.factory.DoubleWindowFactoryImp;
 	import com.enemies.Brick;
