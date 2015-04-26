@@ -56,6 +56,8 @@
 		}
 		
 		public function getWindowAt(_XX:uint = 0, _YY:uint = 0):DoubleWindow {
+			if (_XX > 4 || _YY > 2)
+				throw new ArgumentError("Limit for x is 4, limit for y is 2")
 			return _windows[_YY * 5 + _XX];
 		}
 		
@@ -69,10 +71,6 @@
 		
 		public function get target():MovieClip {
 			return _target;
-		}
-		
-		public function replicate(toReplicate:BuildingSegment):void {
-			_windows = toReplicate.windows;
 		}
 	}
 }

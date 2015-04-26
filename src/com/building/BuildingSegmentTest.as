@@ -31,7 +31,7 @@ package com.building {
 				check_segment_cleared_returns_true_when_no_windows_are_broken,
 				check_segment_cleared_returns_false_when_first_window_is_broken,
 				check_segment_cleared_returns_false_when_last_window_is_broken,
-				get_window_at_returns_null_when_given_indecies_over_15,
+				get_window_at_returns_null_when_given_indecies_over_bounds,
 				get_window_at_works_correctly
 				], testMethod);
 		}
@@ -160,9 +160,13 @@ package com.building {
 		}
 		
 		// Not intended behavior, but test as documenntation. Fix in future commit.
-		public function get_window_at_returns_null_when_given_indecies_over_15():void {
-			assertNotNull(segment.getWindowAt(5, 0)); // should throw error instead of returning window
-			assertNull(segment.getWindowAt(0, 3)); // should throw error instead of returning null
+		public function get_window_at_returns_null_when_given_indecies_over_bounds():void {
+			assertThrows(ArgumentError, function():void {
+					segment.getWindowAt(5, 0)
+				})
+			assertThrows(ArgumentError, function():void {
+					segment.getWindowAt(0, 3);
+				})
 		}
 		
 		public function get_window_at_works_correctly():void {
