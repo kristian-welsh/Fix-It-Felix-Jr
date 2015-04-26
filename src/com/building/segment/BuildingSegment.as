@@ -5,6 +5,9 @@
 	import flash.display.MovieClip;
 	
 	public class BuildingSegment {
+		static private const NUM_COLUMNS:Number = 5;
+		static private const NUM_ROWS:Number = 3;
+		
 		private var windowFactory:DoubleWindowFactory;
 		private var random:RandomIntGenerator = new RandomIntGeneratorImp()
 		
@@ -47,18 +50,20 @@
 		}
 		
 		public function checkSegmentCleared():Boolean {
-			for (var i:uint = 0; i < _windows.length; ++i) {
-				if (_windows[i].getBroken()) {
+			for (var i:uint = 0; i < _windows.length; ++i)
+				if (_windows[i].getBroken())
 					return false;
-				}
-			}
 			return true;
 		}
 		
 		public function getWindowAt(_XX:uint = 0, _YY:uint = 0):DoubleWindow {
-			if (_XX > 4 || _YY > 2)
-				throw new ArgumentError("Limit for x is 4, limit for y is 2")
-			return _windows[_YY * 5 + _XX];
+			resolvePossibleInputErrors(_XX, _YY);
+			return _windows[_YY * NUM_COLUMNS + _XX];
+		}
+		
+		private function resolvePossibleInputErrors(x:uint, y:uint):void {
+			if (x >= NUM_COLUMNS || y >= NUM_ROWS)
+				throw new BuildingSegmentError(BuildingSegmentError.WINDOW_ARRAY_DIMENSIONS_EXCEEDED)
 		}
 		
 		public function get num_broken():uint {

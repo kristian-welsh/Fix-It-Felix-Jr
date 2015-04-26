@@ -161,10 +161,10 @@ package com.building.segment {
 		
 		// Not intended behavior, but test as documenntation. Fix in future commit.
 		public function get_window_at_returns_null_when_given_indecies_over_bounds():void {
-			assertThrows(ArgumentError, function():void {
+			assertThrows(BuildingSegmentError, function():void {
 					segment.getWindowAt(5, 0)
 				})
-			assertThrows(ArgumentError, function():void {
+			assertThrows(BuildingSegmentError, function():void {
 					segment.getWindowAt(0, 3);
 				})
 		}
