@@ -66,8 +66,7 @@
 		public function checkWindows():void {
 			if (_building.segments[0].checkSegmentCleared()) {
 				resetSegment();
-				var seg:BuildingSegment = _building.segments[0];
-				seg = new BuildingSegment(seg._target, 8, new DoubleWindowFactoryImp());
+				_building.segments[0] = new BuildingSegment(_building.segments[0]._target, 8, new DoubleWindowFactoryImp());
 				_felix.resetFelix();
 			}
 		}

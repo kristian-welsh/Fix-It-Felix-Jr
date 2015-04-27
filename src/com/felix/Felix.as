@@ -31,11 +31,15 @@
 		}
 
 		private function initialize():void {
-			_building_segment = _building.segments[0];
+			aquireSegmentReferance();
 			moveToWindow(2, 2);
 			_target.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			_life_symbol_vector.push(_par.life_mc_0, _par.life_mc_1, _par.life_mc_2, _par.life_mc_3, _par.life_mc_4);
 			updateLives(5);
+		}
+		
+		private function aquireSegmentReferance():void {
+			_building_segment = _building.segments[0];
 		}
 
 		private function moveToWindow(XX:uint, YY:uint):void {
@@ -148,6 +152,7 @@
 			_timer = new Timer(350);
 			_timer.addEventListener(TimerEvent.TIMER, stopWaiting);
 			_can_fix = true;
+			aquireSegmentReferance();
 		}
 
 		public function get XX():uint {
