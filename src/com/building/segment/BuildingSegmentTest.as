@@ -31,7 +31,7 @@ package com.building.segment {
 				check_segment_cleared_returns_true_when_no_windows_are_broken,
 				check_segment_cleared_returns_false_when_first_window_is_broken,
 				check_segment_cleared_returns_false_when_last_window_is_broken,
-				get_window_at_returns_null_when_given_indecies_over_bounds,
+				get_window_at_throws_error_when_given_indecies_over_bounds,
 				get_window_at_works_correctly
 				], testMethod);
 		}
@@ -159,8 +159,7 @@ package com.building.segment {
 			assertFalse(segment.checkSegmentCleared());
 		}
 		
-		// Not intended behavior, but test as documenntation. Fix in future commit.
-		public function get_window_at_returns_null_when_given_indecies_over_bounds():void {
+		public function get_window_at_throws_error_when_given_indecies_over_bounds():void {
 			assertThrows(BuildingSegmentError, function():void {
 					segment.getWindowAt(5, 0)
 				})
