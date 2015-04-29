@@ -24,22 +24,6 @@
 			return finished_array;
 		}
 
-		private function testCreateSegments():Boolean{
-
-			var segments:Array=createSegments(2,8);
-
-			for( var i:uint = 0 ; i<2 ; ++i ){
-				if ( segments[i].toString() !== "[object BuildingSegment]" ){
-					return false;
-				}
-				if( segments[i].num_broken !== uint(8) ){
-					return false;
-				}
-			}
-
-			return true;
-		}
-
 		public function get segments():Array {
 			return _segments;
 		}
