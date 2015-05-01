@@ -1,0 +1,4 @@
+A life is removed when you clear a level.
+
+When you die ater having lost all your lives, you go back to full health and the game starts throwing lots of errors.
+
