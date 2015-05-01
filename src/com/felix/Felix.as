@@ -10,12 +10,12 @@
 	public class Felix implements IFelix {
 		private var _target:MovieClip = null;
 		private var _life_symbol_vector:Vector.<MovieClip> = new Vector.<MovieClip>;
-		private var _building:IBuilding = null;
+		private var _building:IBuilding;
 		private var _par:Game = null;
-		private var _building_segment:BuildingSegment = null;
+		private var _building_segment:BuildingSegment;
 		private var _XX:uint = 2;
 		private var _YY:uint = 2;
-		private var _cur_window:DoubleWindow = null;
+		private var _cur_window:DoubleWindow;
 		private var _timer:Timer = new Timer(350);
 		private var _can_fix:Boolean = true;
 		private var _lives:uint;

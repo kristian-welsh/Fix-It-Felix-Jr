@@ -1,4 +1,5 @@
 package com.test {
+	import com.building.BuildingTest;
 	import com.building.segment.BuildingSegmentTest;
 	import com.building.window.DoubleWindowTest;
 	import com.building.window.factory.DoubleWindowFactoryTest;
@@ -22,6 +23,7 @@ package com.test {
 			includeTestsFrom(ShutterSwitcherImpTest)
 			includeTestsFrom(BuildingSegmentTest)
 			includeTestsFrom(RandomIntGeneratorTest)
+			includeTestsFrom(BuildingTest)
 		}
 	}
 }

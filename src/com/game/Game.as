@@ -33,7 +33,7 @@
 		private var _bricks:Array;
 
 		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null, passedRaplh:IRalph = null):void {
-			_building = passedBuilding || new Building(building_mc);
+			_building = passedBuilding || new Building(building_mc, new DoubleWindowFactoryImp());
 			_felix = passedFelix || new Felix(felix_mc, this);
 			_ralph = passedRaplh || new Ralph(ralph_mc, this);
 			_bricks = new Array(3);

@@ -1,5 +1,5 @@
 ﻿package com.enemies {
-	import com.building.window.DoubleWindow;
+	import com.building.window.DoubleWindowImp;
 	import com.game.Game;
 	import flash.display.DisplayObject;
 	import flash.events.TimerEvent;
@@ -14,7 +14,7 @@
 		private var _XX:uint;
 		private var _delayed:Timer;
 		private var _fall_timer:Timer;
-		private var _cur_window:DoubleWindow;
+		private var _cur_window:DoubleWindowImp;
 		private var _felix_target:DisplayObject;
 		
 		public function Brick(target:DisplayObject, delay:uint, XX:uint, caller:Game):void {

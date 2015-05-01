@@ -17,7 +17,7 @@ package com.building.window {
 		
 		private var shutterSwitcher:ShutterSwitcherSpy;
 		
-		private var window:DoubleWindow;
+		private var window:DoubleWindowImp;
 		
 		public function DoubleWindowTest(testMethod:String = null) {
 			super([
@@ -43,7 +43,7 @@ package com.building.window {
 			pane2 = createWindowPane()
 			random = new QueFakeRandomBooleanGenerator()
 			shutterSwitcher = new ShutterSwitcherSpy()
-			window = new DoubleWindow(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
+			window = new DoubleWindowImp(target, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher)
 		}
 		
 		private function createWindowPane():WindowPane {

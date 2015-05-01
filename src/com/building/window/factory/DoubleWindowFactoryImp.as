@@ -1,5 +1,6 @@
 package com.building.window.factory {
 	import com.building.window.DoubleWindow;
+	import com.building.window.DoubleWindowImp;
 	import com.building.window.pane.*;
 	import com.building.window.shutter.*;
 	import com.building.window.shutter.switcher.*;
@@ -49,8 +50,8 @@ package com.building.window.factory {
 		/**
 		 * Depends upon all other instances
 		 */
-		private function createDoubleWindow(view:MovieClip):DoubleWindow {
-			return new DoubleWindow(view, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher);
+		private function createDoubleWindow(view:MovieClip):DoubleWindowImp {
+			return new DoubleWindowImp(view, pane1, pane2, topShutter, leftShutter, random, shutterSwitcher);
 		}
 	}
 }

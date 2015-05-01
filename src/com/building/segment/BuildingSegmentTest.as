@@ -1,5 +1,5 @@
 package com.building.segment {
-	import com.building.window.DoubleWindow;
+	import com.building.window.DoubleWindowImp;
 	import com.building.window.factory.DoubleWindowFactorySpy;
 	import com.building.window.FakeDoubleWindowMovieClip;
 	import com.util.random.int.*;
@@ -84,15 +84,15 @@ package com.building.segment {
 		}
 		
 		private function assertWindowTargetsFromConstructor():void {
-			for each (var window:DoubleWindow in segment._windows)
+			for each (var window:DoubleWindowImp in segment._windows)
 				assertWindowCorrect(window);
 		}
 		
-		private function assertWindowCorrect(window:DoubleWindow):void {
+		private function assertWindowCorrect(window:DoubleWindowImp):void {
 			assertTargetFromConstructor(window)
 		}
 		
-		private function assertTargetFromConstructor(window:DoubleWindow):void {
+		private function assertTargetFromConstructor(window:DoubleWindowImp):void {
 			assertNotNull(target.getChildByName(window.getTarget().name));
 		}
 		
@@ -103,11 +103,11 @@ package com.building.segment {
 		}
 		
 		private function countWindowConditions():void {
-			for each (var window:DoubleWindow in segment._windows)
+			for each (var window:DoubleWindowImp in segment._windows)
 				logWindowConditions(window);
 		}
 		
-		private function logWindowConditions(window:DoubleWindow):void {
+		private function logWindowConditions(window:DoubleWindowImp):void {
 			if (window.leftShutterActive() || window.topShutterActive())
 				numShuttered++
 			if (window.getBroken())
@@ -123,7 +123,7 @@ package com.building.segment {
 				assertTrue(isSmashed(windowAt(index)));
 		}
 		
-		private function isSmashed(window:DoubleWindow):Boolean {
+		private function isSmashed(window:DoubleWindowImp):Boolean {
 			return window.getBroken();
 		}
 		
@@ -136,11 +136,11 @@ package com.building.segment {
 				assertTrue(isShuttered(windowAt(index)));
 		}
 		
-		private function isShuttered(window:DoubleWindow):Boolean {
+		private function isShuttered(window:DoubleWindowImp):Boolean {
 			return window.leftShutterActive() || window.topShutterActive();
 		}
 		
-		private function windowAt(index:uint):DoubleWindow {
+		private function windowAt(index:uint):DoubleWindowImp {
 			return segment._windows[index];
 		}
 		
