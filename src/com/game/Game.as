@@ -33,6 +33,7 @@
 		private var _bricks:Array;
 
 		public function Game(passedBuilding:IBuilding = null, passedFelix:IFelix = null, passedRaplh:IRalph = null):void {
+			// Building must be created first, or other classes can't grab a referance to segment.
 			_building = passedBuilding || new Building(building_mc, new DoubleWindowFactoryImp());
 			_felix = passedFelix || new Felix(felix_mc, this);
 			_ralph = passedRaplh || new Ralph(ralph_mc, this);
@@ -64,9 +65,9 @@
 		}
 
 		public function checkWindows():void {
-			if (_building.segments[0].checkSegmentCleared()) {
+			if (_building.getSegment().checkSegmentCleared()) {
 				resetSegment();
-				_building.segments[0] = new BuildingSegment(_building.segments[0]._target, 8, new DoubleWindowFactoryImp());
+				_building.setSegment(new BuildingSegment(_building.getSegment()._target, 8, new DoubleWindowFactoryImp()));
 				_felix.resetFelix();
 			}
 		}

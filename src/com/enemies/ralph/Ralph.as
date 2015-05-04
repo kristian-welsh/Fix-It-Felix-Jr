@@ -24,9 +24,7 @@
 			_building = _par.building;
 			_felix = _par.felix;
 			_target.y = 115;
-			if (_building.isBuilt) {
-				initialize();
-			}
+			initialize();
 			_attack_timer.addEventListener(TimerEvent.TIMER, onAttackTimer);
 			_attack_timer.start();
 		}
@@ -42,7 +40,7 @@
 		}
 		
 		private function initialize():void {
-			_building_segment = _building.segments[0];
+			_building_segment = _building.getSegment();
 			moveToWindow();
 		}
 		

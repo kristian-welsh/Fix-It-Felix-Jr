@@ -21,7 +21,7 @@
 			_par = caller;
 			_target = target;
 			_XX = XX;
-			_cur_window = _par.building.segments[0].getWindowAt(_XX);
+			_cur_window = _par.building.getSegment().getWindowAt(_XX) as DoubleWindowImp;
 			_felix_target = _par.felix.target;
 			
 			_delayed = new Timer(delay, 1);
@@ -38,8 +38,8 @@
 		}
 		
 		private function positionTarget():void {
-			_target.x = _par.building.target.x + _par.building.segments[0].target.x + _cur_window.getTarget().x + 35;
-			_target.y = _par.building.target.y + _par.building.segments[0].target.y + _cur_window.getTarget().y - 50;
+			_target.x = _par.building.target.x + _par.building.getSegment().target.x + _cur_window.getTarget().x + 35;
+			_target.y = _par.building.target.y + _par.building.getSegment().target.y + _cur_window.getTarget().y - 50;
 		}
 		
 		private function startFalling():void {

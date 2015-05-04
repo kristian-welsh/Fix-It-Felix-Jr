@@ -24,10 +24,7 @@
 			_par = caller;
 			_target = target;
 			_building = _par.building;
-
-			if (_building.isBuilt) {
-				initialize();
-			}
+			initialize();
 		}
 
 		private function initialize():void {
@@ -39,7 +36,7 @@
 		}
 		
 		private function aquireSegmentReferance():void {
-			_building_segment = _building.segments[0];
+			_building_segment = _building.getSegment();
 		}
 
 		private function moveToWindow(XX:uint, YY:uint):void {
