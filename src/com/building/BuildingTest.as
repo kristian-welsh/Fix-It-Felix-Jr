@@ -34,12 +34,12 @@ package com.building {
 		}
 		
 		public function constructor_creates_segments_correctly():void {
-			assertTargetPassed()
+			assertTargetFound()
 			assertTenWindowsBroken()
 			assertfactoryPassed()
 		}
 		
-		private function assertTargetPassed():void {
+		private function assertTargetFound():void {
 			assertEquals(segmentTarget, building.getSegment().target)
 		}
 		
