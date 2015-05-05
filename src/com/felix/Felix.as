@@ -135,6 +135,7 @@
 			_timer = null;
 			if (_lives > 0) {
 				_par.resetSegment();
+				updateLives(-1);
 				resetFelix();
 			} else {
 				_par.resetGame();
@@ -142,7 +143,6 @@
 		}
 
 		public function resetFelix():void {
-			updateLives(-1);
 			_XX = 2;
 			_YY = 2;
 			moveToWindow(2, 2);
