@@ -44,7 +44,7 @@ package com.building {
 		}
 		
 		private function assertTenWindowsBroken():void {
-			assertEquals(10, building.getSegment().num_broken)
+			assertEquals(8, building.getSegment().num_broken)
 		}
 		
 		private function assertfactoryPassed():void {

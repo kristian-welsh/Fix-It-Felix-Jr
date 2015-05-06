@@ -12,7 +12,7 @@
 		public function Building(target:MovieClip, windowFactory:DoubleWindowFactory):void {
 			_target = target;
 			this.windowFactory = windowFactory;
-			createSegments(10);
+			createSegments(8);
 		}
 		
 		private function createSegments(num_broken_windows:uint):void {
