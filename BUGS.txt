@@ -1,2 +1,4 @@
-None for the moment :)
+Ocationaly shutters will form arrangements that block you from windows.
+
+Some shutters don't affect gameplay, as they are on the top or left edges. (not realy a bug, but shh)
 
