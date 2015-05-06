@@ -1,3 +1,2 @@
 If you land on a broken window when you enter a new segment, before you can repair it you have to move away from and back to it.
 
-If you complete a level after having lost a life the next level doesn't load, and an error is thrown.

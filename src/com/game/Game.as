@@ -76,7 +76,6 @@
 			for (var i:uint = 0; i < _bricks.length; ++i) {
 				_bricks[i].destroy();
 			}
-			_bricks = new Array(3);
 			_ralph.resetObject();
 		}
 
