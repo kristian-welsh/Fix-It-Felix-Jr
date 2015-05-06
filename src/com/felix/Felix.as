@@ -143,13 +143,13 @@
 		}
 
 		public function resetFelix():void {
+			aquireSegmentReferance();
 			_XX = 2;
 			_YY = 2;
 			moveToWindow(2, 2);
 			_timer = new Timer(350);
 			_timer.addEventListener(TimerEvent.TIMER, stopWaiting);
 			_can_fix = true;
-			aquireSegmentReferance();
 		}
 
 		public function get XX():uint {
