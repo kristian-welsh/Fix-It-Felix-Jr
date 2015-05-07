@@ -34,7 +34,7 @@ package com.building.window.shutter.switcher {
 		}
 		
 		private function shutterRandomly():void {
-			random.boolean() ? shutterTop() : shutterLeft();
+			random.generate() ? shutterTop() : shutterLeft();
 		}
 		
 		private function shutterBoth():void {

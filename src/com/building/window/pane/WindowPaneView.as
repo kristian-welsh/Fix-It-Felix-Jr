@@ -4,11 +4,11 @@ package com.building.window.pane {
 	
 	public class WindowPaneView {
 		private var graphics:MovieClip;
-		private var random:RandomBooleanGenerator;
+		private var randomBooleanGenerator:RandomBooleanGenerator;
 		
 		public function WindowPaneView(graphics:MovieClip, random:RandomBooleanGenerator) {
 			this.graphics = graphics;
-			this.random = random;
+			this.randomBooleanGenerator = random;
 			displayIntact();
 		}
 		
@@ -21,7 +21,7 @@ package com.building.window.pane {
 		}
 		
 		private function randomBrokenFrame():uint {
-			return random.boolean() ? 2 : 3
+			return randomBooleanGenerator.generate() ? 2 : 3
 		}
 	}
 }

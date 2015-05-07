@@ -10,8 +10,6 @@ System for which DoubleWindow panes to smash is too complex, replace with a diff
 
 Create a class named RNG as a facade for the rest of the random generation classes
 
-Rename RandomBooleanGenerator::boolean() to generate()
-
 Add optional parameter to RandomBooleanGenerator::boolean() to accept a percentage chance of a true output
 
 Change Arrays of Objects to Vectors of specific object types.
@@ -19,8 +17,6 @@ Change Arrays of Objects to Vectors of specific object types.
 Finish testing RandomIntGenerator
 
 Consider outputing fake windows from factory to improve testing in BuildingSegmentTest.
-
-Throw an error when BuildingSegment::getWindowAt() recieves a number over 14.
 
 Rearrange the window indeces so that the first window and first index in both directions are 1 instead of 0.
 

@@ -14,7 +14,7 @@
 		
 		private var _top_shutter:Shutter;
 		private var _left_shutter:Shutter;
-		private var random:RandomBooleanGenerator;
+		private var randomBooleanGenerator:RandomBooleanGenerator;
 		
 		private var shutterSwitcher:ShutterSwitcher;
 		
@@ -24,7 +24,7 @@
 			_pane2 = pane2
 			_top_shutter = topShutter
 			_left_shutter = leftShutter
-			this.random = random;
+			this.randomBooleanGenerator = random;
 			this.shutterSwitcher = shutterSwitcher
 		}
 		
@@ -71,7 +71,7 @@
 		}
 		
 		private function randomBoolean():Boolean {
-			return random.boolean()
+			return randomBooleanGenerator.generate()
 		}
 		
 		private function repairFully():void {

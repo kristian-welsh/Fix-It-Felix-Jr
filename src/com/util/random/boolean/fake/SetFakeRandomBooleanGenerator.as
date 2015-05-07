@@ -4,7 +4,7 @@ package com.util.random.boolean.fake {
 	public class SetFakeRandomBooleanGenerator implements RandomBooleanGenerator {
 		private var booleanReturnValue:Boolean = false;
 		
-		public function boolean():Boolean {
+		public function generate():Boolean {
 			return booleanReturnValue;
 		}
 		
