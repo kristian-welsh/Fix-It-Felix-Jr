@@ -21,3 +21,5 @@ Consider outputing fake windows from factory to improve testing in BuildingSegme
 Rearrange the window indeces so that the first window and first index in both directions are 1 instead of 0.
 
 Extract the concept of a 2 dimentional array into a class and use it for the windows in a BuildingSegment.
+
+Consider renaming shutters to barriers, this will allow me to name smashing shattering wihout causing ambiguity with shuttering.
