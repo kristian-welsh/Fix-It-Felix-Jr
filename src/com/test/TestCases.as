@@ -7,6 +7,7 @@ package com.test {
 	import com.building.window.shutter.ShutterImpTest;
 	import com.building.window.shutter.switcher.ShutterSwitcherImpTest;
 	import com.game.GameTest;
+	import com.util.MultiDimentionalArrayTest;
 	import com.util.random.int.RandomIntGeneratorTest;
 	import kris.test.TestSuiteCollector;
 	
@@ -24,6 +25,7 @@ package com.test {
 			includeTestsFrom(BuildingSegmentTest)
 			includeTestsFrom(RandomIntGeneratorTest)
 			includeTestsFrom(BuildingTest)
+			includeTestsFrom(MultiDimentionalArrayTest)
 		}
 	}
 }
