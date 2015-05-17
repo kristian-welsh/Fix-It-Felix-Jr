@@ -6,29 +6,48 @@ package com.util {
 		
 		public function MultiDimentionalArrayTest(testMethod:String = null) {
 			super([
-				its_size_can_be_retrieved_when_set_from_constructor,
-				its_size_can_be_retrieved_when_set_from_setSize
+				size_can_be_set_from_constructor,
+				size_can_be_set_from_setSize
 				], testMethod);
 		}
 		
-		public function its_size_can_be_retrieved_when_set_from_constructor():void {
-			array = new MultiDimentionalArray(1, 1);
-			assertEquals(1, array.getNumColumns());
-			assertEquals(1, array.getNumRows());
-			
-			array = new MultiDimentionalArray(uint.MAX_VALUE, uint.MAX_VALUE);
-			assertEquals(uint.MAX_VALUE, array.getNumColumns());
-			assertEquals(uint.MAX_VALUE, array.getNumRows());
+		override protected function setUp():void {
+			array = new MultiDimentionalArray();
 		}
 		
-		public function its_size_can_be_retrieved_when_set_from_setSize():void {
-			array = new MultiDimentionalArray();
-			
-			array.setSize(1, 1);
+		public function size_can_be_set_from_constructor():void {
+			testSettingMinimumSize(false);
+			testSettingMaximumSize(false);
+		}
+		
+		public function size_can_be_set_from_setSize():void {
+			testSettingMinimumSize(true);
+			testSettingMaximumSize(true);
+		}
+		
+		private function testSettingMinimumSize(useSetFunction:Boolean):void {
+			setupArray(1, 1, useSetFunction);
+			assertArrayIsMinimumSize();
+		}
+		
+		private function testSettingMaximumSize(useSetFunction:Boolean):void {
+			setupArray(uint.MAX_VALUE, uint.MAX_VALUE, useSetFunction);
+			assertArrayIsMaximumSize();
+		}
+		
+		private function setupArray(numColumns:uint, numRows:uint, useSetFunction:Boolean):void {
+			if (useSetFunction)
+				array.setSize(numColumns, numRows);
+			else
+				array = new MultiDimentionalArray(numColumns, numRows);
+		}
+		
+		private function assertArrayIsMinimumSize():void {
 			assertEquals(1, array.getNumColumns());
 			assertEquals(1, array.getNumRows());
-			
-			array.setSize(uint.MAX_VALUE, uint.MAX_VALUE);
+		}
+		
+		private function assertArrayIsMaximumSize():void {
 			assertEquals(uint.MAX_VALUE, array.getNumColumns());
 			assertEquals(uint.MAX_VALUE, array.getNumRows());
 		}
