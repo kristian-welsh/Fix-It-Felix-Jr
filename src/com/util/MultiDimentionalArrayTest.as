@@ -11,35 +11,33 @@ package com.util {
 				], testMethod);
 		}
 		
-		override protected function setUp():void {
-			array = new MultiDimentionalArray();
+		public function size_can_be_set_from_constructor():void {
+			testSettingMinimumSize(constructorFactory);
+			testSettingMaximumSize(constructorFactory);
 		}
 		
-		public function size_can_be_set_from_constructor():void {
-			testSettingMinimumSize(false);
-			testSettingMaximumSize(false);
+		private function constructorFactory(numColumns:uint, numRows:uint):void {
+			array = new MultiDimentionalArray(numColumns, numRows);
 		}
 		
 		public function size_can_be_set_from_setSize():void {
-			testSettingMinimumSize(true);
-			testSettingMaximumSize(true);
+			testSettingMinimumSize(setSizeFactory);
+			testSettingMaximumSize(setSizeFactory);
 		}
 		
-		private function testSettingMinimumSize(useSetFunction:Boolean):void {
-			setupArray(1, 1, useSetFunction);
+		private function setSizeFactory(numColumns:uint, numRows:uint):void {
+			array = new MultiDimentionalArray();
+			array.setSize(numColumns, numRows);
+		}
+		
+		private function testSettingMinimumSize(factoryMethod:Function):void {
+			factoryMethod(1, 1);
 			assertArrayIsMinimumSize();
 		}
 		
-		private function testSettingMaximumSize(useSetFunction:Boolean):void {
-			setupArray(uint.MAX_VALUE, uint.MAX_VALUE, useSetFunction);
+		private function testSettingMaximumSize(factoryMethod:Function):void {
+			factoryMethod(uint.MAX_VALUE, uint.MAX_VALUE)
 			assertArrayIsMaximumSize();
-		}
-		
-		private function setupArray(numColumns:uint, numRows:uint, useSetFunction:Boolean):void {
-			if (useSetFunction)
-				array.setSize(numColumns, numRows);
-			else
-				array = new MultiDimentionalArray(numColumns, numRows);
 		}
 		
 		private function assertArrayIsMinimumSize():void {
