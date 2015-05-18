@@ -2,8 +2,6 @@ package com.util {
 	import kris.test.SuiteProvidingTestCase;
 	
 	public class MultiDimentionalArrayTest extends SuiteProvidingTestCase {
-		private var array:MultiDimentionalArray;
-		
 		public function MultiDimentionalArrayTest(testMethod:String = null) {
 			super([
 				size_can_be_set_from_constructor,
@@ -12,42 +10,32 @@ package com.util {
 		}
 		
 		public function size_can_be_set_from_constructor():void {
-			testSettingMinimumSize(constructorFactory);
-			testSettingMaximumSize(constructorFactory);
-		}
-		
-		private function constructorFactory(numColumns:uint, numRows:uint):void {
-			array = new MultiDimentionalArray(numColumns, numRows);
+			testSizeBoundrys(constructorFactory);
 		}
 		
 		public function size_can_be_set_from_setSize():void {
-			testSettingMinimumSize(setSizeFactory);
-			testSettingMaximumSize(setSizeFactory);
+			testSizeBoundrys(setSizeFactory);
 		}
 		
-		private function setSizeFactory(numColumns:uint, numRows:uint):void {
-			array = new MultiDimentionalArray();
-			array.setSize(numColumns, numRows);
+		private function testSizeBoundrys(factoryMethod:Function):void {
+			testSettingSize(1, 1, factoryMethod);
+			testSettingSize(uint.MAX_VALUE, uint.MAX_VALUE, factoryMethod);
 		}
 		
-		private function testSettingMinimumSize(factoryMethod:Function):void {
-			factoryMethod(1, 1);
-			assertArrayIsMinimumSize();
+		private function testSettingSize(numColumns:uint, numRows:uint, factoryMethod:Function):void {
+			var array:MultiDimentionalArray = factoryMethod(numColumns, numRows);
+			assertEquals(numColumns, array.getNumColumns());
+			assertEquals(numRows, array.getNumRows());
 		}
 		
-		private function testSettingMaximumSize(factoryMethod:Function):void {
-			factoryMethod(uint.MAX_VALUE, uint.MAX_VALUE)
-			assertArrayIsMaximumSize();
+		private function constructorFactory(numColumns:uint, numRows:uint):MultiDimentionalArray {
+			return new MultiDimentionalArray(numColumns, numRows);
 		}
 		
-		private function assertArrayIsMinimumSize():void {
-			assertEquals(1, array.getNumColumns());
-			assertEquals(1, array.getNumRows());
-		}
-		
-		private function assertArrayIsMaximumSize():void {
-			assertEquals(uint.MAX_VALUE, array.getNumColumns());
-			assertEquals(uint.MAX_VALUE, array.getNumRows());
+		private function setSizeFactory(numColumns:uint, numRows:uint):MultiDimentionalArray {
+			var result:MultiDimentionalArray = new MultiDimentionalArray();
+			result.setSize(numColumns, numRows);
+			return result;
 		}
 	}
 }
