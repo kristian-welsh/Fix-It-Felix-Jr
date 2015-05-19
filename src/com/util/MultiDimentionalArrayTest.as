@@ -5,7 +5,9 @@ package com.util {
 		public function MultiDimentionalArrayTest(testMethod:String = null) {
 			super([
 				size_can_be_set_from_constructor,
-				size_can_be_set_from_setSize
+				size_can_be_set_from_setSize,
+				array_can_be_filled_with_function_output,
+				invalid_read_throws_error
 				], testMethod);
 		}
 		
@@ -15,6 +17,20 @@ package com.util {
 		
 		public function size_can_be_set_from_setSize():void {
 			testSizeBoundrys(setSizeFactory);
+		}
+		
+		public function array_can_be_filled_with_function_output():void {
+			var array:MultiDimentionalArray = new MultiDimentionalArray(1, 1);
+			array.fill(function():Object {
+					return new Object();
+				});
+		}
+		
+		public function invalid_read_throws_error():void {
+			var array:MultiDimentionalArray = new MultiDimentionalArray(1, 1);
+			assertThrows(MultiDimentionalArrayError, function():void {
+					array.read(0, 0);
+				});
 		}
 		
 		private function testSizeBoundrys(factoryMethod:Function):void {

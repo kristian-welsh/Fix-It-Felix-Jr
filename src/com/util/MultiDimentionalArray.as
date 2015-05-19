@@ -20,5 +20,13 @@ package com.util {
 		public function getNumRows():uint {
 			return numRows;
 		}
+		
+		public function fill(fillSource:Function):void {
+			
+		}
+		
+		public function read(columnNumber:uint, rowNumber:uint):Object {
+			throw new MultiDimentionalArrayError();
+		}
 	}
 }
