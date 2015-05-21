@@ -12,7 +12,8 @@ package com.util {
 				array_can_be_filled_with_function_output,
 				invalid_read_throws_error,
 				data_can_be_retrieved_from_1_1_array,
-				data_can_be_retrieved_from_2_1_array
+				data_can_be_retrieved_from_2_1_array,
+				data_can_be_retrieved_from_5_1_array
 				], testMethod);
 		}
 		
@@ -86,6 +87,27 @@ package com.util {
 			
 			assertSame(contents1, array.read(0, 0));
 			assertSame(contents2, array.read(1, 0));
+		}
+		
+		public function data_can_be_retrieved_from_5_1_array():void {
+			array = new MultiDimentionalArray(5, 1);
+			
+			var firstTime:Boolean = true;
+			var contents1:Object = new Object();
+			var contents2:Object = new Object();
+			array.fill(function():Object {
+					if (firstTime) {
+						firstTime = false;
+						return contents1;
+					}
+					return contents2;
+				});
+			
+			assertSame(contents1, array.read(0, 0));
+			assertSame(contents2, array.read(1, 0));
+			assertSame(contents2, array.read(2, 0));
+			assertSame(contents2, array.read(3, 0));
+			assertSame(contents2, array.read(4, 0));
 		}
 	}
 }
