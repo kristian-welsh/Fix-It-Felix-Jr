@@ -13,7 +13,9 @@ package com.util {
 				invalid_read_throws_error,
 				data_can_be_retrieved_from_1_1_array,
 				data_can_be_retrieved_from_2_1_array,
-				data_can_be_retrieved_from_5_1_array
+				data_can_be_retrieved_from_5_1_array,
+				data_can_be_retrieved_from_1_2_array,
+				data_can_be_retrieved_from_1_5_array
 				], testMethod);
 		}
 		
@@ -108,6 +110,45 @@ package com.util {
 			assertSame(contents2, array.read(2, 0));
 			assertSame(contents2, array.read(3, 0));
 			assertSame(contents2, array.read(4, 0));
+		}
+		
+		public function data_can_be_retrieved_from_1_2_array():void {
+			array = new MultiDimentionalArray(1, 2);
+			
+			var firstTime:Boolean = true;
+			var contents1:Object = new Object();
+			var contents2:Object = new Object();
+			array.fill(function():Object {
+					if (firstTime) {
+						firstTime = false;
+						return contents1;
+					}
+					return contents2;
+				});
+			
+			assertSame(contents1, array.read(0, 0));
+			assertSame(contents2, array.read(0, 1));
+		}
+		
+		public function data_can_be_retrieved_from_1_5_array():void {
+			array = new MultiDimentionalArray(1, 5);
+			
+			var firstTime:Boolean = true;
+			var contents1:Object = new Object();
+			var contents2:Object = new Object();
+			array.fill(function():Object {
+					if (firstTime) {
+						firstTime = false;
+						return contents1;
+					}
+					return contents2;
+				});
+			
+			assertSame(contents1, array.read(0, 0));
+			assertSame(contents2, array.read(0, 1));
+			assertSame(contents2, array.read(0, 2));
+			assertSame(contents2, array.read(0, 3));
+			assertSame(contents2, array.read(0, 4));
 		}
 	}
 }

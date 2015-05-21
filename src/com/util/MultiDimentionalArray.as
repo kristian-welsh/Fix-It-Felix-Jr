@@ -23,14 +23,17 @@ package com.util {
 		}
 		
 		public function fill(fillSource:Function):void {
-			for (var i:uint = 0; i < numColumns; i++)
-				contents.push(fillSource());
+			for (var i:uint = 0; i < numRows; i++)
+				for (var j:uint = 0; j < numColumns; j++)
+					contents.push(fillSource());
 		}
 		
-		public function read(columnNumber:uint, rowNumber:uint):Object {
+		public function read(columnIndex:uint, rowIndex:uint):Object {
 			if (contents.length == 0)
 				throw new MultiDimentionalArrayError();
-			return contents[columnNumber]
+			
+			// add one to indeces to ensure correct position calculation
+			return contents[((columnIndex + 1) * (rowIndex + 1)) - 1]
 		}
 	}
 }
