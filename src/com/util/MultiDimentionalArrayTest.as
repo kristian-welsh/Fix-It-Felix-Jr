@@ -1,5 +1,6 @@
 package com.util {
 	import kris.test.SuiteProvidingTestCase;
+	import org.flashdevelop.utils.FlashConnect;
 	
 	public class MultiDimentionalArrayTest extends SuiteProvidingTestCase {
 		private var array:MultiDimentionalArray;
@@ -10,7 +11,8 @@ package com.util {
 				size_can_be_set_from_setSize,
 				array_can_be_filled_with_function_output,
 				invalid_read_throws_error,
-				data_can_be_retrieved
+				data_can_be_retrieved_from_1_1_array,
+				data_can_be_retrieved_from_2_1_array
 				], testMethod);
 		}
 		
@@ -59,12 +61,31 @@ package com.util {
 				});
 		}
 		
-		public function data_can_be_retrieved():void {
+		public function data_can_be_retrieved_from_1_1_array():void {
 			var contents:Object = new Object();
 			array.fill(function():Object {
 					return contents;
 				});
+			
 			assertSame(contents, array.read(0, 0));
+		}
+		
+		public function data_can_be_retrieved_from_2_1_array():void {
+			array = new MultiDimentionalArray(2, 1);
+			
+			var firstTime:Boolean = true;
+			var contents1:Object = new Object();
+			var contents2:Object = new Object();
+			array.fill(function():Object {
+					if (firstTime) {
+						firstTime = false;
+						return contents1;
+					}
+					return contents2;
+				});
+			
+			assertSame(contents1, array.read(0, 0));
+			assertSame(contents2, array.read(1, 0));
 		}
 	}
 }

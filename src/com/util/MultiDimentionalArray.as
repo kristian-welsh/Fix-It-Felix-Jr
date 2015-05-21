@@ -3,7 +3,7 @@ package com.util {
 	public class MultiDimentionalArray {
 		private var numColumns:uint;
 		private var numRows:uint;
-		private var contents:Object;
+		private var contents:Array = [];
 		
 		public function MultiDimentionalArray(numColumns:uint = 0, numRows:uint = 0):void {
 			setSize(numColumns, numRows);
@@ -23,13 +23,14 @@ package com.util {
 		}
 		
 		public function fill(fillSource:Function):void {
-			contents = fillSource();
+			for (var i:uint = 0; i < numColumns; i++)
+				contents.push(fillSource());
 		}
 		
 		public function read(columnNumber:uint, rowNumber:uint):Object {
-			if (!contents)
+			if (contents.length == 0)
 				throw new MultiDimentionalArrayError();
-			return contents
+			return contents[columnNumber]
 		}
 	}
 }
