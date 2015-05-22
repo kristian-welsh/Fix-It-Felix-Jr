@@ -32,7 +32,7 @@ package com.util {
 			if (contents.length == 0)
 				throw new MultiDimentionalArrayError();
 			
-			// add one to indeces to ensure correct position calculation
+			// add one to indeces to ensure correct position calculation (without zero-ing)
 			return contents[((columnIndex + 1) * (rowIndex + 1)) - 1]
 		}
 	}

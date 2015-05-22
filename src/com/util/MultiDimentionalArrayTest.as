@@ -4,6 +4,17 @@ package com.util {
 	
 	public class MultiDimentionalArrayTest extends SuiteProvidingTestCase {
 		private var array:MultiDimentionalArray;
+		private var contents1:Object;
+		private var contents2:Object;
+		
+		private const SIZES_TO_TEST:Array = [
+			[1, 1],
+			[2, 1],
+			[5, 1],
+			[1, 2],
+			[1, 5],
+			[5, 5]
+			];
 		
 		public function MultiDimentionalArrayTest(testMethod:String = null) {
 			super([
@@ -11,17 +22,13 @@ package com.util {
 				size_can_be_set_from_setSize,
 				array_can_be_filled_with_function_output,
 				invalid_read_throws_error,
-				data_can_be_retrieved_from_1_1_array,
-				data_can_be_retrieved_from_2_1_array,
-				data_can_be_retrieved_from_5_1_array,
-				data_can_be_retrieved_from_1_2_array,
-				data_can_be_retrieved_from_1_5_array,
-				data_can_be_retrieved_from_5_5_array
+				data_can_be_retrieved_from_any_sized_array
 				], testMethod);
 		}
 		
 		override protected function setUp():void {
-			array = new MultiDimentionalArray(1, 1);
+			contents1 = new Object();
+			contents2 = new Object();
 		}
 		
 		public function size_can_be_set_from_constructor():void {
@@ -54,32 +61,42 @@ package com.util {
 		}
 		
 		public function array_can_be_filled_with_function_output():void {
+			array = new MultiDimentionalArray(1, 1);
+			
 			array.fill(function():Object {
 					return new Object();
 				});
 		}
 		
 		public function invalid_read_throws_error():void {
+			array = new MultiDimentionalArray(1, 1);
+			
 			assertThrows(MultiDimentionalArrayError, function():void {
 					array.read(0, 0);
 				});
 		}
 		
-		public function data_can_be_retrieved_from_1_1_array():void {
-			var contents:Object = new Object();
-			array.fill(function():Object {
-					return contents;
-				});
-			
-			assertSame(contents, array.read(0, 0));
+		public function data_can_be_retrieved_from_any_sized_array():void {
+			for each(var size:Array in SIZES_TO_TEST)
+				testAllDataRetrieveableFromSize(size[0], size[1])
 		}
 		
-		public function data_can_be_retrieved_from_2_1_array():void {
-			array = new MultiDimentionalArray(2, 1);
+		private function testAllDataRetrieveableFromSize(numColumns:uint, numRows:uint):void {
+			array = new MultiDimentionalArray(numColumns, numRows);
 			
+			fillWithContents();
+			
+			for (var column:uint = 0; column < numColumns; column++)
+				for (var row:uint = 0; row < numRows; row++)
+					assertSame(contentsToExpect(column, row), array.read(column, row));
+		}
+		
+		private function contentsToExpect(i:uint, j:uint):Object {
+			return (i == 0 && j == 0) ? contents1 : contents2;
+		}
+		
+		private function fillWithContents():void {
 			var firstTime:Boolean = true;
-			var contents1:Object = new Object();
-			var contents2:Object = new Object();
 			array.fill(function():Object {
 					if (firstTime) {
 						firstTime = false;
@@ -87,87 +104,6 @@ package com.util {
 					}
 					return contents2;
 				});
-			
-			assertSame(contents1, array.read(0, 0));
-			assertSame(contents2, array.read(1, 0));
-		}
-		
-		public function data_can_be_retrieved_from_5_1_array():void {
-			array = new MultiDimentionalArray(5, 1);
-			
-			var firstTime:Boolean = true;
-			var contents1:Object = new Object();
-			var contents2:Object = new Object();
-			array.fill(function():Object {
-					if (firstTime) {
-						firstTime = false;
-						return contents1;
-					}
-					return contents2;
-				});
-			
-			assertSame(contents1, array.read(0, 0));
-			assertSame(contents2, array.read(1, 0));
-			assertSame(contents2, array.read(2, 0));
-			assertSame(contents2, array.read(3, 0));
-			assertSame(contents2, array.read(4, 0));
-		}
-		
-		public function data_can_be_retrieved_from_1_2_array():void {
-			array = new MultiDimentionalArray(1, 2);
-			
-			var firstTime:Boolean = true;
-			var contents1:Object = new Object();
-			var contents2:Object = new Object();
-			array.fill(function():Object {
-					if (firstTime) {
-						firstTime = false;
-						return contents1;
-					}
-					return contents2;
-				});
-			
-			assertSame(contents1, array.read(0, 0));
-			assertSame(contents2, array.read(0, 1));
-		}
-		
-		public function data_can_be_retrieved_from_1_5_array():void {
-			array = new MultiDimentionalArray(1, 5);
-			
-			var firstTime:Boolean = true;
-			var contents1:Object = new Object();
-			var contents2:Object = new Object();
-			array.fill(function():Object {
-					if (firstTime) {
-						firstTime = false;
-						return contents1;
-					}
-					return contents2;
-				});
-			
-			assertSame(contents1, array.read(0, 0));
-			assertSame(contents2, array.read(0, 1));
-			assertSame(contents2, array.read(0, 2));
-			assertSame(contents2, array.read(0, 3));
-			assertSame(contents2, array.read(0, 4));
-		}
-		
-		public function data_can_be_retrieved_from_5_5_array():void {
-			array = new MultiDimentionalArray(5, 5);
-			
-			var firstTime:Boolean = true;
-			var contents1:Object = new Object();
-			var contents2:Object = new Object();
-			array.fill(function():Object {
-					if (firstTime) {
-						firstTime = false;
-						return contents1;
-					}
-					return contents2;
-				});
-			
-			assertSame(contents1, array.read(0, 0));
-			assertSame(contents2, array.read(4, 4));
 		}
 	}
 }
