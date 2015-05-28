@@ -1,10 +1,9 @@
 package com.util {
-	import kris.test.SuiteProvidingTestCase;
+	import kris.test.*;
+	import org.flashdevelop.utils.*;
 	
 	public class TwoDimentionalArrayTest extends SuiteProvidingTestCase {
-		private var firstTime:Boolean = true;
-		private var contents1:Object;
-		private var contents2:Object;
+		private var contents:Array = [];
 		
 		public function TwoDimentionalArrayTest(testMethod:String = null) {
 			super([
@@ -13,11 +12,6 @@ package com.util {
 				data_retrieveable_from_minimum_size_array,
 				data_retrieveable_from_arbritrary_size_array
 				], testMethod);
-		}
-		
-		override protected function setUp():void {
-			contents1 = new Object();
-			contents2 = new Object();
 		}
 		
 		public function invalid_read_throws_error():void {
@@ -44,22 +38,28 @@ package com.util {
 			factoryMethod = factoryMethod || constructorFactory;
 			var array:TwoDimentionalArray = factoryMethod(rowLength, columnLength);
 			
-			array.fill(fillingFunction);
+			fill(array);
+			validateContents(array, rowLength, columnLength);
+		}
+		
+		private function fill(array:TwoDimentionalArray):void {
+			array.fill(function():Object {
+					var content:Object = new Object();
+					contents.push(content);
+					return content;
+				});
+		}
+		
+		private function validateContents(array:TwoDimentionalArray, rowLength:uint, columnLength:uint):void {
+			var localIndex:uint = 0;
 			for (var row:uint = 0; row < columnLength; row++)
-				for (var column:uint = 0; column < rowLength; column++)
-					assertSame(contentsToExpect(column, row), array.read(column, row));
+				for (var column:uint = 0; column < rowLength; column++, localIndex++)
+					assertCorrectRead(contents[localIndex], array.read(column, row));
 		}
 		
-		private function fillingFunction():Object {
-			if (firstTime) {
-				firstTime = false;
-				return contents1;
-			}
-			return contents2;
-		}
-		
-		private function contentsToExpect(i:uint, j:uint):Object {
-			return (i == 0 && j == 0) ? contents1 : contents2;
+		private function assertCorrectRead(local:Object, read:Object):void {
+			assertSame(local, read);
+			assertNotNull(read);
 		}
 		
 		private function constructorFactory(rowLength:uint, columnLength:uint):TwoDimentionalArray {
