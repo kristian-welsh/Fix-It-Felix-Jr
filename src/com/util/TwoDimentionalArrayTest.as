@@ -7,18 +7,49 @@ package com.util {
 		
 		public function TwoDimentionalArrayTest(testMethod:String = null) {
 			super([
-				invalid_read_throws_error,
+				filling_before_setting_dimentions_throws_error,
+				filling_with_null_throws_error,
+				reading_before_filling_throws_error,
+				reading_from_outside_of_size_throws_error,
 				data_retrieveable_from_setSize_constructed_array,
 				data_retrieveable_from_minimum_size_array,
 				data_retrieveable_from_arbritrary_size_array
 				], testMethod);
 		}
 		
-		public function invalid_read_throws_error():void {
+		public function filling_before_setting_dimentions_throws_error():void {
+			var array:TwoDimentionalArray = new TwoDimentionalArray();
+			
+			assertThrows(TwoDimentionalArrayError, function():void {
+					fill(array);
+				});
+		}
+		
+		public function filling_with_null_throws_error():void {
+			var array:TwoDimentionalArray = new TwoDimentionalArray();
+			
+			assertThrows(TwoDimentionalArrayError, function():void {
+					array.fill(function():Object { return null; } );
+				});
+		}
+		
+		public function reading_before_filling_throws_error():void {
 			var array:TwoDimentionalArray = new TwoDimentionalArray(1, 1);
 			
 			assertThrows(TwoDimentionalArrayError, function():void {
 					array.read(0, 0);
+				});
+		}
+		
+		public function reading_from_outside_of_size_throws_error():void {
+			var array:TwoDimentionalArray = new TwoDimentionalArray(1, 1);
+			fill(array);
+			
+			assertThrows(TwoDimentionalArrayError, function():void {
+					array.read(1, 0);
+				});
+			assertThrows(TwoDimentionalArrayError, function():void {
+					array.read(0, 1);
 				});
 		}
 		
@@ -43,11 +74,13 @@ package com.util {
 		}
 		
 		private function fill(array:TwoDimentionalArray):void {
-			array.fill(function():Object {
-					var content:Object = new Object();
-					contents.push(content);
-					return content;
-				});
+			array.fill(fillFunction);
+		}
+		
+		private function fillFunction():Object {
+			var content:Object = new Object();
+			contents.push(content);
+			return content;
 		}
 		
 		private function validateContents(array:TwoDimentionalArray, rowLength:uint, columnLength:uint):void {

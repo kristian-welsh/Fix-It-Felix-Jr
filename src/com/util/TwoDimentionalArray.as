@@ -26,8 +26,15 @@ package com.util {
 		 * @param	fillSource A method that returns the correct object to fill the array with.
 		 */
 		public function fill(fillSource:Function):void {
+			detectInvalidSizeError();
 			for (var i:uint = 0; i <= lastIndex(); i++)
-				contents.push(fillSource());
+				addElementFrom(fillSource);
+		}
+		
+		private function addElementFrom(fillSource:Function):void {
+			var result:Object = fillSource();
+			detectNullElementError(result)
+			contents.push(result);
 		}
 		
 		private function lastIndex():uint {
@@ -44,13 +51,30 @@ package com.util {
 		 * @throws	MultiDimentionalArrayError
 		 */
 		public function read(columnIndex:uint, rowIndex:uint):Object {
-			detectReadErrors();
+			detectBoundryExceededError(columnIndex, rowIndex);
+			detectEmptyArrayError();
+			
 			return contents[flatIndexOf(columnIndex, rowIndex)]
 		}
 		
-		private function detectReadErrors():void {
+		private function detectBoundryExceededError(columnIndex:uint, rowIndex:uint):void {
+			if (columnIndex > rowLength - 1 || rowIndex > columnLength - 1)
+				throw TwoDimentionalArrayError.BOUNDARY_EXCEEDED;
+		}
+		
+		private function detectEmptyArrayError():void {
 			if (contents.length == 0)
-				throw new TwoDimentionalArrayError("Array has not been filled");
+				throw TwoDimentionalArrayError.EMPTY_ARRAY;
+		}
+		
+		private function detectInvalidSizeError():void {
+			if (rowLength < 1 || columnLength < 1)
+				throw TwoDimentionalArrayError.INVALID_SIZE;
+		}
+		
+		private function detectNullElementError(element:Object):void {
+			if (element === null)
+				throw TwoDimentionalArrayError.NULL_ELEMENT
 		}
 	}
 }
