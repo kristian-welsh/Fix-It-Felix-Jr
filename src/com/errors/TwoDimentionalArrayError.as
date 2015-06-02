@@ -1,4 +1,4 @@
-package com.util.collections {
+package com.errors {
 	public class TwoDimentionalArrayError extends Error {
 		static public const BOUNDARY_EXCEEDED:TwoDimentionalArrayError = new TwoDimentionalArrayError("Read is outside of array's size.");
 		static public const EMPTY_ARRAY:TwoDimentionalArrayError = new TwoDimentionalArrayError("Array has not been filled.");

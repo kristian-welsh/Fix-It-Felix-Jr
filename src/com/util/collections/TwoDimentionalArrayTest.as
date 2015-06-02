@@ -1,4 +1,5 @@
 package com.util.collections {
+	import com.errors.TwoDimentionalArrayError;
 	import kris.test.SuiteProvidingTestCase;
 	
 	public class TwoDimentionalArrayTest extends SuiteProvidingTestCase {

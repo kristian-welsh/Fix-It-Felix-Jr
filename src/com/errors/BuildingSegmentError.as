@@ -1,4 +1,4 @@
-package com.building.segment {
+package com.errors {
 	public class BuildingSegmentError extends Error {
 		static public const WINDOW_ARRAY_DIMENSIONS_EXCEEDED:String = "You have exceeded the dimensions of the window format. The limits are x:0-4, y:0-2";
 		

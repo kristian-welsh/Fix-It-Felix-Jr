@@ -1,4 +1,6 @@
 package com.util.collections {
+	import com.errors.TwoDimentionalArrayError;
+	
 	public class TwoDimentionalArray {
 		private var rowLength:uint;
 		private var columnLength:uint;

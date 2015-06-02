@@ -2,6 +2,7 @@ package com.building.segment {
 	import com.building.window.DoubleWindowImp;
 	import com.building.window.factory.DoubleWindowFactorySpy;
 	import com.building.window.FakeDoubleWindowMovieClip;
+	import com.errors.BuildingSegmentError;
 	import com.util.random.int.*;
 	import flash.display.MovieClip;
 	import kris.test.SuiteProvidingTestCase;

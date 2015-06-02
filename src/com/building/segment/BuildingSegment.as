@@ -1,6 +1,7 @@
 ﻿package com.building.segment {
 	import com.building.window.DoubleWindow;
 	import com.building.window.factory.DoubleWindowFactory;
+	import com.errors.BuildingSegmentError;
 	import com.util.random.int.*;
 	import flash.display.MovieClip;
 	
