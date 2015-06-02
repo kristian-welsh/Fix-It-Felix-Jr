@@ -7,7 +7,7 @@ package com.test {
 	import com.building.window.shutter.ShutterImpTest;
 	import com.building.window.shutter.switcher.ShutterSwitcherImpTest;
 	import com.game.GameTest;
-	import com.util.TwoDimentionalArrayTest;
+	import com.util.collections.TwoDimentionalArrayTest;
 	import com.util.random.int.RandomIntGeneratorTest;
 	import kris.test.TestSuiteCollector;
 	

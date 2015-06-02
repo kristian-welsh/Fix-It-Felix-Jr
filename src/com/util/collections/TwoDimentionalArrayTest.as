@@ -1,6 +1,5 @@
-package com.util {
-	import kris.test.*;
-	import org.flashdevelop.utils.*;
+package com.util.collections {
+	import kris.test.SuiteProvidingTestCase;
 	
 	public class TwoDimentionalArrayTest extends SuiteProvidingTestCase {
 		private var contents:Array = [];
@@ -29,7 +28,8 @@ package com.util {
 			var array:TwoDimentionalArray = new TwoDimentionalArray();
 			
 			assertThrows(TwoDimentionalArrayError, function():void {
-					array.fill(function():Object { return null; } );
+					array.fill(function():Object {
+							return null; } );
 				});
 		}
 		

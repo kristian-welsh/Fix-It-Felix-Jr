@@ -1,4 +1,4 @@
-package com.util {
+package com.util.collections {
 	public class TwoDimentionalArray {
 		private var rowLength:uint;
 		private var columnLength:uint;
@@ -13,17 +13,9 @@ package com.util {
 			this.columnLength = columnLength;
 		}
 		
-		public function getRowLength():uint {
-			return rowLength;
-		}
-		
-		public function getColumnLength():uint {
-			return columnLength;
-		}
-		
 		/**
 		 * Fill all available slots as determined by numColumns and numRows.
-		 * @param	fillSource A method that returns the correct object to fill the array with.
+		 * @param	fillSource A method that returns the correct object to fill the array with. This cannot return null.
 		 */
 		public function fill(fillSource:Function):void {
 			detectInvalidSizeError();
@@ -48,7 +40,6 @@ package com.util {
 		/**
 		 * Reads a value from a specific place in the array.
 		 * @return	Object stored at required location in array.
-		 * @throws	MultiDimentionalArrayError
 		 */
 		public function read(columnIndex:uint, rowIndex:uint):Object {
 			detectBoundryExceededError(columnIndex, rowIndex);
